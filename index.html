@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Cube - 4m × 4m × 4m</title>
+    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.0.0/dist/aframe-extras.min.js"></script>
+</head>
+<body>
+    <a-scene>
+        <!-- Caméra avec collisions -->
+        <a-entity id="rig" position="-2 1.6 0" rotation="0 -90 0" movement-controls="constrainToNavMesh: false; speed: 0.15">
+            <a-entity 
+                camera 
+                position="0 0 0" 
+                look-controls="pointerLockEnabled: true">
+            </a-entity>
+        </a-entity>
+
+
+                <!-- Modèle 3D : porte -->
+        <a-entity 
+            gltf-model="assets/Door.glb"
+            position="-0.5 0 -2"
+            scale="0.6 0.6 0.6"
+            rotation="0 0 0">
+        </a-entity>
+
+        <!-- Modèle 3D : escalier -->
+        <a-entity 
+            gltf-model="assets/escalier.glb"
+            position="0 0 0.5"
+            scale="0.001 0.001 0.0013"
+            rotation="90 90 0">
+        </a-entity>
+
+
+
+                <!-- AIGUILLES D'HORLOGE sur le mur du fond (X=10) -->
+        <!-- Centre de l'horloge -->
+        <a-cylinder
+            position="9.9 2 0"
+            rotation="0 0 90"
+            radius="0.08"
+            height="0.05"
+            color="#D4AF37">
+        </a-cylinder>
+
+        <!-- Aiguille des heures (courte et épaisse) -->
+        <a-box
+            id="aiguille-heures-fond"
+            position="9.93 2.25 0"
+            rotation="  0 0 0"
+            width="0.02"
+            height="0.5"
+            depth="0.06"
+            color="#1a1a1a">
+        </a-box>
+
+        <!-- Aiguille des minutes (longue et fine) -->
+        <a-box
+            id="aiguille-minutes-fond"
+            position="9.93 2 0.35"
+            rotation="90 90 -90"
+            width="0.015"
+            height="0.7"
+            depth="0.04"
+            color="#1a1a1a">
+        </a-box>
+
+        <!-- LE CUBE (4m × 4m × 4m) - Tout en gris -->
+
+        
+        <!-- Sol étendu partout -->
+        <a-plane 
+            position="0 0 0" 
+            rotation="-90 0 0" 
+            width="100" 
+            height="100" 
+            color="#C7A584"
+            static-body>
+        </a-plane>
+
+        <!-- Plafond -->
+        <a-plane 
+            position="0 4 0" 
+            rotation="90 0 0" 
+            width="20" 
+            height="4" 
+            color="#5F3C15"
+            static-body>
+        </a-plane>
+
+        <!-- Mur gauche -->
+        <a-plane 
+            position="0 2 -2" 
+            rotation="0 0 0" 
+            width="20" 
+            height="4" 
+            color="#5F3C15"
+            opacity="1"
+            transparent="true"
+            static-body>
+        </a-plane>
+
+
+
+        <!-- Mur droite (avec ouverture pour voir) -->
+        <a-plane 
+            position="-6 2 2" 
+            rotation="0 180 0" 
+            width="8" 
+            height="4" 
+            color="#5F3C15"
+            opacity="1"
+            transparent="true"
+            static-body>
+        </a-plane>
+
+        <!-- Mur droite (avec ouverture pour voir) -->
+        <a-plane 
+            position="6 2 2" 
+            rotation="0 180 0" 
+            width="8" 
+            height="4" 
+            color="#5F3C15"
+            opacity="1"
+            transparent="true"
+            static-body>
+        </a-plane>
+
+
+                <!-- Mur  fond pour escalier-->
+        <a-plane 
+            position="0 2 6" 
+            rotation="0 180 0" 
+            width="4" 
+            height="30" 
+            color="#5F3C15"
+            opacity="1"
+            transparent="true"
+            static-body>
+        </a-plane>
+
+        
+                <!-- Mur droite pour escalier-->
+        <a-plane 
+            position="-2 2 4" 
+            rotation="0 90 0" 
+            width="4" 
+            height="30" 
+            color="#5F3C15"
+            opacity="1"
+            transparent="true"
+            static-body>
+        </a-plane>
+
+                        <!-- Mur gauche pour escalier-->
+
+        <a-plane 
+            position="2 2 4" 
+            rotation="0 -90 0" 
+            width="4" 
+            height="30" 
+            color="#5F3C15"
+            opacity="1"
+            transparent="true"
+            static-body>
+        </a-plane>
+
+                                <!-- plafond pour escalier-->
+
+        <a-plane 
+            position="0 17 4" 
+            rotation="90 0 0" 
+            width="4" 
+            height="4" 
+            color="#5F3C15"
+            opacity="1"
+            transparent="true"
+            static-body>
+        </a-plane>
+
+
+        <!-- Mur derrière -->
+        <a-plane 
+            position="-10 2 0" 
+            rotation="0 90 0" 
+            width="4" 
+            height="4" 
+            color="#5F3C15"
+            opacity="1"
+            transparent="true"
+            static-body>
+        </a-plane>
+
+        <!-- Mur du fond -->
+        <a-plane 
+            position="10 2 0" 
+            rotation="0 -90 0" 
+            width="4" 
+            height="4" 
+            color="#5F3C15"
+            opacity="1"
+            transparent="true"
+            static-body>
+        </a-plane>
+
+
+
+        <!-- Lumière simple -->
+        <a-light 
+            type="ambient" 
+            color="#FFFFFF" 
+            intensity="0.8">
+        </a-light>
+
+        <a-light 
+            type="directional" 
+            color="#FFFFFF" 
+            intensity="0.5" 
+            position="-20 16 0">
+        </a-light>
+
+    </a-scene>
+
+    <script>
+        // Système de collision personnalisé pour empêcher de sortir du cube
+        AFRAME.registerComponent('boundary-collision', {
+            tick: function() {
+                const position = this.el.getAttribute('position');
+                
+                // Limites du cube 4m × 4m × 4m avec marge
+                const margin = 0.3;
+                const minX = -2 + margin;
+                const maxX = 2 - margin;
+                const minY = 0.1;
+                const maxY = 4 - margin;
+                const minZ = -2 + margin;
+                const maxZ = 2 - margin;
+                
+                // Contraindre la position
+                if (position.x < minX) position.x = minX;
+                if (position.x > maxX) position.x = maxX;
+                if (position.y < minY) position.y = minY;
+                if (position.y > maxY) position.y = maxY;
+                if (position.z < minZ) position.z = minZ;
+                if (position.z > maxZ) position.z = maxZ;
+                
+                this.el.setAttribute('position', position);
+            }
+        });
+
+        // Appliquer le composant de collision au rig
+        document.querySelector('#rig').setAttribute('boundary-collision', '');
+
+        console.log('Cube 4m × 4m × 4m initialisé');
+        console.log('Utilisez WASD ou les flèches pour vous déplacer');
+        console.log('Les collisions empêchent de sortir du cube');
+    </script>
+</body>
+</html>
