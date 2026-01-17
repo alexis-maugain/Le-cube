@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Cube - 4m × 4m × 4m</title>
+    <title>The Cube</title>
     <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.0.0/dist/aframe-extras.min.js"></script>
 </head>
@@ -15,16 +15,95 @@
                 camera 
                 position="0 0 0" 
                 look-controls="pointerLockEnabled: true">
+                <!-- Curseur pour interagir -->
+                <a-cursor 
+                    color="#FFFFFF" 
+                    fuse="false"
+                    raycaster="objects: .clickable">
+                </a-cursor>
             </a-entity>
         </a-entity>
 
 
-                <!-- Modèle 3D : porte -->
-        <a-entity 
-            gltf-model="assets/Door.glb"
-            position="-0.5 0 -2"
-            scale="0.6 0.6 0.6"
-            rotation="0 0 0">
+                <!-- Porte d'hôtel avec cadre fixe -->
+        <a-entity id="door-frame" position="-1 0 -2">
+            <!-- Cadre de porte (fixe) -->
+            <a-box position="-0.5 1.1 0" width="0.1" height="2.3" depth="0.15" color="#3D2314"></a-box>
+            <a-box position="0.5 1.1 0" width="0.1" height="2.3" depth="0.15" color="#3D2314"></a-box>
+            <a-box position="0 2.2 0" width="1.1" height="0.1" depth="0.15" color="#3D2314"></a-box>
+        </a-entity>
+        
+        <!-- Pivot de la porte A (pour rotation) -->
+        <a-entity id="door-pivot-A" position="-1.45 0 -2" rotation="0 0 0" door-interactive="linkedDoor: #door-pivot-B; teleportPos: 1.5 1.6 -1.5; teleportRot: 0 180 0">
+            <!-- Zone de téléportation -->
+            <a-box class="teleport-zone" id="teleport-A" position="0.45 1 -0.5" width="0.8" height="2" depth="0.5" material="opacity: 0; transparent: true"></a-box>
+            <!-- Panneau de porte principal (cliquable) -->
+            <a-box class="clickable" id="door-panel-A" position="0.45 1.1 0.02" width="0.85" height="2.1" depth="0.1" color="#5C3A21"></a-box>
+            
+            <!-- Panneau décoratif haut -->
+            <a-box position="0.45 1.7 0.08" width="0.65" height="0.6" depth="0.03" color="#4A2F1A"></a-box>
+            
+            <!-- Panneau décoratif bas -->
+            <a-box position="0.45 0.7 0.08" width="0.65" height="0.8" depth="0.03" color="#4A2F1A"></a-box>
+            
+            <!-- Poignée de porte (base) -->
+            <a-cylinder class="clickable" position="0.75 1 0.1" rotation="90 0 0" radius="0.025" height="0.05" color="#D4AF37"></a-cylinder>
+            
+            <!-- Poignée de porte (levier) -->
+            <a-box class="clickable" position="0.75 1 0.15" width="0.12" height="0.03" depth="0.04" color="#D4AF37"></a-box>
+            
+            <!-- Serrure -->
+            <a-cylinder position="0.75 0.9 0.09" rotation="90 0 0" radius="0.02" height="0.03" color="#D4AF37"></a-cylinder>
+            
+            <!-- Plaque numéro de chambre -->
+            <a-box position="0.45 1.85 0.09" width="0.2" height="0.12" depth="0.015" color="#D4AF37"></a-box>
+            
+            <!-- Numéro de chambre "491" -->
+            <a-text value="491" position="0.45 1.85 0.1" align="center" width="0.8" color="#1a1a1a"></a-text>
+            
+            <!-- Judas (peephole) -->
+            <a-cylinder position="0.45 1.55 0.09" rotation="90 0 0" radius="0.015" height="0.02" color="#2a2a2a"></a-cylinder>
+        </a-entity>
+
+
+                        <!-- Porte d'hôtel avec cadre fixe -->
+        <a-entity id="door-frame" position="1.5 0 -2">
+            <!-- Cadre de porte (fixe) -->
+            <a-box position="-0.5 1.1 0" width="0.1" height="2.3" depth="0.15" color="#3D2314"></a-box>
+            <a-box position="0.5 1.1 0" width="0.1" height="2.3" depth="0.15" color="#3D2314"></a-box>
+            <a-box position="0 2.2 0" width="1.1" height="0.1" depth="0.15" color="#3D2314"></a-box>
+        </a-entity>
+        
+        <!-- Pivot de la porte B (pour rotation) -->
+        <a-entity id="door-pivot-B" position="1.05 0 -2" rotation="0 0 0" door-interactive="linkedDoor: #door-pivot-A; teleportPos: -1 1.6 -1.5; teleportRot: 0 180 0">
+            <!-- Zone de téléportation -->
+            <a-box class="teleport-zone" id="teleport-B" position="0.45 1 -0.5" width="0.8" height="2" depth="0.5" material="opacity: 0; transparent: true"></a-box>
+            <!-- Panneau de porte principal (cliquable) -->
+            <a-box class="clickable" id="door-panel-B" position="0.45 1.1 0.02" width="0.85" height="2.1" depth="0.1" color="#5C3A21"></a-box>
+            
+            <!-- Panneau décoratif haut -->
+            <a-box position="0.45 1.7 0.08" width="0.65" height="0.6" depth="0.03" color="#4A2F1A"></a-box>
+            
+            <!-- Panneau décoratif bas -->
+            <a-box position="0.45 0.7 0.08" width="0.65" height="0.8" depth="0.03" color="#4A2F1A"></a-box>
+            
+            <!-- Poignée de porte (base) -->
+            <a-cylinder class="clickable" position="0.75 1 0.1" rotation="90 0 0" radius="0.025" height="0.05" color="#D4AF37"></a-cylinder>
+            
+            <!-- Poignée de porte (levier) -->
+            <a-box class="clickable" position="0.75 1 0.15" width="0.12" height="0.03" depth="0.04" color="#D4AF37"></a-box>
+            
+            <!-- Serrure -->
+            <a-cylinder position="0.75 0.9 0.09" rotation="90 0 0" radius="0.02" height="0.03" color="#D4AF37"></a-cylinder>
+            
+            <!-- Plaque numéro de chambre -->
+            <a-box position="0.45 1.85 0.09" width="0.2" height="0.12" depth="0.015" color="#D4AF37"></a-box>
+            
+            <!-- Numéro de chambre "528" -->
+            <a-text value="528" position="0.45 1.85 0.1" align="center" width="0.8" color="#1a1a1a"></a-text>
+            
+            <!-- Judas (peephole) -->
+            <a-cylinder position="0.45 1.55 0.09" rotation="90 0 0" radius="0.015" height="0.02" color="#2a2a2a"></a-cylinder>
         </a-entity>
 
         <!-- Modèle 3D : escalier -->
@@ -37,50 +116,59 @@
 
 
 
-                <!-- AIGUILLES D'HORLOGE sur le mur du fond (X=10) -->
-        <!-- Centre de l'horloge -->
-        <a-cylinder
-            position="9.9 2 0"
-            rotation="0 0 90"
-            radius="0.08"
-            height="0.05"
-            color="#D4AF37">
-        </a-cylinder>
+        <!-- HORLOGE sur le mur du fond -->
+        <a-entity position="0 1 0" rotation="0 0 0">
+                <!-- Centre de l'horloge -->
+            <a-cylinder
+                position="9.9 2 0"
+                rotation="0 0 90"
+                radius="0.08"
+                height="0.05"
+                color="#D4AF37">
+            </a-cylinder>
 
-        <!-- Aiguille des heures (courte et épaisse) -->
-        <a-box
-            id="aiguille-heures-fond"
-            position="9.93 2.25 0"
-            rotation="  0 0 0"
-            width="0.02"
-            height="0.5"
-            depth="0.06"
-            color="#1a1a1a">
-        </a-box>
+            <!-- Pivot aiguille des heures -->
+            <a-entity id="pivot-heures" position="9.93 2 0" rotation="0 0 0">
+                <!-- Aiguille des heures (courte et épaisse) -->
+                <a-box
+                    id="aiguille-heures-fond"
+                    position="0 0.2 0"
+                    width="0.06"
+                    height="0.4"
+                    depth="0.02"
+                    color="#1a1a1a">
+                </a-box>
+            </a-entity>
 
-        <!-- Aiguille des minutes (longue et fine) -->
-        <a-box
-            id="aiguille-minutes-fond"
-            position="9.93 2 0.35"
-            rotation="90 90 -90"
-            width="0.015"
-            height="0.7"
-            depth="0.04"
-            color="#1a1a1a">
-        </a-box>
+            <!-- Pivot aiguille des minutes -->
+            <a-entity id="pivot-minutes" position="9.93 2 0" rotation="0 0 0">
+                <!-- Aiguille des minutes (longue et fine) -->
+                <a-box
+                    id="aiguille-minutes-fond"
+                    position="0 0.3 0"
+                    width="0.04"
+                    height="0.6"
+                    depth="0.015"
+                    color="#1a1a1a">
+                </a-box>
+            </a-entity>
+        </a-entity>
+       
 
         <!-- LE CUBE (4m × 4m × 4m) - Tout en gris -->
 
         
-        <!-- Sol étendu partout -->
+        <!-- Sol en marbre luxueux blanc crème -->
         <a-plane 
             position="0 0 0" 
             rotation="-90 0 0" 
             width="100" 
             height="100" 
-            color="#C7A584"
+            material="color: #F0EDE8; metalness: 0.3; roughness: 0.1"
             static-body>
         </a-plane>
+        
+
 
         <!-- Plafond -->
         <a-plane 
@@ -88,124 +176,109 @@
             rotation="90 0 0" 
             width="20" 
             height="4" 
-            color="#5F3C15"
+            color="#4A4543"
             static-body>
         </a-plane>
 
-        <!-- Mur gauche -->
-        <a-plane 
-            position="0 2 -2" 
-            rotation="0 0 0" 
-            width="20" 
-            height="4" 
-            color="#5F3C15"
-            opacity="1"
-            transparent="true"
-            static-body>
-        </a-plane>
+        <!-- Mur gauche - Style hôtel de luxe minimaliste AVEC TROUS POUR LES PORTES -->
+        <a-entity id="mur-gauche" position="0 0 -2">
+            <!-- Section gauche du mur (avant porte A) -->
+            <!-- Soubassement gauche -->
+            <a-box position="-6.5 0.5 0" width="10" height="1" depth="0.1" material="color: #4A4543; metalness: 0.2; roughness: 0.6"></a-box>
+            <!-- Partie haute gauche -->
+            <a-box position="-6.5 2.5 0" width="10" height="3" depth="0.08" material="color: #E8E2DC; metalness: 0.05; roughness: 0.7"></a-box>
+            
+            <!-- Section entre les deux portes -->
+            <!-- Soubassement milieu -->
+            <a-box position="0.25 0.5 0" width="1.4" height="1" depth="0.1" material="color: #4A4543; metalness: 0.2; roughness: 0.6"></a-box>
+            <!-- Partie haute milieu -->
+            <a-box position="0.25 2.5 0" width="1.4" height="3" depth="0.08" material="color: #E8E2DC; metalness: 0.05; roughness: 0.7"></a-box>
+            
+            <!-- Section droite du mur (après porte B) -->
+            <!-- Soubassement droite -->
+            <a-box position="7 0.5 0" width="10" height="1" depth="0.1" material="color: #4A4543; metalness: 0.2; roughness: 0.6"></a-box>
+            <!-- Partie haute droite -->
+            <a-box position="7 2.5 0" width="10" height="3" depth="0.08" material="color: #E8E2DC; metalness: 0.05; roughness: 0.7"></a-box>
+            
+            <!-- Linteaux au-dessus des portes -->
+            <!-- Linteau porte A -->
+            <a-box position="-1 3.3 0" width="4" height="2.1" depth="0.08" material="color: #E8E2DC; metalness: 0.05; roughness: 0.7"></a-box>
+            <!-- Linteau porte B -->
+            <a-box position="1.5 3.3 0" width="4" height="2.1" depth="0.08" material="color: #E8E2DC; metalness: 0.05; roughness: 0.7"></a-box>
+            
+            <!-- Moulures basses -->
+            <a-box position="-6.5 1.0 0.02" width="7" height="0.06" depth="0.03" material="color: #C9C0B5; metalness: 0.3; roughness: 0.4"></a-box>
+            <a-box position="0.25 1.0 0.02" width="1.4" height="0.06" depth="0.03" material="color: #C9C0B5; metalness: 0.3; roughness: 0.4"></a-box>
+            <a-box position="7 1.0 0.02" width="8" height="0.06" depth="0.03" material="color: #C9C0B5; metalness: 0.3; roughness: 0.4"></a-box>
+            
+            <!-- Moulures hautes -->
+            <a-box position="-6.5 3.95 0.02" width="7" height="0.06" depth="0.03" material="color: #C9C0B5; metalness: 0.3; roughness: 0.4"></a-box>
+            <a-box position="0.25 3.95 0.02" width="1.4" height="0.06" depth="0.03" material="color: #C9C0B5; metalness: 0.3; roughness: 0.4"></a-box>
+            <a-box position="7 3.95 0.02" width="8" height="0.06" depth="0.03" material="color: #C9C0B5; metalness: 0.3; roughness: 0.4"></a-box>
+        </a-entity>
 
 
 
-        <!-- Mur droite (avec ouverture pour voir) -->
-        <a-plane 
-            position="-6 2 2" 
-            rotation="0 180 0" 
-            width="8" 
-            height="4" 
-            color="#5F3C15"
-            opacity="1"
-            transparent="true"
-            static-body>
-        </a-plane>
+        <!-- Mur droite partie gauche - Style minimaliste luxe -->
+        <a-entity id="mur-droite-gauche" position="-6 0 2" rotation="0 180 0">
+            <a-box position="0 0.5 0" width="8" height="1" depth="0.1" material="color: #4A4543; metalness: 0.2; roughness: 0.6"></a-box>
+            <a-box position="0 1.0 0.02" width="8" height="0.06" depth="0.03" material="color: #C9C0B5; metalness: 0.3; roughness: 0.4"></a-box>
+            <a-box position="0 2.5 0" width="8" height="3" depth="0.08" material="color: #E8E2DC; metalness: 0.05; roughness: 0.7"></a-box>
+            <a-box position="0 3.95 0.02" width="8" height="0.06" depth="0.03" material="color: #C9C0B5; metalness: 0.3; roughness: 0.4"></a-box>
+        </a-entity>
 
-        <!-- Mur droite (avec ouverture pour voir) -->
-        <a-plane 
-            position="6 2 2" 
-            rotation="0 180 0" 
-            width="8" 
-            height="4" 
-            color="#5F3C15"
-            opacity="1"
-            transparent="true"
-            static-body>
-        </a-plane>
+        <!-- Mur droite partie droite - Style minimaliste luxe -->
+        <a-entity id="mur-droite-droite" position="6 0 2" rotation="0 180 0">
+            <a-box position="0 0.5 0" width="8" height="1" depth="0.1" material="color: #4A4543; metalness: 0.2; roughness: 0.6"></a-box>
+            <a-box position="0 1.0 0.02" width="8" height="0.06" depth="0.03" material="color: #C9C0B5; metalness: 0.3; roughness: 0.4"></a-box>
+            <a-box position="0 2.5 0" width="8" height="3" depth="0.08" material="color: #E8E2DC; metalness: 0.05; roughness: 0.7"></a-box>
+            <a-box position="0 3.95 0.02" width="8" height="0.06" depth="0.03" material="color: #C9C0B5; metalness: 0.3; roughness: 0.4"></a-box>
+        </a-entity>
 
 
-                <!-- Mur  fond pour escalier-->
-        <a-plane 
-            position="0 2 6" 
-            rotation="0 180 0" 
-            width="4" 
-            height="30" 
-            color="#5F3C15"
-            opacity="1"
-            transparent="true"
-            static-body>
-        </a-plane>
+        <!-- Mur fond pour escalier - Style luxe épuré -->
+        <a-entity id="mur-escalier-fond" position="0 0 6" rotation="0 180 0">
+            <a-box position="0 7.5 0" width="4" height="15" depth="0.1" material="color: #E8E2DC; metalness: 0.05; roughness: 0.7"></a-box>
+        </a-entity>
 
         
-                <!-- Mur droite pour escalier-->
-        <a-plane 
-            position="-2 2 4" 
-            rotation="0 90 0" 
-            width="4" 
-            height="30" 
-            color="#5F3C15"
-            opacity="1"
-            transparent="true"
-            static-body>
-        </a-plane>
+        <!-- Mur droite pour escalier - Style luxe épuré -->
+        <a-entity id="mur-escalier-droite" position="-2 0 4" rotation="0 90 0">
+            <a-box position="0 7.5 0" width="4" height="15" depth="0.1" material="color: #E8E2DC; metalness: 0.05; roughness: 0.7"></a-box>
+        </a-entity>
 
-                        <!-- Mur gauche pour escalier-->
+        <!-- Mur gauche pour escalier - Style luxe épuré -->
+        <a-entity id="mur-escalier-gauche" position="2 0 4" rotation="0 -90 0">
+            <a-box position="0 7.5 0" width="4" height="15" depth="0.1" material="color: #E8E2DC; metalness: 0.05; roughness: 0.7"></a-box>
+        </a-entity>
 
-        <a-plane 
-            position="2 2 4" 
-            rotation="0 -90 0" 
-            width="4" 
-            height="30" 
-            color="#5F3C15"
-            opacity="1"
-            transparent="true"
-            static-body>
-        </a-plane>
-
-                                <!-- plafond pour escalier-->
+        <!-- plafond pour escalier-->
 
         <a-plane 
             position="0 17 4" 
             rotation="90 0 0" 
             width="4" 
             height="4" 
-            color="#5F3C15"
-            opacity="1"
-            transparent="true"
+            material="color: #F5F2EF; metalness: 0.1; roughness: 0.5"
             static-body>
         </a-plane>
 
 
-        <!-- Mur derrière -->
-        <a-plane 
-            position="-10 2 0" 
-            rotation="0 90 0" 
-            width="4" 
-            height="4" 
-            color="#5F3C15"
-            opacity="1"
-            transparent="true"
-            static-body>
-        </a-plane>
+        <!-- Mur derrière - Style minimaliste luxe -->
+        <a-entity id="mur-derriere" position="-10 0 0" rotation="0 90 0">
+            <a-box position="0 0.5 0" width="4" height="1" depth="0.1" material="color: #4A4543; metalness: 0.2; roughness: 0.6"></a-box>
+            <a-box position="0 1.0 0.02" width="4" height="0.06" depth="0.03" material="color: #C9C0B5; metalness: 0.3; roughness: 0.4"></a-box>
+            <a-box position="0 2.5 0" width="4" height="3" depth="0.08" material="color: #E8E2DC; metalness: 0.05; roughness: 0.7"></a-box>
+            <a-box position="0 3.95 0.02" width="4" height="0.06" depth="0.03" material="color: #C9C0B5; metalness: 0.3; roughness: 0.4"></a-box>
+        </a-entity>
 
-        <!-- Mur du fond -->
-        <a-plane 
-            position="10 2 0" 
-            rotation="0 -90 0" 
-            width="4" 
-            height="4" 
-            color="#5F3C15"
-            opacity="1"
-            transparent="true"
-            static-body>
-        </a-plane>
+        <!-- Mur du fond - Style minimaliste luxe -->
+        <a-entity id="mur-fond" position="10 0 0" rotation="0 -90 0">
+            <a-box position="0 0.5 0" width="4" height="1" depth="0.1" material="color: #4A4543; metalness: 0.2; roughness: 0.6"></a-box>
+            <a-box position="0 1.0 0.02" width="4" height="0.06" depth="0.03" material="color: #C9C0B5; metalness: 0.3; roughness: 0.4"></a-box>
+            <a-box position="0 2.5 0" width="4" height="3" depth="0.08" material="color: #E8E2DC; metalness: 0.05; roughness: 0.7"></a-box>
+            <a-box position="0 3.95 0.02" width="4" height="0.06" depth="0.03" material="color: #C9C0B5; metalness: 0.3; roughness: 0.4"></a-box>
+        </a-entity>
 
 
 
@@ -225,39 +298,6 @@
 
     </a-scene>
 
-    <script>
-        // Système de collision personnalisé pour empêcher de sortir du cube
-        AFRAME.registerComponent('boundary-collision', {
-            tick: function() {
-                const position = this.el.getAttribute('position');
-                
-                // Limites du cube 4m × 4m × 4m avec marge
-                const margin = 0.3;
-                const minX = -2 + margin;
-                const maxX = 2 - margin;
-                const minY = 0.1;
-                const maxY = 4 - margin;
-                const minZ = -2 + margin;
-                const maxZ = 2 - margin;
-                
-                // Contraindre la position
-                if (position.x < minX) position.x = minX;
-                if (position.x > maxX) position.x = maxX;
-                if (position.y < minY) position.y = minY;
-                if (position.y > maxY) position.y = maxY;
-                if (position.z < minZ) position.z = minZ;
-                if (position.z > maxZ) position.z = maxZ;
-                
-                this.el.setAttribute('position', position);
-            }
-        });
-
-        // Appliquer le composant de collision au rig
-        document.querySelector('#rig').setAttribute('boundary-collision', '');
-
-        console.log('Cube 4m × 4m × 4m initialisé');
-        console.log('Utilisez WASD ou les flèches pour vous déplacer');
-        console.log('Les collisions empêchent de sortir du cube');
-    </script>
+    <script src="scripts/main.js"></script>
 </body>
 </html>
