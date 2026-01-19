@@ -9,12 +9,16 @@
     <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.0.0/dist/aframe-extras.min.js"></script>
 </head>
 <body>
+    <a-assets>
+        <img id="moquette" src="assets/moquette.jpg">
+        <audio id="background-music" src="assets/thekick.mp3" preload="auto"></audio>
+    </a-assets>
     <a-scene>
         <!-- Caméra avec collisions -->
-        <a-entity id="rig" position="-2 0.6 0" rotation="0 -90 0" movement-controls="constrainToNavMesh: false; speed: 0.15">
+        <a-entity id="rig" position="-2 1 0" rotation="0 -90 0" movement-controls="constrainToNavMesh: false; speed: 0.15">
             <a-entity 
                 camera 
-                position="0 1.6 0" 
+                position="0 0 0" 
                 look-controls="pointerLockEnabled: true">
                 <!-- Curseur pour interagir -->
                 <a-cursor 
@@ -59,8 +63,8 @@
             <!-- Plaque numéro de chambre -->
             <a-box position="0.45 1.85 0.09" width="0.2" height="0.12" depth="0.015" color="#D4AF37"></a-box>
             
-            <!-- Numéro de chambre "491" -->
-            <a-text value="491" position="0.45 1.85 0.1" align="center" width="0.8" color="#1a1a1a"></a-text>
+            <!-- Numéro de chambre "528" -->
+            <a-text value="528" position="0.45 1.85 0.1" align="center" width="0.8" color="#1a1a1a"></a-text>
             
             <!-- Judas (peephole) -->
             <a-cylinder position="0.45 1.55 0.09" rotation="90 0 0" radius="0.015" height="0.02" color="#2a2a2a"></a-cylinder>
@@ -100,8 +104,8 @@
             <!-- Plaque numéro de chambre -->
             <a-box position="0.45 1.85 0.09" width="0.2" height="0.12" depth="0.015" color="#D4AF37"></a-box>
             
-            <!-- Numéro de chambre "528" -->
-            <a-text value="528" position="0.45 1.85 0.1" align="center" width="0.8" color="#1a1a1a"></a-text>
+            <!-- Numéro de chambre "491" -->
+            <a-text value="491" position="0.45 1.85 0.1" align="center" width="0.8" color="#1a1a1a"></a-text>
             
             <!-- Judas (peephole) -->
             <a-cylinder position="0.45 1.55 0.09" rotation="90 0 0" radius="0.015" height="0.02" color="#2a2a2a"></a-cylinder>
@@ -359,9 +363,9 @@
 
         
         <!-- Sol en marbre luxueux blanc crème -->
-         <a-assets>
-            <img id="moquette" src="assets/moquette.jpg">
-        </a-assets>
+        
+        <!-- Musique d'ambiance -->
+        <a-entity id="music-player" sound="src: #background-music; autoplay: false; loop: true; volume: 0.5"></a-entity>
         <a-plane 
             position="0 0 0" 
             rotation="-90 0 0" 

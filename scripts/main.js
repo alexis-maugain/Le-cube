@@ -153,7 +153,7 @@ AFRAME.registerComponent('swing-frame', {
 AFRAME.registerComponent('safe-keypad', {
     init: function() {
         this.code = '';
-        this.correctCode = '491528'; // Code par défaut
+        this.correctCode = '528491'; // Code par défaut
         this.isUnlocked = false;
         this.display = document.querySelector('#safe-display');
         
@@ -213,7 +213,13 @@ AFRAME.registerComponent('safe-keypad', {
                 this.display.setAttribute('color', '#00FF00');
             }
             console.log('Coffre-fort déverrouillé!');
-            // Ici on pourrait ajouter une animation d'ouverture
+            
+            // Lancer la musique
+            const musicPlayer = document.querySelector('#music-player');
+            if (musicPlayer && musicPlayer.components.sound) {
+                musicPlayer.components.sound.playSound();
+                console.log('Musique lancée - Code trouvé!');
+            }
         } else {
             if (this.display) {
                 this.display.setAttribute('value', 'ERR!');
@@ -314,7 +320,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const safeController = document.createElement('a-entity');
             safeController.setAttribute('safe-keypad', '');
             document.querySelector('a-scene').appendChild(safeController);
-            console.log('Coffre-fort initialisé - Code par défaut: 491528');
+            console.log('Coffre-fort initialisé - Code par défaut: 528491');
         }
     })();
 });
