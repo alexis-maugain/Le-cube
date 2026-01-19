@@ -129,7 +129,7 @@ AFRAME.registerComponent('swing-frame', {
     toggleFrame: function() {
         this.isAnimating = true;
         // Pivoter sur le côté gauche (comme une porte)
-        const targetRotation = this.isOpen ? '0 0 0' : '0 0 -100';
+        const targetRotation = this.isOpen ? '0 0 0' : '0 0 -110';
         
         this.el.setAttribute('animation', {
             property: 'rotation',
@@ -185,7 +185,7 @@ AFRAME.registerComponent('safe-keypad', {
             // Vérifier le code
             this.checkCode();
         } else {
-            // Ajouter un chiffre (max 4)
+            // Ajouter un chiffre (max 6)
             if (this.code.length < 6) {
                 this.code += key;
                 this.updateDisplay();
