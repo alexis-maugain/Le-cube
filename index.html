@@ -656,13 +656,163 @@
         </a-entity>
 
         <!-- Mur du fond - Style minimaliste luxe -->
-        <a-entity id="mur-fond" position="10 0 0" rotation="0 -90 0">
+        <a-entity id="mur-fond" position="10 0 0" rotation="0 -90 0" class="hotel-element">
             <a-box position="0 0.5 0" width="4" height="1" depth="0.1" material="color: #4A4543; metalness: 0.2; roughness: 0.6"></a-box>
             <a-box position="0 1.0 0.02" width="4" height="0.06" depth="0.03" material="color: #C9C0B5; metalness: 0.3; roughness: 0.4"></a-box>
             <a-box position="0 2.5 0" width="4" height="3" depth="0.08" material="color: #E8E2DC; metalness: 0.05; roughness: 0.7"></a-box>
             <a-box position="0 3.95 0.02" width="4" height="0.06" depth="0.03" material="color: #C9C0B5; metalness: 0.3; roughness: 0.4"></a-box>
         </a-entity>
 
+        <!-- ========== INTÉRIEUR AVION PREMIÈRE CLASSE (caché au départ) ========== -->
+        <a-entity id="avion-container" visible="false">
+            <!-- Fuselage - Forme cylindrique orienté vers X (vers l'horloge) -->
+            <a-cylinder id="fuselage" position="0 2 0" rotation="90 0 0" radius="3" height="20" 
+                material="color: #F5F2EF; metalness: 0.2; roughness: 0.6; side: back" open-ended="true">
+            </a-cylinder>
+            
+            <!-- Sol de l'avion - Moquette luxueuse -->
+            <a-plane id="avion-sol" position="0 0.05 0" rotation="-90 0 0" width="4" height="20" 
+                material="color: #2C3E50; metalness: 0.1; roughness: 0.9">
+            </a-plane>
+            
+            <!-- SIÈGES PREMIÈRE CLASSE - Orientés vers l'horloge (X positif) -->
+            <!-- Rangée gauche -->
+            <a-entity id="sieges-premiere-gauche">
+                <!-- Siège 1 -->
+                <a-entity position="-1.3 0 -4" rotation="0 90 0">
+                    <!-- Base du siège -->
+                    <a-box position="0 0.25 0" width="0.7" height="0.15" depth="0.7" material="color: #1a1a1a; metalness: 0.3; roughness: 0.5"></a-box>
+                    <!-- Assise cuir crème -->
+                    <a-box position="0 0.4 0" width="0.65" height="0.12" depth="0.65" material="color: #F5F2EF; metalness: 0.1; roughness: 0.4"></a-box>
+                    <!-- Dossier cuir crème -->
+                    <a-box position="0 0.75 -0.28" width="0.65" height="0.7" depth="0.1" material="color: #F5F2EF; metalness: 0.1; roughness: 0.4"></a-box>
+                    <!-- Appui-tête -->
+                    <a-box position="0 1.15 -0.28" width="0.4" height="0.2" depth="0.12" material="color: #F5F2EF; metalness: 0.1; roughness: 0.4"></a-box>
+                    <!-- Accoudoirs dorés -->
+                    <a-box position="-0.35 0.55 0" width="0.05" height="0.08" depth="0.5" material="color: #D4AF37; metalness: 0.8; roughness: 0.2"></a-box>
+                    <a-box position="0.35 0.55 0" width="0.05" height="0.08" depth="0.5" material="color: #D4AF37; metalness: 0.8; roughness: 0.2"></a-box>
+                </a-entity>
+                <!-- Siège 2 -->
+                <a-entity position="-1.3 0 -2" rotation="0 90 0">
+                    <a-box position="0 0.25 0" width="0.7" height="0.15" depth="0.7" material="color: #1a1a1a; metalness: 0.3; roughness: 0.5"></a-box>
+                    <a-box position="0 0.4 0" width="0.65" height="0.12" depth="0.65" material="color: #F5F2EF; metalness: 0.1; roughness: 0.4"></a-box>
+                    <a-box position="0 0.75 -0.28" width="0.65" height="0.7" depth="0.1" material="color: #F5F2EF; metalness: 0.1; roughness: 0.4"></a-box>
+                    <a-box position="0 1.15 -0.28" width="0.4" height="0.2" depth="0.12" material="color: #F5F2EF; metalness: 0.1; roughness: 0.4"></a-box>
+                    <a-box position="-0.35 0.55 0" width="0.05" height="0.08" depth="0.5" material="color: #D4AF37; metalness: 0.8; roughness: 0.2"></a-box>
+                    <a-box position="0.35 0.55 0" width="0.05" height="0.08" depth="0.5" material="color: #D4AF37; metalness: 0.8; roughness: 0.2"></a-box>
+                </a-entity>
+                <!-- Siège 3 -->
+                <a-entity position="-1.3 0 0" rotation="0 90 0">
+                    <a-box position="0 0.25 0" width="0.7" height="0.15" depth="0.7" material="color: #1a1a1a; metalness: 0.3; roughness: 0.5"></a-box>
+                    <a-box position="0 0.4 0" width="0.65" height="0.12" depth="0.65" material="color: #F5F2EF; metalness: 0.1; roughness: 0.4"></a-box>
+                    <a-box position="0 0.75 -0.28" width="0.65" height="0.7" depth="0.1" material="color: #F5F2EF; metalness: 0.1; roughness: 0.4"></a-box>
+                    <a-box position="0 1.15 -0.28" width="0.4" height="0.2" depth="0.12" material="color: #F5F2EF; metalness: 0.1; roughness: 0.4"></a-box>
+                    <a-box position="-0.35 0.55 0" width="0.05" height="0.08" depth="0.5" material="color: #D4AF37; metalness: 0.8; roughness: 0.2"></a-box>
+                    <a-box position="0.35 0.55 0" width="0.05" height="0.08" depth="0.5" material="color: #D4AF37; metalness: 0.8; roughness: 0.2"></a-box>
+                </a-entity>
+                <!-- Siège 4 -->
+                <a-entity position="-1.3 0 2" rotation="0 90 0">
+                    <a-box position="0 0.25 0" width="0.7" height="0.15" depth="0.7" material="color: #1a1a1a; metalness: 0.3; roughness: 0.5"></a-box>
+                    <a-box position="0 0.4 0" width="0.65" height="0.12" depth="0.65" material="color: #F5F2EF; metalness: 0.1; roughness: 0.4"></a-box>
+                    <a-box position="0 0.75 -0.28" width="0.65" height="0.7" depth="0.1" material="color: #F5F2EF; metalness: 0.1; roughness: 0.4"></a-box>
+                    <a-box position="0 1.15 -0.28" width="0.4" height="0.2" depth="0.12" material="color: #F5F2EF; metalness: 0.1; roughness: 0.4"></a-box>
+                    <a-box position="-0.35 0.55 0" width="0.05" height="0.08" depth="0.5" material="color: #D4AF37; metalness: 0.8; roughness: 0.2"></a-box>
+                    <a-box position="0.35 0.55 0" width="0.05" height="0.08" depth="0.5" material="color: #D4AF37; metalness: 0.8; roughness: 0.2"></a-box>
+                </a-entity>
+            </a-entity>
+            
+            <!-- Rangée droite -->
+            <a-entity id="sieges-premiere-droite">
+                <!-- Siège 1 -->
+                <a-entity position="1.3 0 -4" rotation="0 90 0">
+                    <a-box position="0 0.25 0" width="0.7" height="0.15" depth="0.7" material="color: #1a1a1a; metalness: 0.3; roughness: 0.5"></a-box>
+                    <a-box position="0 0.4 0" width="0.65" height="0.12" depth="0.65" material="color: #F5F2EF; metalness: 0.1; roughness: 0.4"></a-box>
+                    <a-box position="0 0.75 -0.28" width="0.65" height="0.7" depth="0.1" material="color: #F5F2EF; metalness: 0.1; roughness: 0.4"></a-box>
+                    <a-box position="0 1.15 -0.28" width="0.4" height="0.2" depth="0.12" material="color: #F5F2EF; metalness: 0.1; roughness: 0.4"></a-box>
+                    <a-box position="-0.35 0.55 0" width="0.05" height="0.08" depth="0.5" material="color: #D4AF37; metalness: 0.8; roughness: 0.2"></a-box>
+                    <a-box position="0.35 0.55 0" width="0.05" height="0.08" depth="0.5" material="color: #D4AF37; metalness: 0.8; roughness: 0.2"></a-box>
+                </a-entity>
+                <!-- Siège 2 -->
+                <a-entity position="1.3 0 -2" rotation="0 90 0">
+                    <a-box position="0 0.25 0" width="0.7" height="0.15" depth="0.7" material="color: #1a1a1a; metalness: 0.3; roughness: 0.5"></a-box>
+                    <a-box position="0 0.4 0" width="0.65" height="0.12" depth="0.65" material="color: #F5F2EF; metalness: 0.1; roughness: 0.4"></a-box>
+                    <a-box position="0 0.75 -0.28" width="0.65" height="0.7" depth="0.1" material="color: #F5F2EF; metalness: 0.1; roughness: 0.4"></a-box>
+                    <a-box position="0 1.15 -0.28" width="0.4" height="0.2" depth="0.12" material="color: #F5F2EF; metalness: 0.1; roughness: 0.4"></a-box>
+                    <a-box position="-0.35 0.55 0" width="0.05" height="0.08" depth="0.5" material="color: #D4AF37; metalness: 0.8; roughness: 0.2"></a-box>
+                    <a-box position="0.35 0.55 0" width="0.05" height="0.08" depth="0.5" material="color: #D4AF37; metalness: 0.8; roughness: 0.2"></a-box>
+                </a-entity>
+                <!-- Siège 3 -->
+                <a-entity position="1.3 0 0" rotation="0 90 0">
+                    <a-box position="0 0.25 0" width="0.7" height="0.15" depth="0.7" material="color: #1a1a1a; metalness: 0.3; roughness: 0.5"></a-box>
+                    <a-box position="0 0.4 0" width="0.65" height="0.12" depth="0.65" material="color: #F5F2EF; metalness: 0.1; roughness: 0.4"></a-box>
+                    <a-box position="0 0.75 -0.28" width="0.65" height="0.7" depth="0.1" material="color: #F5F2EF; metalness: 0.1; roughness: 0.4"></a-box>
+                    <a-box position="0 1.15 -0.28" width="0.4" height="0.2" depth="0.12" material="color: #F5F2EF; metalness: 0.1; roughness: 0.4"></a-box>
+                    <a-box position="-0.35 0.55 0" width="0.05" height="0.08" depth="0.5" material="color: #D4AF37; metalness: 0.8; roughness: 0.2"></a-box>
+                    <a-box position="0.35 0.55 0" width="0.05" height="0.08" depth="0.5" material="color: #D4AF37; metalness: 0.8; roughness: 0.2"></a-box>
+                </a-entity>
+                <!-- Siège 4 -->
+                <a-entity position="1.3 0 2" rotation="0 90 0">
+                    <a-box position="0 0.25 0" width="0.7" height="0.15" depth="0.7" material="color: #1a1a1a; metalness: 0.3; roughness: 0.5"></a-box>
+                    <a-box position="0 0.4 0" width="0.65" height="0.12" depth="0.65" material="color: #F5F2EF; metalness: 0.1; roughness: 0.4"></a-box>
+                    <a-box position="0 0.75 -0.28" width="0.65" height="0.7" depth="0.1" material="color: #F5F2EF; metalness: 0.1; roughness: 0.4"></a-box>
+                    <a-box position="0 1.15 -0.28" width="0.4" height="0.2" depth="0.12" material="color: #F5F2EF; metalness: 0.1; roughness: 0.4"></a-box>
+                    <a-box position="-0.35 0.55 0" width="0.05" height="0.08" depth="0.5" material="color: #D4AF37; metalness: 0.8; roughness: 0.2"></a-box>
+                    <a-box position="0.35 0.55 0" width="0.05" height="0.08" depth="0.5" material="color: #D4AF37; metalness: 0.8; roughness: 0.2"></a-box>
+                </a-entity>
+            </a-entity>
+            
+            <!-- HUBLOTS - Sur les côtés (Z positif et négatif) -->
+            <a-entity id="hublots-cote-gauche">
+                <!-- Cadre hublot + vitre -->
+                <a-entity position="-2.8 1.8 -4">
+                    <a-ring rotation="0 90 0" radius-inner="0.2" radius-outer="0.28" material="color: #C0C0C0; metalness: 0.8; roughness: 0.2"></a-ring>
+                    <a-circle position="0.02 0 0" rotation="0 90 0" radius="0.2" material="color: #87CEEB; metalness: 0.3; roughness: 0.1; opacity: 0.8; transparent: true"></a-circle>
+                </a-entity>
+                <a-entity position="-2.8 1.8 -2">
+                    <a-ring rotation="0 90 0" radius-inner="0.2" radius-outer="0.28" material="color: #C0C0C0; metalness: 0.8; roughness: 0.2"></a-ring>
+                    <a-circle position="0.02 0 0" rotation="0 90 0" radius="0.2" material="color: #87CEEB; metalness: 0.3; roughness: 0.1; opacity: 0.8; transparent: true"></a-circle>
+                </a-entity>
+                <a-entity position="-2.8 1.8 0">
+                    <a-ring rotation="0 90 0" radius-inner="0.2" radius-outer="0.28" material="color: #C0C0C0; metalness: 0.8; roughness: 0.2"></a-ring>
+                    <a-circle position="0.02 0 0" rotation="0 90 0" radius="0.2" material="color: #87CEEB; metalness: 0.3; roughness: 0.1; opacity: 0.8; transparent: true"></a-circle>
+                </a-entity>
+                <a-entity position="-2.8 1.8 2">
+                    <a-ring rotation="0 90 0" radius-inner="0.2" radius-outer="0.28" material="color: #C0C0C0; metalness: 0.8; roughness: 0.2"></a-ring>
+                    <a-circle position="0.02 0 0" rotation="0 90 0" radius="0.2" material="color: #87CEEB; metalness: 0.3; roughness: 0.1; opacity: 0.8; transparent: true"></a-circle>
+                </a-entity>
+            </a-entity>
+            
+            <a-entity id="hublots-cote-droit">
+                <a-entity position="2.8 1.8 -4">
+                    <a-ring rotation="0 -90 0" radius-inner="0.2" radius-outer="0.28" material="color: #C0C0C0; metalness: 0.8; roughness: 0.2"></a-ring>
+                    <a-circle position="-0.02 0 0" rotation="0 -90 0" radius="0.2" material="color: #87CEEB; metalness: 0.3; roughness: 0.1; opacity: 0.8; transparent: true"></a-circle>
+                </a-entity>
+                <a-entity position="2.8 1.8 -2">
+                    <a-ring rotation="0 -90 0" radius-inner="0.2" radius-outer="0.28" material="color: #C0C0C0; metalness: 0.8; roughness: 0.2"></a-ring>
+                    <a-circle position="-0.02 0 0" rotation="0 -90 0" radius="0.2" material="color: #87CEEB; metalness: 0.3; roughness: 0.1; opacity: 0.8; transparent: true"></a-circle>
+                </a-entity>
+                <a-entity position="2.8 1.8 0">
+                    <a-ring rotation="0 -90 0" radius-inner="0.2" radius-outer="0.28" material="color: #C0C0C0; metalness: 0.8; roughness: 0.2"></a-ring>
+                    <a-circle position="-0.02 0 0" rotation="0 -90 0" radius="0.2" material="color: #87CEEB; metalness: 0.3; roughness: 0.1; opacity: 0.8; transparent: true"></a-circle>
+                </a-entity>
+                <a-entity position="2.8 1.8 2">
+                    <a-ring rotation="0 -90 0" radius-inner="0.2" radius-outer="0.28" material="color: #C0C0C0; metalness: 0.8; roughness: 0.2"></a-ring>
+                    <a-circle position="-0.02 0 0" rotation="0 -90 0" radius="0.2" material="color: #87CEEB; metalness: 0.3; roughness: 0.1; opacity: 0.8; transparent: true"></a-circle>
+                </a-entity>
+            </a-entity>
+            
+            <!-- Compartiments à bagages luxueux -->
+            <a-box position="-1.8 2.8 0" width="0.6" height="0.5" depth="10" material="color: #E8E2DC; metalness: 0.2; roughness: 0.6"></a-box>
+            <a-box position="-1.8 2.55 0" width="0.58" height="0.02" depth="10" material="color: #D4AF37; metalness: 0.8; roughness: 0.2"></a-box>
+            <a-box position="1.8 2.8 0" width="0.6" height="0.5" depth="10" material="color: #E8E2DC; metalness: 0.2; roughness: 0.6"></a-box>
+            <a-box position="1.8 2.55 0" width="0.58" height="0.02" depth="10" material="color: #D4AF37; metalness: 0.8; roughness: 0.2"></a-box>
+            
+            <!-- Allée centrale -->
+            <a-plane position="0 0.06 0" rotation="-90 0 0" width="0.8" height="10" material="color: #4A4543; roughness: 0.9"></a-plane>
+            
+            <!-- Éclairage avion luxueux -->
+            <a-light type="point" color="#FFFAF0" intensity="0.5" distance="15" position="0 3 0"></a-light>
+        </a-entity>
 
 
         <!-- Lumière simple -->

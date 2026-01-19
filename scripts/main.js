@@ -235,6 +235,94 @@ AFRAME.registerComponent('safe-keypad', {
             });
             
             console.log('INCEPTION - La pièce bascule en continu!');
+            
+            // ========== TRANSITION VERS L'AVION ==========
+            // Éléments de l'hôtel à faire disparaître (sauf les aiguilles)
+            const hotelElements = [
+                '#door-frame', '#door-pivot-A', '#door-pivot-B',
+                '#mur-gauche', '#mur-droite-gauche', '#mur-droite-droite',
+                '#mur-escalier-fond', '#mur-escalier-droite', '#mur-escalier-gauche',
+                '#mur-derriere', '#mur-fond',
+                '#lustre-central', '#lustre-gauche', '#lustre-droite',
+                '#table-toupie', '#safe-container', '#cadre-federer-pivot',
+                '[gltf-model]' // L'escalier 3D
+            ];
+            
+            // Faire disparaître les éléments de l'hôtel progressivement
+            let delay = 2000;
+            hotelElements.forEach((selector, index) => {
+                setTimeout(() => {
+                    const elements = document.querySelectorAll(selector);
+                    elements.forEach(el => {
+                        if (el) {
+                            el.setAttribute('animation__fade', {
+                                property: 'visible',
+                                to: false,
+                                dur: 1,
+                                delay: 500
+                            });
+                            // Faire un fade en réduisant l'échelle
+                            el.setAttribute('animation__scale', {
+                                property: 'scale',
+                                to: '0 0 0',
+                                dur: 1000,
+                                easing: 'easeInQuad'
+                            });
+                            setTimeout(() => {
+                                el.setAttribute('visible', false);
+                            }, 1000);
+                        }
+                    });
+                }, delay + (index * 500));
+            });
+            
+            // Faire disparaître le sol et le plafond de l'hôtel
+            setTimeout(() => {
+                const sol = document.querySelector('a-plane[position="0 0 0"]');
+                const plafond = document.querySelector('a-plane[position="0 4 0"]');
+                if (sol) {
+                    sol.setAttribute('animation__scale', {
+                        property: 'scale',
+                        to: '0 0 0',
+                        dur: 2000,
+                        easing: 'easeInQuad'
+                    });
+                }
+                if (plafond) {
+                    plafond.setAttribute('animation__scale', {
+                        property: 'scale',
+                        to: '0 0 0',
+                        dur: 2000,
+                        easing: 'easeInQuad'
+                    });
+                }
+            }, delay + 4000);
+            
+            // Faire apparaître l'avion après la disparition de l'hôtel
+            setTimeout(() => {
+                const avion = document.querySelector('#avion-container');
+                if (avion) {
+                    avion.setAttribute('visible', true);
+                    avion.setAttribute('scale', '0.01 0.01 0.01');
+                    avion.setAttribute('animation__appear', {
+                        property: 'scale',
+                        to: '1 1 1',
+                        dur: 3000,
+                        easing: 'easeOutQuad'
+                    });
+                    console.log('Bienvenue dans l\'avion!');
+                }
+            }, delay + 6000);
+            
+            // Arrêter la rotation et stabiliser la caméra après la transition
+            setTimeout(() => {
+                camera.removeAttribute('animation');
+                camera.setAttribute('rotation', '0 0 0');
+                // Orienter le rig vers les aiguilles (direction X positif = 90°)
+                rig.setAttribute('rotation', '0 90 0');
+                console.log('Rotation arrêtée - Vous pouvez explorer l\'avion!');
+            }, delay + 9000);
+            
         } else {
             if (this.display) {
                 this.display.setAttribute('value', 'ERR!');
