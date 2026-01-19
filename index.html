@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Cube</title>
+    <link rel="icon" href="assets/favicon.svg" type="image/x-icon">
     <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.0.0/dist/aframe-extras.min.js"></script>
 </head>
@@ -216,6 +217,62 @@
             color="#4A4543"
             static-body>
         </a-plane>
+
+        <!-- LUSTRES LUXUEUX -->
+        <!-- Lustre principal central -->
+        <a-entity id="lustre-central" position="0 3.9 0">
+            <!-- Rosace au plafond -->
+            <a-cylinder position="0 0 0" radius="0.25" height="0.05" material="color: #D4AF37; metalness: 0.8; roughness: 0.2"></a-cylinder>
+            <!-- Tige de suspension -->
+            <a-cylinder position="0 -0.25 0" radius="0.02" height="0.4" material="color: #D4AF37; metalness: 0.8; roughness: 0.2"></a-cylinder>
+            <!-- Corps principal du lustre -->
+            <a-cylinder position="0 -0.5 0" radius="0.15" height="0.1" material="color: #D4AF37; metalness: 0.8; roughness: 0.2"></a-cylinder>
+            <!-- Couronne de cristaux -->
+            <a-torus position="0 -0.55 0" radius="0.3" radius-tubular="0.015" rotation="90 0 0" material="color: #D4AF37; metalness: 0.9; roughness: 0.1"></a-torus>
+            <a-torus position="0 -0.65 0" radius="0.4" radius-tubular="0.015" rotation="90 0 0" material="color: #D4AF37; metalness: 0.9; roughness: 0.1"></a-torus>
+            <!-- Ampoules/cristaux lumineux -->
+            <a-sphere position="0.3 -0.6 0" radius="0.06" material="color: #FFFDF0; emissive: #FFFDF0; emissiveIntensity: 0.4"></a-sphere>
+            <a-sphere position="-0.3 -0.6 0" radius="0.06" material="color: #FFFDF0; emissive: #FFFDF0; emissiveIntensity: 0.4"></a-sphere>
+            <a-sphere position="0 -0.6 0.3" radius="0.06" material="color: #FFFDF0; emissive: #FFFDF0; emissiveIntensity: 0.4"></a-sphere>
+            <a-sphere position="0 -0.6 -0.3" radius="0.06" material="color: #FFFDF0; emissive: #FFFDF0; emissiveIntensity: 0.4"></a-sphere>
+            <a-sphere position="0.21 -0.6 0.21" radius="0.06" material="color: #FFFDF0; emissive: #FFFDF0; emissiveIntensity: 0.4"></a-sphere>
+            <a-sphere position="-0.21 -0.6 0.21" radius="0.06" material="color: #FFFDF0; emissive: #FFFDF0; emissiveIntensity: 0.4"></a-sphere>
+            <a-sphere position="0.21 -0.6 -0.21" radius="0.06" material="color: #FFFDF0; emissive: #FFFDF0; emissiveIntensity: 0.4"></a-sphere>
+            <a-sphere position="-0.21 -0.6 -0.21" radius="0.06" material="color: #FFFDF0; emissive: #FFFDF0; emissiveIntensity: 0.4"></a-sphere>
+            <!-- Pendentifs cristal -->
+            <a-cone position="0.35 -0.75 0" radius-bottom="0" radius-top="0.03" height="0.12" material="color: #F5F5F5; metalness: 0.9; roughness: 0.05; opacity: 0.8; transparent: true"></a-cone>
+            <a-cone position="-0.35 -0.75 0" radius-bottom="0" radius-top="0.03" height="0.12" material="color: #F5F5F5; metalness: 0.9; roughness: 0.05; opacity: 0.8; transparent: true"></a-cone>
+            <a-cone position="0 -0.75 0.35" radius-bottom="0" radius-top="0.03" height="0.12" material="color: #F5F5F5; metalness: 0.9; roughness: 0.05; opacity: 0.8; transparent: true"></a-cone>
+            <a-cone position="0 -0.75 -0.35" radius-bottom="0" radius-top="0.03" height="0.12" material="color: #F5F5F5; metalness: 0.9; roughness: 0.05; opacity: 0.8; transparent: true"></a-cone>
+            <!-- Lumière du lustre -->
+            <a-light type="point" color="#FFFAF0" intensity="0.2" distance="8" position="0 -0.6 0"></a-light>
+        </a-entity>
+
+        <!-- Lustre secondaire gauche -->
+        <a-entity id="lustre-gauche" position="-4 3.9 0">
+            <a-cylinder position="0 0 0" radius="0.15" height="0.04" material="color: #D4AF37; metalness: 0.8; roughness: 0.2"></a-cylinder>
+            <a-cylinder position="0 -0.15 0" radius="0.015" height="0.25" material="color: #D4AF37; metalness: 0.8; roughness: 0.2"></a-cylinder>
+            <a-cylinder position="0 -0.32 0" radius="0.1" height="0.08" material="color: #D4AF37; metalness: 0.8; roughness: 0.2"></a-cylinder>
+            <a-torus position="0 -0.38 0" radius="0.2" radius-tubular="0.01" rotation="90 0 0" material="color: #D4AF37; metalness: 0.9; roughness: 0.1"></a-torus>
+            <a-sphere position="0.18 -0.4 0" radius="0.045" material="color: #FFFDF0; emissive: #FFFDF0; emissiveIntensity: 0.4"></a-sphere>
+            <a-sphere position="-0.18 -0.4 0" radius="0.045" material="color: #FFFDF0; emissive: #FFFDF0; emissiveIntensity: 0.4"></a-sphere>
+            <a-sphere position="0 -0.4 0.18" radius="0.045" material="color: #FFFDF0; emissive: #FFFDF0; emissiveIntensity: 0.4"></a-sphere>
+            <a-sphere position="0 -0.4 -0.18" radius="0.045" material="color: #FFFDF0; emissive: #FFFDF0; emissiveIntensity: 0.4"></a-sphere>
+            <a-light type="point" color="#FFFAF0" intensity="0.2" distance="6" position="0 -0.4 0"></a-light>
+        </a-entity>
+
+        <!-- Lustre secondaire droite -->
+        <a-entity id="lustre-droite" position="4 3.9 0">
+            <a-cylinder position="0 0 0" radius="0.15" height="0.04" material="color: #D4AF37; metalness: 0.8; roughness: 0.2"></a-cylinder>
+            <a-cylinder position="0 -0.15 0" radius="0.015" height="0.25" material="color: #D4AF37; metalness: 0.8; roughness: 0.2"></a-cylinder>
+            <a-cylinder position="0 -0.32 0" radius="0.1" height="0.08" material="color: #D4AF37; metalness: 0.8; roughness: 0.2"></a-cylinder>
+            <a-torus position="0 -0.38 0" radius="0.2" radius-tubular="0.01" rotation="90 0 0" material="color: #D4AF37; metalness: 0.9; roughness: 0.1"></a-torus>
+            <a-sphere position="0.18 -0.4 0" radius="0.045" material="color: #FFFDF0; emissive: #FFFDF0; emissiveIntensity: 0.4"></a-sphere>
+            <a-sphere position="-0.18 -0.4 0" radius="0.045" material="color: #FFFDF0; emissive: #FFFDF0; emissiveIntensity: 0.4"></a-sphere>
+            <a-sphere position="0 -0.4 0.18" radius="0.045" material="color: #FFFDF0; emissive: #FFFDF0; emissiveIntensity: 0.4"></a-sphere>
+            <a-sphere position="0 -0.4 -0.18" radius="0.045" material="color: #FFFDF0; emissive: #FFFDF0; emissiveIntensity: 0.4"></a-sphere>
+            <a-light type="point" color="#FFFAF0" intensity="0.2" distance="6" position="0 -0.4 0"></a-light>
+        </a-entity>
 
         <!-- Mur gauche - Style hôtel de luxe minimaliste AVEC TROUS POUR LES PORTES -->
         <a-entity id="mur-gauche" position="0 0 -2">
