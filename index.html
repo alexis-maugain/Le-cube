@@ -67,7 +67,7 @@
         </a-entity>
 
 
-                        <!-- Porte d'hôtel avec cadre fixe -->
+        <!-- Porte d'hôtel avec cadre fixe -->
         <a-entity id="door-frame" position="1.5 0 -2">
             <!-- Cadre de porte (fixe) -->
             <a-box position="-0.5 1.1 0" width="0.1" height="2.3" depth="0.15" color="#3D2314"></a-box>
@@ -109,6 +109,168 @@
 
         
 
+
+        <!-- Porte d'hôtel avec cadre fixe -->
+        <a-entity id="door-frame" position="6.5 0 -2">
+            <!-- Cadre de porte (fixe) -->
+            <a-box position="-0.5 1.1 0" width="0.1" height="2.3" depth="0.15" color="#3D2314"></a-box>
+            <a-box position="0.5 1.1 0" width="0.1" height="2.3" depth="0.15" color="#3D2314"></a-box>
+            <a-box position="0 2.2 0" width="1.1" height="0.1" depth="0.15" color="#3D2314"></a-box>
+        </a-entity>
+        
+        <!-- Pivot de la porte C (pour rotation) -->
+        <a-entity id="door-pivot-B" position="6.05 0 -2" rotation="0 0 0" door-interactive="linkedDoor: #door-pivot-A; teleportPos: -1 1.6 -1.5; teleportRot: 0 180 0">
+            <!-- Panneau de porte principal (cliquable) -->
+            <a-box position="0.45 1.1 0.02" width="0.85" height="2.1" depth="0.1" color="#5C3A21"></a-box>
+            
+            <!-- Panneau décoratif haut -->
+            <a-box position="0.45 1.7 0.08" width="0.65" height="0.6" depth="0.03" color="#4A2F1A"></a-box>
+            
+            <!-- Panneau décoratif bas -->
+            <a-box position="0.45 0.7 0.08" width="0.65" height="0.8" depth="0.03" color="#4A2F1A"></a-box>
+            
+            <!-- Poignée de porte (base) -->
+            <a-cylinder position="0.75 1 0.1" rotation="90 0 0" radius="0.025" height="0.05" color="#D4AF37"></a-cylinder>
+            
+            <!-- Poignée de porte (levier) -->
+            <a-box position="0.75 1 0.15" width="0.12" height="0.03" depth="0.04" color="#D4AF37"></a-box>
+            
+            <!-- Serrure -->
+            <a-cylinder position="0.75 0.9 0.09" rotation="90 0 0" radius="0.02" height="0.03" color="#D4AF37"></a-cylinder>
+            
+            <!-- Plaque numéro de chambre -->
+            <a-box position="0.45 1.85 0.09" width="0.2" height="0.12" depth="0.015" color="#D4AF37"></a-box>
+            
+            <!-- Numéro de chambre "491" -->
+            <a-text value="491" position="0.45 1.85 0.1" align="center" width="0.8" color="#1a1a1a"></a-text>
+            
+            <!-- Judas (peephole) -->
+            <a-cylinder position="0.45 1.55 0.09" rotation="90 0 0" radius="0.015" height="0.02" color="#2a2a2a"></a-cylinder>
+        </a-entity>
+
+        
+        
+
+        <!-- Porte d'hôtel avec cadre fixe -->
+        <a-entity id="door-frame" position="-6 0 -2">
+            <!-- Cadre de porte (fixe) -->
+            <a-box position="-0.5 1.1 0" width="0.1" height="2.3" depth="0.15" color="#3D2314"></a-box>
+            <a-box position="0.5 1.1 0" width="0.1" height="2.3" depth="0.15" color="#3D2314"></a-box>
+            <a-box position="0 2.2 0" width="1.1" height="0.1" depth="0.15" color="#3D2314"></a-box>
+        </a-entity>
+        
+        <!-- Pivot de la porte C (pour rotation) -->
+        <a-entity id="door-pivot-B" position="-6.45 0 -2" rotation="0 0 0" door-interactive="linkedDoor: #door-pivot-A; teleportPos: -1 1.6 -1.5; teleportRot: 0 180 0">
+            <!-- Panneau de porte principal (cliquable) -->
+            <a-box position="0.45 1.1 0.02" width="0.85" height="2.1" depth="0.1" color="#5C3A21"></a-box>
+            
+            <!-- Panneau décoratif haut -->
+            <a-box position="0.45 1.7 0.08" width="0.65" height="0.6" depth="0.03" color="#4A2F1A"></a-box>
+            
+            <!-- Panneau décoratif bas -->
+            <a-box position="0.45 0.7 0.08" width="0.65" height="0.8" depth="0.03" color="#4A2F1A"></a-box>
+            
+            <!-- Poignée de porte (base) -->
+            <a-cylinder position="0.75 1 0.1" rotation="90 0 0" radius="0.025" height="0.05" color="#D4AF37"></a-cylinder>
+            
+            <!-- Poignée de porte (levier) -->
+            <a-box position="0.75 1 0.15" width="0.12" height="0.03" depth="0.04" color="#D4AF37"></a-box>
+            
+            <!-- Serrure -->
+            <a-cylinder position="0.75 0.9 0.09" rotation="90 0 0" radius="0.02" height="0.03" color="#D4AF37"></a-cylinder>
+            
+            <!-- Plaque numéro de chambre -->
+            <a-box position="0.45 1.85 0.09" width="0.2" height="0.12" depth="0.015" color="#D4AF37"></a-box>
+            
+            <!-- Numéro de chambre "491" -->
+            <a-text value="491" position="0.45 1.85 0.1" align="center" width="0.8" color="#1a1a1a"></a-text>
+            
+            <!-- Judas (peephole) -->
+            <a-cylinder position="0.45 1.55 0.09" rotation="90 0 0" radius="0.015" height="0.02" color="#2a2a2a"></a-cylinder>
+        </a-entity>
+
+
+        <!-- Porte d'hôtel avec cadre fixe -->
+        <a-entity id="door-frame" position="-6 0 2">
+            <!-- Cadre de porte (fixe) -->
+            <a-box position="-0.5 1.1 0" width="0.1" height="2.3" depth="0.15" color="#3D2314"></a-box>
+            <a-box position="0.5 1.1 0" width="0.1" height="2.3" depth="0.15" color="#3D2314"></a-box>
+            <a-box position="0 2.2 0" width="1.1" height="0.1" depth="0.15" color="#3D2314"></a-box>
+        </a-entity>
+        
+        <!-- Pivot de la porte C (pour rotation) -->
+        <a-entity id="door-pivot-B" position="-5.55 0 2" rotation="0 180 0" door-interactive="linkedDoor: #door-pivot-A; teleportPos: -1 1.6 -1.5; teleportRot: 0 180 0">
+            
+            <a-box position="0.45 1.1 0.02" width="0.85" height="2.1" depth="0.1" color="#5C3A21"></a-box>
+            
+            <!-- Panneau décoratif haut -->
+            <a-box position="0.45 1.7 0.08" width="0.65" height="0.6" depth="0.03" color="#4A2F1A"></a-box>
+            
+            <!-- Panneau décoratif bas -->
+            <a-box position="0.45 0.7 0.08" width="0.65" height="0.8" depth="0.03" color="#4A2F1A"></a-box>
+            
+            <!-- Poignée de porte (base) -->
+            <a-cylinder position="0.75 1 0.1" rotation="90 0 0" radius="0.025" height="0.05" color="#D4AF37"></a-cylinder>
+            
+            <!-- Poignée de porte (levier) -->
+            <a-box position="0.75 1 0.15" width="0.12" height="0.03" depth="0.04" color="#D4AF37"></a-box>
+            
+            <!-- Serrure -->
+            <a-cylinder position="0.75 0.9 0.09" rotation="90 0 0" radius="0.02" height="0.03" color="#D4AF37"></a-cylinder>
+            
+            <!-- Plaque numéro de chambre -->
+            <a-box position="0.45 1.85 0.09" width="0.2" height="0.12" depth="0.015" color="#D4AF37"></a-box>
+            
+            <!-- Numéro de chambre "528" -->
+            <a-text value="528" position="0.45 1.85 0.1" align="center" width="0.8" color="#1a1a1a"></a-text>
+            
+            <!-- Judas (peephole) -->
+            <a-cylinder position="0.45 1.55 0.09" rotation="90 0 0" radius="0.015" height="0.02" color="#2a2a2a"></a-cylinder>
+        </a-entity>
+
+
+
+        
+        <!-- Porte d'hôtel avec cadre fixe -->
+        <a-entity id="door-frame" position="5.5 0 2">
+            <!-- Cadre de porte (fixe) -->
+            <a-box position="-0.5 1.1 0" width="0.1" height="2.3" depth="0.15" color="#3D2314"></a-box>
+            <a-box position="0.5 1.1 0" width="0.1" height="2.3" depth="0.15" color="#3D2314"></a-box>
+            <a-box position="0 2.2 0" width="1.1" height="0.1" depth="0.15" color="#3D2314"></a-box>
+        </a-entity>
+        
+        <!-- Pivot de la porte C (pour rotation) -->
+        <a-entity id="door-pivot-B" position="5.95 0 2" rotation="0 180 0" door-interactive="linkedDoor: #door-pivot-A; teleportPos: -1 1.6 -1.5; teleportRot: 0 180 0">
+            
+            <a-box position="0.45 1.1 0.02" width="0.85" height="2.1" depth="0.1" color="#5C3A21"></a-box>
+            
+            <!-- Panneau décoratif haut -->
+            <a-box position="0.45 1.7 0.08" width="0.65" height="0.6" depth="0.03" color="#4A2F1A"></a-box>
+            
+            <!-- Panneau décoratif bas -->
+            <a-box position="0.45 0.7 0.08" width="0.65" height="0.8" depth="0.03" color="#4A2F1A"></a-box>
+            
+            <!-- Poignée de porte (base) -->
+            <a-cylinder position="0.75 1 0.1" rotation="90 0 0" radius="0.025" height="0.05" color="#D4AF37"></a-cylinder>
+            
+            <!-- Poignée de porte (levier) -->
+            <a-box position="0.75 1 0.15" width="0.12" height="0.03" depth="0.04" color="#D4AF37"></a-box>
+            
+            <!-- Serrure -->
+            <a-cylinder position="0.75 0.9 0.09" rotation="90 0 0" radius="0.02" height="0.03" color="#D4AF37"></a-cylinder>
+            
+            <!-- Plaque numéro de chambre -->
+            <a-box position="0.45 1.85 0.09" width="0.2" height="0.12" depth="0.015" color="#D4AF37"></a-box>
+            
+            <!-- Numéro de chambre "491" -->
+            <a-text value="491" position="0.45 1.85 0.1" align="center" width="0.8" color="#1a1a1a"></a-text>
+            
+            <!-- Judas (peephole) -->
+            <a-cylinder position="0.45 1.55 0.09" rotation="90 0 0" radius="0.015" height="0.02" color="#2a2a2a"></a-cylinder>
+        </a-entity>
+        
+
+
         <!-- Modèle 3D : escalier -->
         <a-entity 
             gltf-model="assets/escalier.glb"
@@ -127,7 +289,7 @@
                 rotation="0 0 90"
                 radius="0.08"
                 height="0.05"
-                color="#D4AF37">
+                material="color: #D4AF37; metalness: 0.9; roughness: 0.1">
             </a-cylinder>
 
             <!-- Pivot aiguille des heures -->
@@ -135,7 +297,7 @@
                 <!-- Aiguille des heures (courte et épaisse) -->
                 <a-box
                     id="aiguille-heures-fond"
-                    position="0 0.2 0"
+                    position="0 0.2 0"  
                     width="0.06"
                     height="0.4"
                     depth="0.02"
@@ -158,7 +320,7 @@
         </a-entity>
 
         <!-- TABLE LUXUEUSE AVEC TOUPIE près de l'horloge -->
-        <a-entity id="table-toupie" position="7 0 1.1">
+        <a-entity id="table-toupie" position="7.5 0 1.1">
             <!-- Plateau de table - marbre noir -->
             <a-cylinder position="0 1.0 0" radius="0.55" height="0.1" material="color: #1a1a1a; metalness: 0.5; roughness: 0.2"></a-cylinder>
             <!-- Bord doré du plateau -->
@@ -328,21 +490,76 @@
             <a-box position="0 2.5 0" width="8" height="3" depth="0.08" material="color: #E8E2DC; metalness: 0.05; roughness: 0.7"></a-box>
             <a-box position="0 3.95 0.02" width="8" height="0.06" depth="0.03" material="color: #C9C0B5; metalness: 0.3; roughness: 0.4"></a-box>
             
-            <!-- CADRE LUXUEUX avec photo de tennis -->
-            <a-entity id="cadre-federer" position="2 2.3 0.1">
-                <!-- Cadre extérieur doré -->
-                <a-box position="0 0 0" width="1.3" height="0.95" depth="0.06" material="color: #D4AF37; metalness: 0.8; roughness: 0.2"></a-box>
-                <!-- Bordure intérieure noire -->
-                <a-box position="0 0 0.02" width="1.2" height="0.85" depth="0.02" material="color: #1a1a1a; metalness: 0.3; roughness: 0.5"></a-box>
-                <!-- Passe-partout blanc cassé -->
-                <a-box position="0 0 0.03" width="1.1" height="0.75" depth="0.01" material="color: #F5F2EF; roughness: 0.9"></a-box>
-                <!-- Image -->
-                <a-plane position="0 0 0.04" width="1.0" height="0.65" src="assets/federer.png" material="roughness: 0.8"></a-plane>
-                <!-- Ornements dorés aux coins -->
-                <a-box position="-0.58 0.4 0.04" width="0.1" height="0.1" depth="0.02" material="color: #D4AF37; metalness: 0.9; roughness: 0.1"></a-box>
-                <a-box position="0.58 0.4 0.04" width="0.1" height="0.1" depth="0.02" material="color: #D4AF37; metalness: 0.9; roughness: 0.1"></a-box>
-                <a-box position="-0.58 -0.4 0.04" width="0.1" height="0.1" depth="0.02" material="color: #D4AF37; metalness: 0.9; roughness: 0.1"></a-box>
-                <a-box position="0.58 -0.4 0.04" width="0.1" height="0.1" depth="0.02" material="color: #D4AF37; metalness: 0.9; roughness: 0.1"></a-box>
+            <!-- COFFRE-FORT CACHÉ DERRIÈRE LE CADRE -->
+            <a-entity id="safe-container" position="3.2 2.3 0.05">
+                <!-- Corps du coffre-fort encastré -->
+                <a-box position="0 0 -0.15" width="1.0" height="0.95" depth="0.3" material="color: #2a2a2a; metalness: 0.6; roughness: 0.3"></a-box>
+                <!-- Porte du coffre -->
+                <a-box position="0 0 0.01" width="0.95" height="0.7" depth="0.04" material="color: #3a3a3a; metalness: 0.7; roughness: 0.25"></a-box>
+                <!-- Panneau de contrôle -->
+                <a-box id="safe-panel" position="-0.15 0 0.04" width="0.5" height="0.55" depth="0.02" material="color: #1a1a1a; metalness: 0.5; roughness: 0.4"></a-box>
+                
+                <!-- Écran LCD -->
+                <a-box position="-0.15 0.18 0.06" width="0.4" height="0.1" depth="0.01" material="color: #001a33; emissive: #001a33; emissiveIntensity: 0.3"></a-box>
+                <a-text id="safe-display" value="----" position="-0.15 0.18 0.07" align="center" width="1.5" color="#00BFFF" font="monoid"></a-text>
+                
+                <!-- Clavier numérique - Rangée 1 (1-2-3) -->
+                <a-box class="safe-key clickable" data-key="1" position="-0.28 0.03 0.06" width="0.1" height="0.1" depth="0.02" material="color: #4a4a4a; metalness: 0.5; roughness: 0.3"></a-box>
+                <a-text value="1" position="-0.28 0.03 0.08" align="center" width="0.8" color="#ffffff"></a-text>
+                <a-box class="safe-key clickable" data-key="2" position="-0.15 0.03 0.06" width="0.1" height="0.1" depth="0.02" material="color: #4a4a4a; metalness: 0.5; roughness: 0.3"></a-box>
+                <a-text value="2" position="-0.15 0.03 0.08" align="center" width="0.8" color="#ffffff"></a-text>
+                <a-box class="safe-key clickable" data-key="3" position="-0.02 0.03 0.06" width="0.1" height="0.1" depth="0.02" material="color: #4a4a4a; metalness: 0.5; roughness: 0.3"></a-box>
+                <a-text value="3" position="-0.02 0.03 0.08" align="center" width="0.8" color="#ffffff"></a-text>
+                
+                <!-- Clavier numérique - Rangée 2 (4-5-6) -->
+                <a-box class="safe-key clickable" data-key="4" position="-0.28 -0.09 0.06" width="0.1" height="0.1" depth="0.02" material="color: #4a4a4a; metalness: 0.5; roughness: 0.3"></a-box>
+                <a-text value="4" position="-0.28 -0.09 0.08" align="center" width="0.8" color="#ffffff"></a-text>
+                <a-box class="safe-key clickable" data-key="5" position="-0.15 -0.09 0.06" width="0.1" height="0.1" depth="0.02" material="color: #4a4a4a; metalness: 0.5; roughness: 0.3"></a-box>
+                <a-text value="5" position="-0.15 -0.09 0.08" align="center" width="0.8" color="#ffffff"></a-text>
+                <a-box class="safe-key clickable" data-key="6" position="-0.02 -0.09 0.06" width="0.1" height="0.1" depth="0.02" material="color: #4a4a4a; metalness: 0.5; roughness: 0.3"></a-box>
+                <a-text value="6" position="-0.02 -0.09 0.08" align="center" width="0.8" color="#ffffff"></a-text>
+                
+                <!-- Clavier numérique - Rangée 3 (7-8-9) -->
+                <a-box class="safe-key clickable" data-key="7" position="-0.28 -0.21 0.06" width="0.1" height="0.1" depth="0.02" material="color: #4a4a4a; metalness: 0.5; roughness: 0.3"></a-box>
+                <a-text value="7" position="-0.28 -0.21 0.08" align="center" width="0.8" color="#ffffff"></a-text>
+                <a-box class="safe-key clickable" data-key="8" position="-0.15 -0.21 0.06" width="0.1" height="0.1" depth="0.02" material="color: #4a4a4a; metalness: 0.5; roughness: 0.3"></a-box>
+                <a-text value="8" position="-0.15 -0.21 0.08" align="center" width="0.8" color="#ffffff"></a-text>
+                <a-box class="safe-key clickable" data-key="9" position="-0.02 -0.21 0.06" width="0.1" height="0.1" depth="0.02" material="color: #4a4a4a; metalness: 0.5; roughness: 0.3"></a-box>
+                <a-text value="9" position="-0.02 -0.21 0.08" align="center" width="0.8" color="#ffffff"></a-text>
+                
+                <!-- Clavier numérique - Rangée 4 (C-0-OK) -->
+                <a-box class="safe-key clickable" data-key="C" position="-0.28 -0.33 0.06" width="0.1" height="0.1" depth="0.02" material="color: #8B0000; metalness: 0.5; roughness: 0.3"></a-box>
+                <a-text value="C" position="-0.28 -0.33 0.08" align="center" width="0.8" color="#ffffff"></a-text>
+                <a-box class="safe-key clickable" data-key="0" position="-0.15 -0.33 0.06" width="0.1" height="0.1" depth="0.02" material="color: #4a4a4a; metalness: 0.5; roughness: 0.3"></a-box>
+                <a-text value="0" position="-0.15 -0.33 0.08" align="center" width="0.8" color="#ffffff"></a-text>
+                <a-box class="safe-key clickable" data-key="OK" position="-0.02 -0.33 0.06" width="0.1" height="0.1" depth="0.02" material="color: #006400; metalness: 0.5; roughness: 0.3"></a-box>
+                <a-text value="OK" position="-0.02 -0.33 0.08" align="center" width="0.6" color="#ffffff"></a-text>
+                
+                <!-- Poignée circulaire -->
+                <a-cylinder position="0.3 0 0.05" rotation="90 0 0" radius="0.12" height="0.03" material="color: #C0C0C0; metalness: 0.9; roughness: 0.1"></a-cylinder>
+                <a-cylinder position="0.3 0 0.07" rotation="90 0 0" radius="0.08" height="0.02" material="color: #808080; metalness: 0.8; roughness: 0.2"></a-cylinder>
+                <!-- Barre de la poignée -->
+                <a-box position="0.3 0 0.06" width="0.18" height="0.03" depth="0.01" material="color: #C0C0C0; metalness: 0.9; roughness: 0.1"></a-box>
+            </a-entity>
+            
+            <!-- CADRE PIVOTANT avec photo de tennis -->
+            <a-entity id="cadre-federer-pivot" position="2.5 2.3 0.1" swing-frame>
+                <!-- Pivot sur le côté gauche du cadre -->
+                <a-entity id="cadre-federer" position="0.65 0 0">
+                    <!-- Cadre extérieur doré -->
+                    <a-box class="clickable" position="0 0 0" width="1.3" height="0.95" depth="0.06" material="color: #D4AF37; metalness: 0.8; roughness: 0.2"></a-box>
+                    <!-- Bordure intérieure noire -->
+                    <a-box position="0 0 0.02" width="1.2" height="0.85" depth="0.02" material="color: #1a1a1a; metalness: 0.3; roughness: 0.5"></a-box>
+                    <!-- Passe-partout blanc cassé -->
+                    <a-box position="0 0 0.03" width="1.1" height="0.75" depth="0.01" material="color: #F5F2EF; roughness: 0.9"></a-box>
+                    <!-- Image -->
+                    <a-plane position="0 0 0.04" width="1.0" height="0.65" src="assets/federer2.png" material="roughness: 0.8"></a-plane>
+                    <!-- Ornements dorés aux coins -->
+                    <a-box position="-0.58 0.4 0.04" width="0.1" height="0.1" depth="0.02" material="color: #D4AF37; metalness: 0.9; roughness: 0.1"></a-box>
+                    <a-box position="0.58 0.4 0.04" width="0.1" height="0.1" depth="0.02" material="color: #D4AF37; metalness: 0.9; roughness: 0.1"></a-box>
+                    <a-box position="-0.58 -0.4 0.04" width="0.1" height="0.1" depth="0.02" material="color: #D4AF37; metalness: 0.9; roughness: 0.1"></a-box>
+                    <a-box position="0.58 -0.4 0.04" width="0.1" height="0.1" depth="0.02" material="color: #D4AF37; metalness: 0.9; roughness: 0.1"></a-box>
+                </a-entity>
             </a-entity>
         </a-entity>
 
@@ -350,6 +567,23 @@
         <!-- Mur fond pour escalier - Style luxe épuré -->
         <a-entity id="mur-escalier-fond" position="0 0 6" rotation="0 180 0">
             <a-box position="0 7.5 0" width="4" height="15" depth="0.1" material="color: #E8E2DC; metalness: 0.05; roughness: 0.7"></a-box>
+            
+            <!-- CADRE LUXUEUX avec photo de tennis - Format portrait agrandi -->
+            <a-entity id="cadre-federer" position="0 4.5 0.1">
+                <!-- Cadre extérieur doré -->
+                <a-box position="0 0 0" width="1.3" height="1.9" depth="0.06" material="color: #D4AF37; metalness: 0.8; roughness: 0.2"></a-box>
+                <!-- Bordure intérieure noire -->
+                <a-box position="0 0 0.02" width="1.2" height="1.75" depth="0.02" material="color: #1a1a1a; metalness: 0.3; roughness: 0.5"></a-box>
+                <!-- Passe-partout blanc cassé -->
+                <a-box position="0 0 0.03" width="1.1" height="1.6" depth="0.01" material="color: #F5F2EF; roughness: 0.9"></a-box>
+                <!-- Image -->
+                <a-plane position="0 0 0.04" width="1.0" height="1.4" src="assets/golfeur.avif" material="roughness: 0.8"></a-plane>
+                <!-- Ornements dorés aux coins -->
+                <a-box position="-0.58 0.88 0.04" width="0.1" height="0.1" depth="0.02" material="color: #D4AF37; metalness: 0.9; roughness: 0.1"></a-box>
+                <a-box position="0.58 0.88 0.04" width="0.1" height="0.1" depth="0.02" material="color: #D4AF37; metalness: 0.9; roughness: 0.1"></a-box>
+                <a-box position="-0.58 -0.88 0.04" width="0.1" height="0.1" depth="0.02" material="color: #D4AF37; metalness: 0.9; roughness: 0.1"></a-box>
+                <a-box position="0.58 -0.88 0.04" width="0.1" height="0.1" depth="0.02" material="color: #D4AF37; metalness: 0.9; roughness: 0.1"></a-box>
+            </a-entity>
         </a-entity>
 
         
@@ -381,6 +615,37 @@
             <a-box position="0 1.0 0.02" width="4" height="0.06" depth="0.03" material="color: #C9C0B5; metalness: 0.3; roughness: 0.4"></a-box>
             <a-box position="0 2.5 0" width="4" height="3" depth="0.08" material="color: #E8E2DC; metalness: 0.05; roughness: 0.7"></a-box>
             <a-box position="0 3.95 0.02" width="4" height="0.06" depth="0.03" material="color: #C9C0B5; metalness: 0.3; roughness: 0.4"></a-box>
+            
+            <!-- TROIS CADRES - disposition artistique -->
+            <!-- Cadre 1 - Haut gauche -->
+            <a-entity id="cadre-1" position="-0.5 2.8 0.1">
+                <!-- Cadre extérieur noir -->
+                <a-box position="0 0 0" width="0.7" height="0.9" depth="0.04" material="color: #1a1a1a; metalness: 0.3; roughness: 0.5"></a-box>
+                <!-- Passe-partout beige -->
+                <a-box position="0 0 0.015" width="0.6" height="0.8" depth="0.01" material="color: #E8E2DC; roughness: 0.9"></a-box>
+                <!-- Image -->
+                <a-plane position="0 0 0.025" width="0.5" height="0.65" src="assets/cavalier.png" material="roughness: 0.8"></a-plane>
+            </a-entity>
+            
+            <!-- Cadre 2 - Haut droite -->
+            <a-entity id="cadre-2" position="0.5 2.8 0.1">
+                <!-- Cadre extérieur noir -->
+                <a-box position="0 0 0" width="0.7" height="0.9" depth="0.04" material="color: #1a1a1a; metalness: 0.3; roughness: 0.5"></a-box>
+                <!-- Passe-partout beige -->
+                <a-box position="0 0 0.015" width="0.6" height="0.8" depth="0.01" material="color: #E8E2DC; roughness: 0.9"></a-box>
+                <!-- Image -->
+                <a-plane position="0 0 0.025" width="0.5" height="0.65" src="assets/kristensen.png" material="roughness: 0.8"></a-plane>
+            </a-entity>
+            
+            <!-- Cadre 3 - Bas centre (décalé vers la droite) -->
+            <a-entity id="cadre-3" position="0.25 1.8 0.1">
+                <!-- Cadre extérieur noir -->
+                <a-box position="0 0 0" width="0.7" height="0.9" depth="0.04" material="color: #1a1a1a; metalness: 0.3; roughness: 0.5"></a-box>
+                <!-- Passe-partout beige -->
+                <a-box position="0 0 0.015" width="0.6" height="0.8" depth="0.01" material="color: #E8E2DC; roughness: 0.9"></a-box>
+                <!-- Image -->
+                <a-plane position="0 0 0.025" width="0.5" height="0.65" src="assets/viladoms.png" material="roughness: 0.8"></a-plane>
+            </a-entity>
         </a-entity>
 
         <!-- Mur du fond - Style minimaliste luxe -->

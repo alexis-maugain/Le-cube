@@ -105,7 +105,129 @@ AFRAME.registerComponent('door-interactive', {
         if (linkedComponent) {
             setTimeout(() => {
                 linkedComponent.canTeleport = true;
-            }, 6000);
+            }, 4000);
+        }
+    }
+});
+
+// Composant pour cadre pivotant (révèle le coffre-fort)
+AFRAME.registerComponent('swing-frame', {
+    init: function() {
+        this.isOpen = false;
+        this.isAnimating = false;
+        const el = this.el;
+        
+        // Écouter les clics sur le cadre
+        el.querySelectorAll('.clickable').forEach(clickable => {
+            clickable.addEventListener('click', () => {
+                if (this.isAnimating) return;
+                this.toggleFrame();
+            });
+        });
+    },
+    
+    toggleFrame: function() {
+        this.isAnimating = true;
+        // Pivoter sur le côté gauche (comme une porte)
+        const targetRotation = this.isOpen ? '0 0 0' : '0 0 -100';
+        
+        this.el.setAttribute('animation', {
+            property: 'rotation',
+            to: targetRotation,
+            dur: 600,
+            easing: 'easeInOutQuad'
+        });
+        
+        this.isOpen = !this.isOpen;
+        
+        setTimeout(() => {
+            this.isAnimating = false;
+            this.el.removeAttribute('animation');
+        }, 650);
+        
+        console.log(this.isOpen ? 'Cadre ouvert - Coffre-fort révélé!' : 'Cadre fermé');
+    }
+});
+
+// Composant pour le clavier du coffre-fort
+AFRAME.registerComponent('safe-keypad', {
+    init: function() {
+        this.code = '';
+        this.correctCode = '491528'; // Code par défaut
+        this.isUnlocked = false;
+        this.display = document.querySelector('#safe-display');
+        
+        // Écouter les clics sur les touches
+        document.querySelectorAll('.safe-key').forEach(key => {
+            key.addEventListener('click', (e) => {
+                const keyValue = key.getAttribute('data-key');
+                this.handleKeyPress(keyValue, key);
+            });
+        });
+    },
+    
+    handleKeyPress: function(key, keyEl) {
+        if (this.isUnlocked) return;
+        
+        // Animation de la touche
+        const originalColor = keyEl.getAttribute('material').color;
+        keyEl.setAttribute('material', 'color', '#666666');
+        setTimeout(() => {
+            keyEl.setAttribute('material', 'color', originalColor);
+        }, 100);
+        
+        if (key === 'C') {
+            // Effacer le code
+            this.code = '';
+            this.updateDisplay();
+            console.log('Code effacé');
+        } else if (key === 'OK') {
+            // Vérifier le code
+            this.checkCode();
+        } else {
+            // Ajouter un chiffre (max 4)
+            if (this.code.length < 6) {
+                this.code += key;
+                this.updateDisplay();
+                console.log('Code entré:', this.code);
+            }
+        }
+    },
+    
+    updateDisplay: function() {
+        if (this.display) {
+            // Afficher les chiffres entrés avec des tirets pour les positions vides
+            let displayText = '';
+            for (let i = 0; i < 6; i++) {
+                displayText += this.code[i] || '-';
+            }
+            this.display.setAttribute('value', displayText);
+        }
+    },
+    
+    checkCode: function() {
+        if (this.code === this.correctCode) {
+            this.isUnlocked = true;
+            if (this.display) {
+                this.display.setAttribute('value', 'OPEN');
+                this.display.setAttribute('color', '#00FF00');
+            }
+            console.log('Coffre-fort déverrouillé!');
+            // Ici on pourrait ajouter une animation d'ouverture
+        } else {
+            if (this.display) {
+                this.display.setAttribute('value', 'ERR!');
+                this.display.setAttribute('color', '#FF0000');
+            }
+            console.log('Code incorrect!');
+            // Reset après 1 seconde
+            setTimeout(() => {
+                this.code = '';
+                if (this.display) {
+                    this.display.setAttribute('value', '----');
+                    this.display.setAttribute('color', '#00BFFF');
+                }
+            }, 1000);
         }
     }
 });
@@ -182,5 +304,17 @@ document.addEventListener('DOMContentLoaded', function() {
         // Démarrer l'animation
         animerAiguilles();
         console.log('Horloge démarrée - Grande aiguille: 1 tour/3s, Petite aiguille: 1 tour/36s');
+    })();
+
+    // Initialiser le clavier du coffre-fort
+    (function() {
+        const safeContainer = document.querySelector('#safe-container');
+        if (safeContainer) {
+            // Créer une entité virtuelle pour le composant safe-keypad
+            const safeController = document.createElement('a-entity');
+            safeController.setAttribute('safe-keypad', '');
+            document.querySelector('a-scene').appendChild(safeController);
+            console.log('Coffre-fort initialisé - Code par défaut: 491528');
+        }
     })();
 });
