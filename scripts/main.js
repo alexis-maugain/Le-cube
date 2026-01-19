@@ -220,6 +220,21 @@ AFRAME.registerComponent('safe-keypad', {
                 musicPlayer.components.sound.playSound();
                 console.log('Musique lancée - Code trouvé!');
             }
+            
+            // BASCULEMENT CONTINU STYLE INCEPTION - Rotation infinie
+            const rig = document.querySelector('#rig');
+            const camera = rig.querySelector('[camera]');
+            
+            // Rotation continue sur l'axe Z (basculement latéral)
+            camera.setAttribute('animation', {
+                property: 'rotation',
+                to: '0 0 360',
+                dur: 20000,
+                easing: 'linear',
+                loop: true
+            });
+            
+            console.log('INCEPTION - La pièce bascule en continu!');
         } else {
             if (this.display) {
                 this.display.setAttribute('value', 'ERR!');
