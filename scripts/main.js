@@ -276,10 +276,13 @@ AFRAME.registerComponent('safe-keypad', {
                 }, delay + (index * 500));
             });
             
-            // Faire disparaître le sol et le plafond de l'hôtel
+            // Faire disparaître le sol et les plafonds de l'hôtel
             setTimeout(() => {
                 const sol = document.querySelector('a-plane[position="0 0 0"]');
                 const plafond = document.querySelector('a-plane[position="0 4 0"]');
+                const plafondEscalier = document.querySelector('a-plane[position="0 17 4"]');
+                const escalier = document.querySelector('[gltf-model]');
+                
                 if (sol) {
                     sol.setAttribute('animation__scale', {
                         property: 'scale',
@@ -290,6 +293,22 @@ AFRAME.registerComponent('safe-keypad', {
                 }
                 if (plafond) {
                     plafond.setAttribute('animation__scale', {
+                        property: 'scale',
+                        to: '0 0 0',
+                        dur: 2000,
+                        easing: 'easeInQuad'
+                    });
+                }
+                if (plafondEscalier) {
+                    plafondEscalier.setAttribute('animation__scale', {
+                        property: 'scale',
+                        to: '0 0 0',
+                        dur: 2000,
+                        easing: 'easeInQuad'
+                    });
+                }
+                if (escalier) {
+                    escalier.setAttribute('animation__scale', {
                         property: 'scale',
                         to: '0 0 0',
                         dur: 2000,
