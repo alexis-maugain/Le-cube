@@ -660,12 +660,12 @@
         <!-- ========== INTÉRIEUR AVION PREMIÈRE CLASSE (caché au départ) ========== -->
         <a-entity id="avion-container" visible="false">
             <!-- Fuselage - Forme cylindrique orienté vers Z- (vers l'avant/horloge) -->
-            <a-cylinder id="fuselage" position="0 2 0" rotation="90 0 0" radius="3" height="7" 
+            <a-cylinder id="fuselage" position="0 2 0" rotation="90 0 -3" radius="3" height="25" 
                 material="color: #F5F2EF; metalness: 0.2; roughness: 0.6; side: back" open-ended="true">
             </a-cylinder>
             
             <!-- Sol de l'avion - Moquette luxueuse -->
-            <a-plane id="avion-sol" position="0 0.05 0" rotation="-90 0 0" width="4" height="20" 
+            <a-plane id="avion-sol" position="-0.3 0.05 0" rotation="-90 0 0" width="6.5" height="25" 
                 material="color: #2C3E50; src: #moquette_avion; metalness: 0.1; roughness: 0.9">
             </a-plane>
             
@@ -971,9 +971,6 @@
                 <!-- Plateau principal en bois précieux -->
                 <a-box position="0 0.68 0" width="1.8" height="0.05" depth="1.2" 
                     material="color: #8B5A2B; src: #bois; metalness: 0.2; roughness: 0.4"></a-box>
-                <!-- Bordure dorée du plateau -->
-                <a-box position="0 0.71 0" width="1.82" height="0.01" depth="1.22" 
-                    material="color: #D4AF37; metalness: 0.8; roughness: 0.2"></a-box>
                 <!-- Pied central de la table -->
                 <a-cylinder position="0 0.35 0" radius="0.08" height="0.6" 
                     material="color: #8B5A2B; metalness: 0.2; roughness: 0.4"></a-cylinder>
@@ -989,25 +986,17 @@
             <!-- Console gauche -->
             <a-entity id="console-gauche" position="-1.9 0 0">
                 <a-box position="0 0.5 -4" width="0.4" height="0.6" depth="2" 
-                    material="color: #8B5A2B; metalness: 0.2; roughness: 0.4"></a-box>
-                <a-box position="0 0.81 -4" width="0.42" height="0.02" depth="2.02" 
-                    material="color: #D4AF37; metalness: 0.8; roughness: 0.2"></a-box>
+                    material="color: #8B5A2B; src: #bois; metalness: 0.2; roughness: 0.4"></a-box>
                 <a-box position="0 0.5 2.5" width="0.4" height="0.6" depth="3.5" 
-                    material="color: #8B5A2B; metalness: 0.2; roughness: 0.4"></a-box>
-                <a-box position="0 0.81 2.5" width="0.42" height="0.02" depth="3.52" 
-                    material="color: #D4AF37; metalness: 0.8; roughness: 0.2"></a-box>
+                    material="color: #8B5A2B;src: #bois; metalness: 0.2; roughness: 0.4"></a-box>
             </a-entity>
             
             <!-- Console droite -->
             <a-entity id="console-droite" position="1.9 0 0">
                 <a-box position="0 0.5 -4" width="0.4" height="0.6" depth="2" 
-                    material="color: #8B5A2B; metalness: 0.2; roughness: 0.4"></a-box>
-                <a-box position="0 0.81 -4" width="0.42" height="0.02" depth="2.02" 
-                    material="color: #D4AF37; metalness: 0.8; roughness: 0.2"></a-box>
+                    material="color: #8B5A2B; src: #bois; metalness: 0.2; roughness: 0.4"></a-box>
                 <a-box position="0 0.5 2.5" width="0.4" height="0.6" depth="3.5" 
-                    material="color: #8B5A2B; metalness: 0.2; roughness: 0.4"></a-box>
-                <a-box position="0 0.81 2.5" width="0.42" height="0.02" depth="3.52" 
-                    material="color: #D4AF37; metalness: 0.8; roughness: 0.2"></a-box>
+                    material="color: #8B5A2B; src: #bois; metalness: 0.2; roughness: 0.4"></a-box>
             </a-entity>
             
             <!-- HUBLOTS - Sur les côtés -->
@@ -1024,14 +1013,14 @@
                     <a-ring rotation="0 90 0" radius-inner="0.22" radius-outer="0.3" material="color: #C0C0C0; metalness: 0.8; roughness: 0.2"></a-ring>
                     <a-circle position="0.02 0 0" rotation="0 90 0" radius="0.22" material="color: #87CEEB; metalness: 0.3; roughness: 0.1; opacity: 0.8; transparent: true"></a-circle>
                 </a-entity>
-                <a-entity position="-2.8 1.8 3.5">
+                <a-entity position="-2.7 1.8 3.5">
                     <a-ring rotation="0 90 0" radius-inner="0.22" radius-outer="0.3" material="color: #C0C0C0; metalness: 0.8; roughness: 0.2"></a-ring>
                     <a-circle position="0.02 0 0" rotation="0 90 0" radius="0.22" material="color: #87CEEB; metalness: 0.3; roughness: 0.1; opacity: 0.8; transparent: true"></a-circle>
                 </a-entity>
             </a-entity>
             
             <a-entity id="hublots-cote-droit">
-                <a-entity position="2.8 1.8 -4">
+                <a-entity position="2.7 1.8 -4">
                     <a-ring rotation="0 -90 0" radius-inner="0.22" radius-outer="0.3" material="color: #C0C0C0; metalness: 0.8; roughness: 0.2"></a-ring>
                     <a-circle position="-0.02 0 0" rotation="0 -90 0" radius="0.22" material="color: #87CEEB; metalness: 0.3; roughness: 0.1; opacity: 0.8; transparent: true"></a-circle>
                 </a-entity>
@@ -1059,10 +1048,11 @@
             </a-entity>
             
             <!-- Compartiments à bagages luxueux -->
-            <a-box position="-1.8 2.8 0" width="0.6" height="0.5" depth="12" material="color: #E8E2DC; metalness: 0.2; roughness: 0.6"></a-box>
-            <a-box position="-1.8 2.55 0" width="0.58" height="0.02" depth="12" material="color: #D4AF37; metalness: 0.8; roughness: 0.2"></a-box>
-            <a-box position="1.8 2.8 0" width="0.6" height="0.5" depth="12" material="color: #E8E2DC; metalness: 0.2; roughness: 0.6"></a-box>
-            <a-box position="1.8 2.55 0" width="0.58" height="0.02" depth="12" material="color: #D4AF37; metalness: 0.8; roughness: 0.2"></a-box>
+
+            <a-box position="-2 2.8 0" width="0.6" height="0.5" depth="12" material="color: #E8E2DC; metalness: 0.2; roughness: 0.6"></a-box>
+            <a-box position="-2 2.55 0" width="0.58" height="0.02" depth="12" material="color: #D4AF37;src: #bois; metalness: 0; roughness: 0.2"></a-box>
+            <a-box position="1.8 2.8 0" width="0.6" height="0.5" depth="12" material="color: #E8E2DC;src metalness: 0.2; roughness: 0.6"></a-box>
+            <a-box position="1.8 2.55 0" width="0.58" height="0.02" depth="12" material="color: #D4AF37;src: #bois; metalness: 0; roughness: 0.2"></a-box>
             
             
             <!-- Éclairage avion luxueux -->
