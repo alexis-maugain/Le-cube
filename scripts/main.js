@@ -390,7 +390,7 @@ AFRAME.registerComponent('boundary-collision', {
 document.addEventListener('DOMContentLoaded', function() {
     // ========== FONCTION TEMPORAIRE - MODE DÉVELOPPEMENT AVION ==========
     // Décommenter la ligne ci-dessous pour afficher directement l'avion
-    activerModeAvion();
+    // activerModeAvion();
     
     function activerModeAvion() {
         console.log('🛩️ MODE DÉVELOPPEMENT AVION ACTIVÉ');
