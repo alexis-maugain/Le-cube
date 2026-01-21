@@ -273,7 +273,7 @@ AFRAME.registerComponent('safe-keypad', {
                             }, 1000);
                         }
                     });
-                }, delay + (index * 500));
+                }, delay + (index * 300));
             });
             
             // Faire disparaître le sol et les plafonds de l'hôtel
@@ -339,7 +339,7 @@ AFRAME.registerComponent('safe-keypad', {
                 camera.setAttribute('rotation', '0 0 0');
                 // Orienter le rig vers les aiguilles (direction X positif = 90°)
                 rig.setAttribute('rotation', '0 -90 0');
-                rig.setAttribute('position', '-1.6 1.6 0');
+                rig.setAttribute('position', '-1.6 0.8 0');
                 console.log('Rotation arrêtée - Vous pouvez explorer l\'avion!');
             }, delay + 9000);
             
