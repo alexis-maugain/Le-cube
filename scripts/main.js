@@ -223,11 +223,10 @@ AFRAME.registerComponent('safe-keypad', {
             
             // BASCULEMENT CONTINU STYLE INCEPTION - Rotation infinie
             const rig = document.querySelector('#rig');
-            const camera = document.querySelector('#camera-entity');
             
-            // Démarrer l'animation pré-définie en HTML (compatible VR)
-            if (camera && camera.components['animation__inception']) {
-                camera.components['animation__inception'].beginAnimation();
+            // Démarrer l'animation pré-définie en HTML sur le rig (compatible VR)
+            if (rig && rig.components['animation__inception']) {
+                rig.components['animation__inception'].beginAnimation();
             }
             
             console.log('La pièce bascule !');
@@ -239,8 +238,8 @@ AFRAME.registerComponent('safe-keypad', {
                 '#mur-gauche', '#mur-droite-gauche', '#mur-droite-droite',
                 '#mur-escalier-fond', '#mur-escalier-droite', '#mur-escalier-gauche',
                 '#mur-derriere', '#mur-fond','#escalier-hotel','#plafond-hotel','#plafond-escalier',
-                '#lustre-central', '#lustre-gauche', '#lustre-droite',
-                '#table-toupie', '#safe-container', '#cadre-federer-pivot', '#moquette-hotel'
+                '#moquette-hotel', '#lustre-central', '#lustre-gauche', '#lustre-droite',
+                '#table-toupie', '#safe-container', '#cadre-federer-pivot'
             ];
             
             // Faire disparaître les éléments de l'hôtel progressivement
@@ -290,11 +289,11 @@ AFRAME.registerComponent('safe-keypad', {
             
             // Arrêter la rotation et stabiliser la caméra après la transition
             setTimeout(() => {
-                // Arrêter l'animation Inception
-                if (camera && camera.components['animation__inception']) {
-                    camera.components['animation__inception'].pauseAnimation();
+                // Arrêter l'animation Inception sur le rig
+                if (rig && rig.components['animation__inception']) {
+                    rig.components['animation__inception'].pauseAnimation();
                 }
-                camera.setAttribute('rotation', '0 0 0');
+                
                 // Orienter le rig vers les aiguilles (direction X positif = 90°)
                 const hauteurAvion = MODE_DEV_HAUTEUR ? 1.6 : 0.1;
                 
