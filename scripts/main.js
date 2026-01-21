@@ -337,7 +337,8 @@ AFRAME.registerComponent('safe-keypad', {
                 camera.removeAttribute('animation');
                 camera.setAttribute('rotation', '0 0 0');
                 // Orienter le rig vers les aiguilles (direction X positif = 90°)
-                const hauteurAvion = (typeof MODE_DEV_HAUTEUR !== 'undefined' && MODE_DEV_HAUTEUR) ? 1.6 : 0.1;
+                const hauteurAvion = MODE_DEV_HAUTEUR ? 1.6 : 0.1;
+                
                 rig.setAttribute('rotation', '0 -90 0');
                 rig.setAttribute('position', `-1.6 ${hauteurAvion} 0`);
                 console.log('Rotation arrêtée - Vous pouvez explorer l\'avion!');
@@ -391,7 +392,7 @@ AFRAME.registerComponent('boundary-collision', {
 document.addEventListener('DOMContentLoaded', function() {
     // ========== MODE DÉVELOPPEMENT - HAUTEUR CAMÉRA ==========
     // true = Mode PC (1.6m de hauteur), false = Mode VR (0.1m de hauteur)
-    const MODE_DEV_HAUTEUR = false;
+    const MODE_DEV_HAUTEUR = true;
     
     // Appliquer la hauteur selon le mode
     const rig = document.querySelector('#rig');
@@ -406,6 +407,23 @@ document.addEventListener('DOMContentLoaded', function() {
     // ========== FONCTION TEMPORAIRE - MODE DÉVELOPPEMENT AVION ==========
     // Décommenter la ligne ci-dessous pour afficher directement l'avion
     // activerModeAvion();
+    
+    // ========== POPUP D'INSTRUCTION ==========
+    // Faire disparaître le popup après 8 secondes
+    setTimeout(() => {
+        const popup = document.querySelector('#popup-instruction');
+        if (popup) {
+            popup.setAttribute('animation', {
+                property: 'scale',
+                to: '0 0 0',
+                dur: 300,
+                easing: 'easeInQuad'
+            });
+            setTimeout(() => {
+                popup.setAttribute('visible', false);
+            }, 300);
+        }
+    }, 8000);
     
     
     function activerModeAvion() {

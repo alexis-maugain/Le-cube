@@ -40,6 +40,22 @@
                     fuse="false"
                     raycaster="objects: .clickable">
                 </a-cursor>
+                
+                <!-- Popup d'instruction - Style luxe en haut à gauche -->
+                <a-entity id="popup-instruction" position="-1 0.5 -1.2" visible="true">
+                    <!-- Fond noir élégant -->
+                    <a-plane position="0 0 0" width="1.8" height="0.7" color="#1a1a1a" opacity="0.95"></a-plane>
+                    <!-- Bordure dorée -->
+                    <a-plane position="0 0 -0.001" width="1.86" height="0.76" rotation="0 0 0" color="#D4AF37" opacity="1"></a-plane>
+                    <!-- Titre élégant -->
+                    <a-text value="MISSION" position="0 0.25 0.01" align="center" width="1.5" color="#D4AF37" font="monoid"></a-text>
+                    <!-- Ligne de séparation -->
+                    <a-plane position="0 0.17 0.01" width="1.5" height="0.002" color="#D4AF37"></a-plane>
+                    <!-- Instruction principale -->
+                    <a-text value="they're trying to open his safe. They thought I'd know the combination, but I don’t know it.”" 
+                            position="0 -0.05 0.01" align="center" width="1.5" color="#FFFFFF" font="monoid" 
+                            line-height="50"></a-text>
+                </a-entity>
             </a-entity>
         </a-entity>
 
