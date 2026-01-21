@@ -229,6 +229,18 @@ AFRAME.registerComponent('safe-keypad', {
                 rig.components['animation__inception'].beginAnimation();
             }
             
+            // ACCÉLÉRER LES AIGUILLES DE L'HORLOGE
+            const pivotHeures = document.querySelector('#pivot-heures');
+            const pivotMinutes = document.querySelector('#pivot-minutes');
+            if (pivotHeures) {
+                pivotHeures.setAttribute('animation', 'property: rotation; to: -360 0 0; dur: 3600; easing: linear; loop: true');
+                console.log('Aiguille des heures accélérée (10x)');
+            }
+            if (pivotMinutes) {
+                pivotMinutes.setAttribute('animation', 'property: rotation; to: -360 0 0; dur: 300; easing: linear; loop: true');
+                console.log('Aiguille des minutes accélérée (10x)');
+            }
+            
             console.log('La pièce bascule !');
             
             // ========== TRANSITION VERS L'AVION ==========
@@ -293,6 +305,18 @@ AFRAME.registerComponent('safe-keypad', {
                     rig.components['animation__inception'].pauseAnimation();
                 }
                 
+                // RALENTIR LES AIGUILLES DE L'HORLOGE (retour à vitesse normale)
+                const pivotHeures = document.querySelector('#pivot-heures');
+                const pivotMinutes = document.querySelector('#pivot-minutes');
+                if (pivotHeures) {
+                    pivotHeures.setAttribute('animation', 'property: rotation; to: -360 0 0; dur: 36000; easing: linear; loop: true');
+                    console.log('Aiguille des heures ralentie (vitesse normale)');
+                }
+                if (pivotMinutes) {
+                    pivotMinutes.setAttribute('animation', 'property: rotation; to: -360 0 0; dur: 3000; easing: linear; loop: true');
+                    console.log('Aiguille des minutes ralentie (vitesse normale)');
+                }
+                
                 // Orienter le rig vers les aiguilles (direction X positif = 90°)
                 const hauteurAvion = MODE_DEV_HAUTEUR ? 1.6 : 0.1;
                 
@@ -349,7 +373,7 @@ AFRAME.registerComponent('boundary-collision', {
 document.addEventListener('DOMContentLoaded', function() {
     // ========== MODE DÉVELOPPEMENT - HAUTEUR CAMÉRA ==========
     // true = Mode PC (1.6m de hauteur), false = Mode VR (0.1m de hauteur)
-    const MODE_DEV_HAUTEUR = true;
+    const MODE_DEV_HAUTEUR = false;
     
     // Appliquer la hauteur selon le mode
     const rig = document.querySelector('#rig');
@@ -363,7 +387,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // ========== FONCTION TEMPORAIRE - MODE DÉVELOPPEMENT AVION ==========
     // Décommenter la ligne ci-dessous pour afficher directement l'avion
-    // activerModeAvion();
+    // activerModeAvion(); 
     
     // ========== POPUP D'INSTRUCTION ==========
     // Faire disparaître le popup après 8 secondes
@@ -480,7 +504,6 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('Horloge démarrée - Grande aiguille: 1 tour/3s, Petite aiguille: 1 tour/36s');
     })();
     */
-    console.log('⏰ Horloge animée en HTML - Grande aiguille: 1 tour/3s, Petite aiguille: 1 tour/36s');
 
     // Initialiser le clavier du coffre-fort
     (function() {
@@ -491,6 +514,28 @@ document.addEventListener('DOMContentLoaded', function() {
             safeController.setAttribute('safe-keypad', '');
             document.querySelector('a-scene').appendChild(safeController);
             console.log('Coffre-fort initialisé - Code par défaut: 528491');
+        }
+    })();
+
+    // Interaction avec la radio - Play/Pause
+    (function() {
+        const radioEntity = document.querySelector('#radio-entity');
+        const radioSound = document.querySelector('#radio-sound');
+        let isPlaying = false;
+
+        if (radioEntity && radioSound) {
+            radioEntity.addEventListener('click', function() {
+                if (!isPlaying) {
+                    radioSound.components.sound.playSound();
+                    console.log('Radio: Musique lancée');
+                    isPlaying = true;
+                } else {
+                    radioSound.components.sound.pauseSound();
+                    console.log('Radio: Musique en pause');
+                    isPlaying = false;
+                }
+            });
+            console.log('Radio interactive initialisée');
         }
     })();
 });
