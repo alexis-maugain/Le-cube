@@ -338,7 +338,8 @@ AFRAME.registerComponent('safe-keypad', {
                 camera.removeAttribute('animation');
                 camera.setAttribute('rotation', '0 0 0');
                 // Orienter le rig vers les aiguilles (direction X positif = 90°)
-                rig.setAttribute('rotation', '0 90 0');
+                rig.setAttribute('rotation', '0 -90 0');
+                rig.setAttribute('position', '-1.6 1.6 0');
                 console.log('Rotation arrêtée - Vous pouvez explorer l\'avion!');
             }, delay + 9000);
             
@@ -390,7 +391,7 @@ AFRAME.registerComponent('boundary-collision', {
 document.addEventListener('DOMContentLoaded', function() {
     // ========== FONCTION TEMPORAIRE - MODE DÉVELOPPEMENT AVION ==========
     // Décommenter la ligne ci-dessous pour afficher directement l'avion
-    // activerModeAvion();
+    activerModeAvion();
     
     function activerModeAvion() {
         console.log('🛩️ MODE DÉVELOPPEMENT AVION ACTIVÉ');
@@ -432,8 +433,8 @@ document.addEventListener('DOMContentLoaded', function() {
         // Positionner la caméra dans l'avion
         const rig = document.querySelector('#rig');
         if (rig) {
-            rig.setAttribute('position', '0 1.6 0');
-            rig.setAttribute('rotation', '0 0 0'); 
+            rig.setAttribute('position', '-1.6 1.6 0');
+            rig.setAttribute('rotation', '0 -90 0'); 
         }
         
         console.log('✅ Vous êtes maintenant dans l\'avion');

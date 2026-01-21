@@ -16,6 +16,9 @@
         <img id="bois" src="assets/bois.jpg">
         <img id="bois2" src="assets/bois2.jpg">
 
+        <img id="cuir" src="assets/cuir.jpg">
+
+
 
 
         <audio id="background-music" src="assets/thekick.mp3" preload="auto"></audio>
@@ -294,8 +297,8 @@
 
 
 
-        <!-- HORLOGE sur le mur du fond -->
-        <a-entity position="0 1 0" rotation="0 0 0">
+        <!-- HORLOGE sur le mur du fond (DOIT PERSISTER PENDANT LA TRANSITION) -->
+        <a-entity id="horloge-hotel" position="0 1 0" rotation="0 0 0" visible="true">
                 <!-- Centre de l'horloge -->
             <a-cylinder
                 position="9.9 2 0"
@@ -658,7 +661,7 @@
         </a-entity>
 
         <!-- ========== INTÉRIEUR AVION PREMIÈRE CLASSE (caché au départ) ========== -->
-        <a-entity id="avion-container" visible="false">
+        <a-entity id="avion-container" visible="false" rotation="0 -90 0" position="2 0 0">
             <!-- Fuselage - Forme cylindrique orienté vers Z- (vers l'avant/horloge) -->
             <a-cylinder id="fuselage" position="0 2 0" rotation="90 0 -3" radius="3" height="25" 
                 material="color: #F5F2EF; metalness: 0.2; roughness: 0.6; side: back" open-ended="true">
@@ -672,54 +675,19 @@
             <!-- ========== CLOISON AVANT AVEC HORLOGE ========== -->
             <a-entity id="cloison-avant" position="0 0 -8">
                 <!-- Mur avant arrondi -->
-                <a-plane position="0 2 0" rotation="0 0 0" width="20" height="20" 
+                <a-plane position="0 2 0" rotation="0 0 0" width="7" height="5" 
                     material="color: #1C1C1E;src: #bois2; metalness: 0.3; roughness: 0.4; side: double" open-ended="false">
                 </a-plane>
 
-                
-                <!-- Centre de l'horloge -->
-                <a-cylinder
-                    position="0 2 0.17"
-                    rotation="0 0 0"
-                    radius="0.08"
-                    height="0.05"
-                    material="color: #D4AF37; metalness: 0.9; roughness: 0.1">
-                </a-cylinder>
-
-                <!-- Pivot aiguille des heures -->
-                <a-entity id="pivot-heures-avion" position="0 2 0.18" rotation="0 0 0">
-                    <!-- Aiguille des heures (courte et épaisse) -->
-                    <a-box
-                        id="aiguille-heures-avion"
-                        position="0 0.2 0"  
-                        width="0.06"
-                        height="0.4"
-                        depth="0.02"
-                        color="#1a1a1a">
-                    </a-box>
-                </a-entity>
-
-                <!-- Pivot aiguille des minutes -->
-                <a-entity id="pivot-minutes-avion" position="0 2 0.18" rotation="0 0 0">
-                    <!-- Aiguille des minutes (longue et fine) -->
-                    <a-box
-                        id="aiguille-minutes-avion"
-                        position="0 0.3 0"
-                        width="0.04"
-                        height="0.6"
-                        depth="0.015"
-                        color="#1a1a1a">
-                    </a-box>
-                </a-entity>
                 
                 <!-- Porte cockpit à droite -->
                 <a-entity id="porte-cockpit" position="1.5 1.1 0.1">
                     <!-- Cadre de porte -->
                     <a-box position="0 0 -0.03" width="0.85" height="2.1" depth="0.08" 
-                        material="color: #C0C0C0; metalness: 0.7; roughness: 0.3"></a-box>
+                        material="color: #C0C0C0;src: #bois; metalness: 0.7; roughness: 0.3"></a-box>
                     <!-- Panneau de porte -->
                     <a-box position="0 0 0" width="0.75" height="2" depth="0.06" 
-                        material="color: #2C2C2E; metalness: 0.4; roughness: 0.5"></a-box>
+                        material="color: #2C2C2E;src: #bois; metalness: 0.4; roughness: 0.5"></a-box>
                     <!-- Poignée -->
                     <a-box position="0.28 0 0.04" width="0.08" height="0.25" depth="0.03" 
                         material="color: #D4AF37; metalness: 0.9; roughness: 0.1"></a-box>
@@ -731,126 +699,135 @@
                 </a-entity>
             </a-entity>
             
-            <!-- ========== SIÈGES AVION ULTRA LUXUEUX - Style Jet Privé ========== -->
+            <!-- ========== SIÈGES AVION ========== -->
             <!-- Rangée gauche -->
             <a-entity id="sieges-premiere-gauche">
                 <!-- Siège 1A - Suite privée -->
                 <a-entity position="-1.2 0 -4" rotation="0 0 0">
                     <!-- Base/Console du siège en bois précieux -->
                     <a-box position="0 0.2 0" width="1.1" height="0.4" depth="1.2" 
-                        material="color: #2C1810; metalness: 0.3; roughness: 0.4"></a-box>
+                        material="color: #8B5A2B; src: #bois; metalness: 0.3; roughness: 0.4"></a-box>
                     <!-- Liseré doré base -->
                     <a-box position="0 0.41 0" width="1.12" height="0.02" depth="1.22" 
-                        material="color: #D4AF37; metalness: 0.9; roughness: 0.1"></a-box>
+                        material="color: #8B5A2B; src: #bois; metalness: 0.3; roughness: 0.1"></a-box>
                     <!-- Coque enveloppante -->
                     <a-box position="0 0.7 -0.35" width="1" height="1.2" depth="0.5" 
-                        material="color: #1a1a1a; metalness: 0.5; roughness: 0.3"></a-box>
+                        material="color: #1a1a1a; src: #cuir; metalness: 0.5; roughness: 0.3"></a-box>
                     <!-- Dossier cuir matelassé -->
                     <a-box position="0 0.9 -0.15" width="0.8" height="1" depth="0.2" 
-                        material="color: #D4C5A9; metalness: 0.15; roughness: 0.35"></a-box>
+                        material="color: #D4C5A9; src: #cuir; metalness: 0.15; roughness: 0.35"></a-box>
                     <!-- Appui-tête luxueux -->
                     <a-box position="0 1.55 -0.12" width="0.4" height="0.35" depth="0.22" 
-                        material="color: #D4C5A9; metalness: 0.15; roughness: 0.35"></a-box>
+                        material="color: #D4C5A9; src: #cuir; metalness: 0.15; roughness: 0.35"></a-box>
                     <!-- Coussin lombaire -->
                     <a-box position="0 0.65 -0.05" width="0.6" height="0.25" depth="0.15" 
-                        material="color: #D4C5A9; metalness: 0.15; roughness: 0.35"></a-box>
+                        material="color: #D4C5A9; src: #cuir; metalness: 0.15; roughness: 0.35"></a-box>
                     <!-- Assise épaisse et moelleuse -->
                     <a-box position="0 0.5 0.15" width="0.75" height="0.18" depth="0.7" 
-                        material="color: #D4C5A9; metalness: 0.15; roughness: 0.35"></a-box>
+                        material="color: #D4C5A9; src: #cuir; metalness: 0.15; roughness: 0.35"></a-box>
                     <!-- Accoudoir gauche bois + cuir -->
                     <a-box position="-0.48 0.55 0.1" width="0.12" height="0.15" depth="0.8" 
-                        material="color: #2C1810; metalness: 0.3; roughness: 0.4"></a-box>
+                        material="color: #8B5A2B; src: #bois; metalness: 0.3; roughness: 0.4"></a-box>
                     <a-box position="-0.48 0.65 0.1" width="0.1" height="0.05" depth="0.75" 
-                        material="color: #D4C5A9; metalness: 0.15; roughness: 0.35"></a-box>
+                        material="color: #D4C5A9; src: #cuir; metalness: 0.15; roughness: 0.35"></a-box>
                     <!-- Accoudoir droit bois + cuir -->
                     <a-box position="0.48 0.55 0.1" width="0.12" height="0.15" depth="0.8" 
-                        material="color: #2C1810; metalness: 0.3; roughness: 0.4"></a-box>
+                        material="color: #8B5A2B; src: #bois; metalness: 0.3; roughness: 0.4"></a-box>
                     <a-box position="0.48 0.65 0.1" width="0.1" height="0.05" depth="0.75" 
-                        material="color: #D4C5A9; metalness: 0.15; roughness: 0.35"></a-box>
+                        material="color: #D4C5A9; src: #cuir; metalness: 0.15; roughness: 0.35"></a-box>
                     <!-- Tablette rétractable dorée -->
                     <a-box position="0.48 0.68 0.35" width="0.35" height="0.02" depth="0.25" 
-                        material="color: #D4AF37; metalness: 0.85; roughness: 0.15"></a-box>
+                        material="color: #8B5A2B; src: #bois; metalness: 0; roughness: 0.15"></a-box>
+                    
+                    <!-- TOUPIE QUI TOURNE sur la tablette -->
+                    <a-entity id="toupie-1a" position="0.48 0.72 0.35" animation="property: rotation; to: 0 360 0; dur: 2000; loop: true; easing: linear">
+                        <!-- Corps de la toupie -->
+                        <a-cone position="0 0.04 0" radius-bottom="0.06" radius-top="0" height="0.08" material="color: #D4AF37; metalness: 0.8; roughness: 0.2"></a-cone>
+                        <a-cone position="0 0 0" radius-bottom="0" radius-top="0.06" height="0.08" rotation="0 0 0" material="color: #C0C0C0; metalness: 0.9; roughness: 0.1"></a-cone>
+                        <!-- Pointe -->
+                        <a-cone position="0 -0.06 0" radius-bottom="0.01" radius-top="0.02" height="0.04" material="color: #1a1a1a; metalness: 0.3; roughness: 0.5"></a-cone>
+                    </a-entity>
                 </a-entity>
                 <!-- Siège 2A -->
                 <a-entity position="-1.2 0 -1.5" rotation="0 180 0">
                     <a-box position="0 0.2 0" width="1.1" height="0.4" depth="1.2" 
-                        material="color: #2C1810; metalness: 0.3; roughness: 0.4"></a-box>
+                        material="color: #8B5A2B; src: #bois; metalness: 0.3; roughness: 0.4"></a-box>
                     <a-box position="0 0.41 0" width="1.12" height="0.02" depth="1.22" 
-                        material="color: #D4AF37; metalness: 0.9; roughness: 0.1"></a-box>
+                        material="color: #8B5A2B; src: #bois; metalness: 0.3; roughness: 0.1"></a-box>
                     <a-box position="0 0.7 -0.35" width="1" height="1.2" depth="0.5" 
-                        material="color: #1a1a1a; metalness: 0.5; roughness: 0.3"></a-box>
+                        material="color: #8B5A2B; src: #bois; metalness: 0.5; roughness: 0.3"></a-box>
                     <a-box position="0 0.9 -0.15" width="0.8" height="1" depth="0.2" 
-                        material="color: #D4C5A9; metalness: 0.15; roughness: 0.35"></a-box>
+                        material="color: #D4C5A9; src: #cuir; metalness: 0.15; roughness: 0.35"></a-box>
                     <a-box position="0 1.55 -0.12" width="0.4" height="0.35" depth="0.22" 
-                        material="color: #D4C5A9; metalness: 0.15; roughness: 0.35"></a-box>
+                        material="color: #D4C5A9; src: #cuir; metalness: 0.15; roughness: 0.35"></a-box>
                     <a-box position="0 0.65 -0.05" width="0.6" height="0.25" depth="0.15" 
-                        material="color: #D4C5A9; metalness: 0.15; roughness: 0.35"></a-box>
+                        material="color: #D4C5A9; src: #cuir; metalness: 0.15; roughness: 0.35"></a-box>
                     <a-box position="0 0.5 0.15" width="0.75" height="0.18" depth="0.7" 
-                        material="color: #D4C5A9; metalness: 0.15; roughness: 0.35"></a-box>
+                        material="color: #D4C5A9; src: #cuir; metalness: 0.15; roughness: 0.35"></a-box>
                     <a-box position="-0.48 0.55 0.1" width="0.12" height="0.15" depth="0.8" 
-                        material="color: #2C1810; metalness: 0.3; roughness: 0.4"></a-box>
+                        material="color: #8B5A2B; src: #bois; metalness: 0.3; roughness: 0.4"></a-box>
                     <a-box position="-0.48 0.65 0.1" width="0.1" height="0.05" depth="0.75" 
-                        material="color: #D4C5A9; metalness: 0.15; roughness: 0.35"></a-box>
+                        material="color: #D4C5A9; src: #cuir; metalness: 0.15; roughness: 0.35"></a-box>
                     <a-box position="0.48 0.55 0.1" width="0.12" height="0.15" depth="0.8" 
-                        material="color: #2C1810; metalness: 0.3; roughness: 0.4"></a-box>
+                        material="color: #8B5A2B; src: #bois; metalness: 0.3; roughness: 0.4"></a-box>
                     <a-box position="0.48 0.65 0.1" width="0.1" height="0.05" depth="0.75" 
-                        material="color: #D4C5A9; metalness: 0.15; roughness: 0.35"></a-box>
+                        material="color: #D4C5A9; src: #cuir; metalness: 0.15; roughness: 0.35"></a-box>
                     <a-box position="0.48 0.68 0.35" width="0.35" height="0.02" depth="0.25" 
-                        material="color: #D4AF37; metalness: 0.85; roughness: 0.15"></a-box>
+                        material="color: #8B5A2B; src: #bois; metalness: 0; roughness: 0.15"></a-box>
                 </a-entity>
                 <!-- Siège 3A -->
                 <a-entity position="-1.2 0 1" rotation="0 0 0">
                     <a-box position="0 0.2 0" width="1.1" height="0.4" depth="1.2" 
-                        material="color: #2C1810; metalness: 0.3; roughness: 0.4"></a-box>
+                        material="color: #8B5A2B; src: #bois; metalness: 0.3; roughness: 0.4"></a-box>
                     <a-box position="0 0.41 0" width="1.12" height="0.02" depth="1.22" 
-                        material="color: #D4AF37; metalness: 0.9; roughness: 0.1"></a-box>
+                        material="color: #8B5A2B;src: #bois; metalness: 0.3; roughness: 0.1"></a-box>
                     <a-box position="0 0.7 -0.35" width="1" height="1.2" depth="0.5" 
-                        material="color: #1a1a1a; metalness: 0.5; roughness: 0.3"></a-box>
+                        material="color: #8B5A2B; src: #bois; metalness: 0.5; roughness: 0.3"></a-box>
                     <a-box position="0 0.9 -0.15" width="0.8" height="1" depth="0.2" 
-                        material="color: #D4C5A9; metalness: 0.15; roughness: 0.35"></a-box>
+                        material="color: #D4C5A9; src: #cuir; metalness: 0.15; roughness: 0.35"></a-box>
                     <a-box position="0 1.55 -0.12" width="0.4" height="0.35" depth="0.22" 
-                        material="color: #D4C5A9; metalness: 0.15; roughness: 0.35"></a-box>
+                        material="color: #D4C5A9; src: #cuir; metalness: 0.15; roughness: 0.35"></a-box>
                     <a-box position="0 0.65 -0.05" width="0.6" height="0.25" depth="0.15" 
-                        material="color: #D4C5A9; metalness: 0.15; roughness: 0.35"></a-box>
+                        material="color: #D4C5A9; src: #cuir; metalness: 0.15; roughness: 0.35"></a-box>
                     <a-box position="0 0.5 0.15" width="0.75" height="0.18" depth="0.7" 
-                        material="color: #D4C5A9; metalness: 0.15; roughness: 0.35"></a-box>
+                        material="color: #D4C5A9; src: #cuir; metalness: 0.15; roughness: 0.35"></a-box>
                     <a-box position="-0.48 0.55 0.1" width="0.12" height="0.15" depth="0.8" 
-                        material="color: #2C1810; metalness: 0.3; roughness: 0.4"></a-box>
+                        material="color: #8B5A2B; src: #bois; metalness: 0.3; roughness: 0.4"></a-box>
                     <a-box position="-0.48 0.65 0.1" width="0.1" height="0.05" depth="0.75" 
-                        material="color: #D4C5A9; metalness: 0.15; roughness: 0.35"></a-box>
+                        material="color: #D4C5A9; src: #cuir; metalness: 0.15; roughness: 0.35"></a-box>
                     <a-box position="0.48 0.55 0.1" width="0.12" height="0.15" depth="0.8" 
-                        material="color: #2C1810; metalness: 0.3; roughness: 0.4"></a-box>
+                        material="color: #8B5A2B; src: #bois; metalness: 0.3; roughness: 0.4"></a-box>
                     <a-box position="0.48 0.65 0.1" width="0.1" height="0.05" depth="0.75" 
-                        material="color: #D4C5A9; metalness: 0.15; roughness: 0.35"></a-box>
+                        material="color: #D4C5A9; src: #cuir; metalness: 0.15; roughness: 0.35"></a-box>
                     <a-box position="0.48 0.68 0.35" width="0.35" height="0.02" depth="0.25" 
-                        material="color: #D4AF37; metalness: 0.85; roughness: 0.15"></a-box>
+                       material="color: #8B5A2B; src: #bois; metalness: 0; roughness: 0.15"></a-box>
                 </a-entity>
                 <!-- Siège 4A -->
                 <a-entity position="-1.2 0 4" rotation="0 180 0">
                     <a-box position="0 0.2 0" width="1.1" height="0.4" depth="1.2" 
-                        material="color: #2C1810; metalness: 0.3; roughness: 0.4"></a-box>
+                        material="color: #8B5A2B; src: #bois; metalness: 0.3; roughness: 0.4"></a-box>
                     <a-box position="0 0.41 0" width="1.12" height="0.02" depth="1.22" 
-                        material="color: #D4AF37; metalness: 0.9; roughness: 0.1"></a-box>
+                        material="color: #8B5A2B; src: #bois; metalness: 0.3; roughness: 0.1"></a-box>
                     <a-box position="0 0.7 -0.35" width="1" height="1.2" depth="0.5" 
-                        material="color: #1a1a1a; metalness: 0.5; roughness: 0.3"></a-box>
+                        material="color: #8B5A2B; src: #bois; metalness: 0.5; roughness: 0.3"></a-box>
                     <a-box position="0 0.9 -0.15" width="0.8" height="1" depth="0.2" 
-                        material="color: #D4C5A9; metalness: 0.15; roughness: 0.35"></a-box>
+                        material="color: #D4C5A9; src: #cuir; metalness: 0.15; roughness: 0.35"></a-box>
                     <a-box position="0 1.55 -0.12" width="0.4" height="0.35" depth="0.22" 
-                        material="color: #D4C5A9; metalness: 0.15; roughness: 0.35"></a-box>
+                        material="color: #D4C5A9; src: #cuir; metalness: 0.15; roughness: 0.35"></a-box>
                     <a-box position="0 0.65 -0.05" width="0.6" height="0.25" depth="0.15" 
-                        material="color: #D4C5A9; metalness: 0.15; roughness: 0.35"></a-box>
+                        material="color: #D4C5A9; src: #cuir; metalness: 0.15; roughness: 0.35"></a-box>
                     <a-box position="0 0.5 0.15" width="0.75" height="0.18" depth="0.7" 
-                        material="color: #D4C5A9; metalness: 0.15; roughness: 0.35"></a-box>
+                        material="color: #D4C5A9; src: #cuir; metalness: 0.15; roughness: 0.35"></a-box>
                     <a-box position="-0.48 0.55 0.1" width="0.12" height="0.15" depth="0.8" 
-                        material="color: #2C1810; metalness: 0.3; roughness: 0.4"></a-box>
+                        material="color: #8B5A2B; src: #bois; metalness: 0.3; roughness: 0.4"></a-box>
                     <a-box position="-0.48 0.65 0.1" width="0.1" height="0.05" depth="0.75" 
-                        material="color: #D4C5A9; metalness: 0.15; roughness: 0.35"></a-box>
+                        material="color: #D4C5A9; src: #cuir; metalness: 0.15; roughness: 0.35"></a-box>
                     <a-box position="0.48 0.55 0.1" width="0.12" height="0.15" depth="0.8" 
-                        material="color: #2C1810; metalness: 0.3; roughness: 0.4"></a-box>
+                        material="color: #8B5A2B; src: #bois; metalness: 0.3; roughness: 0.4"></a-box>
                     <a-box position="0.48 0.65 0.1" width="0.1" height="0.05" depth="0.75" 
-                        material="color: #D4C5A9; metalness: 0.15; roughness: 0.35"></a-box>
-                    <a-box position="0.48 0.68 0.35" width="0.35" height="0.02" depth="0.25" 
-                        material="color: #D4AF37; metalness: 0.85; roughness: 0.15"></a-box>
+                        material="color: #D4C5A9; src: #cuir; metalness: 0.15; roughness: 0.35"></a-box>
+                    <a-box position="-0.48 0.68 0.35" width="0.35" height="0.02" depth="0.25" 
+                        material="color: #8B5A2B; src: #bois; metalness: 0; roughness: 0.15"></a-box>
                 </a-entity>
             </a-entity>
             
@@ -859,110 +836,110 @@
                 <!-- Siège 1B -->
                 <a-entity position="1.2 0 -4" rotation="0 0 0">
                     <a-box position="0 0.2 0" width="1.1" height="0.4" depth="1.2" 
-                        material="color: #2C1810; metalness: 0.3; roughness: 0.4"></a-box>
+                        material="color: #8B5A2B; src: #bois; metalness: 0.3; roughness: 0.4"></a-box>
                     <a-box position="0 0.41 0" width="1.12" height="0.02" depth="1.22" 
-                        material="color: #D4AF37; metalness: 0.9; roughness: 0.1"></a-box>
+                        material="color: #8B5A2B; src: #bois; metalness: 0.3; roughness: 0.1"></a-box>
                     <a-box position="0 0.7 -0.35" width="1" height="1.2" depth="0.5" 
-                        material="color: #1a1a1a; metalness: 0.5; roughness: 0.3"></a-box>
+                        material="color: #8B5A2B; src: #bois; metalness: 0.5; roughness: 0.3"></a-box>
                     <a-box position="0 0.9 -0.15" width="0.8" height="1" depth="0.2" 
-                        material="color: #D4C5A9; metalness: 0.15; roughness: 0.35"></a-box>
+                        material="color: #D4C5A9; src: #cuir; metalness: 0.15; roughness: 0.35"></a-box>
                     <a-box position="0 1.55 -0.12" width="0.4" height="0.35" depth="0.22" 
-                        material="color: #D4C5A9; metalness: 0.15; roughness: 0.35"></a-box>
+                        material="color: #D4C5A9; src: #cuir; metalness: 0.15; roughness: 0.35"></a-box>
                     <a-box position="0 0.65 -0.05" width="0.6" height="0.25" depth="0.15" 
-                        material="color: #D4C5A9; metalness: 0.15; roughness: 0.35"></a-box>
+                        material="color: #D4C5A9; src: #cuir; metalness: 0.15; roughness: 0.35"></a-box>
                     <a-box position="0 0.5 0.15" width="0.75" height="0.18" depth="0.7" 
-                        material="color: #D4C5A9; metalness: 0.15; roughness: 0.35"></a-box>
+                        material="color: #D4C5A9; src: #cuir; metalness: 0.15; roughness: 0.35"></a-box>
                     <a-box position="-0.48 0.55 0.1" width="0.12" height="0.15" depth="0.8" 
-                        material="color: #2C1810; metalness: 0.3; roughness: 0.4"></a-box>
+                        material="color: #8B5A2B; src: #bois; metalness: 0.3; roughness: 0.4"></a-box>
                     <a-box position="-0.48 0.65 0.1" width="0.1" height="0.05" depth="0.75" 
-                        material="color: #D4C5A9; metalness: 0.15; roughness: 0.35"></a-box>
+                        material="color: #D4C5A9; src: #cuir; metalness: 0.15; roughness: 0.35"></a-box>
                     <a-box position="0.48 0.55 0.1" width="0.12" height="0.15" depth="0.8" 
-                        material="color: #2C1810; metalness: 0.3; roughness: 0.4"></a-box>
+                        material="color: #8B5A2B; src: #bois; metalness: 0.3; roughness: 0.4"></a-box>
                     <a-box position="0.48 0.65 0.1" width="0.1" height="0.05" depth="0.75" 
-                        material="color: #D4C5A9; metalness: 0.15; roughness: 0.35"></a-box>
+                        material="color: #D4C5A9; src: #cuir; metalness: 0.15; roughness: 0.35"></a-box>
                     <a-box position="0.48 0.68 0.35" width="0.35" height="0.02" depth="0.25" 
-                        material="color: #D4AF37; metalness: 0.85; roughness: 0.15"></a-box>
+                       material="color: #8B5A2B; src: #bois; metalness: 0; roughness: 0.15"></a-box>
                 </a-entity>
                 <!-- Siège 2B -->
                 <a-entity position="1.2 0 -1.5" rotation="0 180 0">
                     <a-box position="0 0.2 0" width="1.1" height="0.4" depth="1.2" 
-                        material="color: #2C1810; metalness: 0.3; roughness: 0.4"></a-box>
+                        material="color: #8B5A2B; src: #bois; metalness: 0.3; roughness: 0.4"></a-box>
                     <a-box position="0 0.41 0" width="1.12" height="0.02" depth="1.22" 
-                        material="color: #D4AF37; metalness: 0.9; roughness: 0.1"></a-box>
+                        material="color: #8B5A2B; src: #bois; metalness: 0.3; roughness: 0.1"></a-box>
                     <a-box position="0 0.7 -0.35" width="1" height="1.2" depth="0.5" 
-                        material="color: #1a1a1a; metalness: 0.5; roughness: 0.3"></a-box>
+                        material="color: #8B5A2B; src: #bois; metalness: 0.5; roughness: 0.3"></a-box>
                     <a-box position="0 0.9 -0.15" width="0.8" height="1" depth="0.2" 
-                        material="color: #D4C5A9; metalness: 0.15; roughness: 0.35"></a-box>
+                        material="color: #D4C5A9; src: #cuir; metalness: 0.15; roughness: 0.35"></a-box>
                     <a-box position="0 1.55 -0.12" width="0.4" height="0.35" depth="0.22" 
-                        material="color: #D4C5A9; metalness: 0.15; roughness: 0.35"></a-box>
+                        material="color: #D4C5A9; src: #cuir; metalness: 0.15; roughness: 0.35"></a-box>
                     <a-box position="0 0.65 -0.05" width="0.6" height="0.25" depth="0.15" 
-                        material="color: #D4C5A9; metalness: 0.15; roughness: 0.35"></a-box>
+                        material="color: #D4C5A9; src: #cuir; metalness: 0.15; roughness: 0.35"></a-box>
                     <a-box position="0 0.5 0.15" width="0.75" height="0.18" depth="0.7" 
-                        material="color: #D4C5A9; metalness: 0.15; roughness: 0.35"></a-box>
+                        material="color: #D4C5A9; src: #cuir; metalness: 0.15; roughness: 0.35"></a-box>
                     <a-box position="-0.48 0.55 0.1" width="0.12" height="0.15" depth="0.8" 
-                        material="color: #2C1810; metalness: 0.3; roughness: 0.4"></a-box>
+                        material="color: #8B5A2B; src: #bois; metalness: 0.3; roughness: 0.4"></a-box>
                     <a-box position="-0.48 0.65 0.1" width="0.1" height="0.05" depth="0.75" 
-                        material="color: #D4C5A9; metalness: 0.15; roughness: 0.35"></a-box>
+                        material="color: #D4C5A9; src: #cuir; metalness: 0.15; roughness: 0.35"></a-box>
                     <a-box position="0.48 0.55 0.1" width="0.12" height="0.15" depth="0.8" 
-                        material="color: #2C1810; metalness: 0.3; roughness: 0.4"></a-box>
+                        material="color: #8B5A2B; src: #bois; metalness: 0.3; roughness: 0.4"></a-box>
                     <a-box position="0.48 0.65 0.1" width="0.1" height="0.05" depth="0.75" 
-                        material="color: #D4C5A9; metalness: 0.15; roughness: 0.35"></a-box>
+                        material="color: #D4C5A9; src: #cuir; metalness: 0.15; roughness: 0.35"></a-box>
                     <a-box position="0.48 0.68 0.35" width="0.35" height="0.02" depth="0.25" 
-                        material="color: #D4AF37; metalness: 0.85; roughness: 0.15"></a-box>
+                        material="color: #8B5A2B; src: #bois; metalness: 0; roughness: 0.15"></a-box>
                 </a-entity>
                 <!-- Siège 3B -->
                 <a-entity position="0 0 1" rotation="0 0 0">
                     <a-box position="0 0.2 0" width="1.1" height="0.4" depth="1.2" 
-                        material="color: #2C1810; metalness: 0.3; roughness: 0.4"></a-box>
+                        material="color: #8B5A2B; src: #bois; metalness: 0.3; roughness: 0.4"></a-box>
                     <a-box position="0 0.41 0" width="1.12" height="0.02" depth="1.22" 
-                        material="color: #D4AF37; metalness: 0.9; roughness: 0.1"></a-box>
+                        material="color: #8B5A2B; src: #bois; metalness: 0.3; roughness: 0.1"></a-box>
                     <a-box position="0 0.7 -0.35" width="1" height="1.2" depth="0.5" 
-                        material="color: #1a1a1a; metalness: 0.5; roughness: 0.3"></a-box>
+                        material="color: #8B5A2B; src: #bois; metalness: 0.5; roughness: 0.3"></a-box>
                     <a-box position="0 0.9 -0.15" width="0.8" height="1" depth="0.2" 
-                        material="color: #D4C5A9; metalness: 0.15; roughness: 0.35"></a-box>
+                        material="color: #D4C5A9; src: #cuir; metalness: 0.15; roughness: 0.35"></a-box>
                     <a-box position="0 1.55 -0.12" width="0.4" height="0.35" depth="0.22" 
-                        material="color: #D4C5A9; metalness: 0.15; roughness: 0.35"></a-box>
+                        material="color: #D4C5A9; src: #cuir; metalness: 0.15; roughness: 0.35"></a-box>
                     <a-box position="0 0.65 -0.05" width="0.6" height="0.25" depth="0.15" 
-                        material="color: #D4C5A9; metalness: 0.15; roughness: 0.35"></a-box>
+                        material="color: #D4C5A9; src: #cuir; metalness: 0.15; roughness: 0.35"></a-box>
                     <a-box position="0 0.5 0.15" width="0.75" height="0.18" depth="0.7" 
-                        material="color: #D4C5A9; metalness: 0.15; roughness: 0.35"></a-box>
+                        material="color: #D4C5A9; src: #cuir; metalness: 0.15; roughness: 0.35"></a-box>
                     <a-box position="-0.48 0.55 0.1" width="0.12" height="0.15" depth="0.8" 
-                        material="color: #2C1810; metalness: 0.3; roughness: 0.4"></a-box>
+                        material="color: #8B5A2B; src: #bois; metalness: 0.3; roughness: 0.4"></a-box>
                     <a-box position="-0.48 0.65 0.1" width="0.1" height="0.05" depth="0.75" 
-                        material="color: #D4C5A9; metalness: 0.15; roughness: 0.35"></a-box>
+                        material="color: #D4C5A9; src: #cuir; metalness: 0.15; roughness: 0.35"></a-box>
                     <a-box position="0.48 0.55 0.1" width="0.12" height="0.15" depth="0.8" 
-                        material="color: #2C1810; metalness: 0.3; roughness: 0.4"></a-box>
+                        material="color: #8B5A2B; src: #bois; metalness: 0.3; roughness: 0.4"></a-box>
                     <a-box position="0.48 0.65 0.1" width="0.1" height="0.05" depth="0.75" 
-                        material="color: #D4C5A9; metalness: 0.15; roughness: 0.35"></a-box>
+                        material="color: #D4C5A9; src: #cuir; metalness: 0.15; roughness: 0.35"></a-box>
                     <a-box position="0.48 0.68 0.35" width="0.35" height="0.02" depth="0.25" 
-                        material="color: #D4AF37; metalness: 0.85; roughness: 0.15"></a-box>
+                        material="color: #8B5A2B; src: #bois; metalness: 0; roughness: 0.15"></a-box>
                 </a-entity>
                 <!-- Siège 4B -->
                 <a-entity position="0 0 4" rotation="0 180 0">
                     <a-box position="0 0.2 0" width="1.1" height="0.4" depth="1.2" 
-                        material="color: #2C1810; metalness: 0.3; roughness: 0.4"></a-box>
+                        material="color: #8B5A2B; src: #bois; metalness: 0.3; roughness: 0.4"></a-box>
                     <a-box position="0 0.41 0" width="1.12" height="0.02" depth="1.22" 
-                        material="color: #D4AF37; metalness: 0.9; roughness: 0.1"></a-box>
+                        material="color: #8B5A2B; src: #bois; metalness: 0.3; roughness: 0.1"></a-box>
                     <a-box position="0 0.7 -0.35" width="1" height="1.2" depth="0.5" 
-                        material="color: #1a1a1a; metalness: 0.5; roughness: 0.3"></a-box>
+                        material="color: #8B5A2B; src: #bois; metalness: 0.5; roughness: 0.3"></a-box>
                     <a-box position="0 0.9 -0.15" width="0.8" height="1" depth="0.2" 
-                        material="color: #D4C5A9; metalness: 0.15; roughness: 0.35"></a-box>
+                        material="color: #D4C5A9; src: #cuir; metalness: 0.15; roughness: 0.35"></a-box>
                     <a-box position="0 1.55 -0.12" width="0.4" height="0.35" depth="0.22" 
-                        material="color: #D4C5A9; metalness: 0.15; roughness: 0.35"></a-box>
+                        material="color: #D4C5A9; src: #cuir; metalness: 0.15; roughness: 0.35"></a-box>
                     <a-box position="0 0.65 -0.05" width="0.6" height="0.25" depth="0.15" 
-                        material="color: #D4C5A9; metalness: 0.15; roughness: 0.35"></a-box>
+                        material="color: #D4C5A9; src: #cuir; metalness: 0.15; roughness: 0.35"></a-box>
                     <a-box position="0 0.5 0.15" width="0.75" height="0.18" depth="0.7" 
-                        material="color: #D4C5A9; metalness: 0.15; roughness: 0.35"></a-box>
+                        material="color: #D4C5A9; src: #cuir; metalness: 0.15; roughness: 0.35"></a-box>
                     <a-box position="-0.48 0.55 0.1" width="0.12" height="0.15" depth="0.8" 
-                        material="color: #2C1810; metalness: 0.3; roughness: 0.4"></a-box>
+                        material="color: #8B5A2B; src: #bois; metalness: 0.3; roughness: 0.4"></a-box>
                     <a-box position="-0.48 0.65 0.1" width="0.1" height="0.05" depth="0.75" 
-                        material="color: #D4C5A9; metalness: 0.15; roughness: 0.35"></a-box>
+                        material="color: #D4C5A9; src: #cuir; metalness: 0.15; roughness: 0.35"></a-box>
                     <a-box position="0.48 0.55 0.1" width="0.12" height="0.15" depth="0.8" 
-                        material="color: #2C1810; metalness: 0.3; roughness: 0.4"></a-box>
+                        material="color: #8B5A2B; src: #bois; metalness: 0.3; roughness: 0.4"></a-box>
                     <a-box position="0.48 0.65 0.1" width="0.1" height="0.05" depth="0.75" 
-                        material="color: #D4C5A9; metalness: 0.15; roughness: 0.35"></a-box>
-                    <a-box position="0.48 0.68 0.35" width="0.35" height="0.02" depth="0.25" 
-                        material="color: #D4AF37; metalness: 0.85; roughness: 0.15"></a-box>
+                        material="color: #D4C5A9; src: #cuir; metalness: 0.15; roughness: 0.35"></a-box>
+                    <a-box position="-0.48 0.68 0.35" width="0.35" height="0.02" depth="0.25" 
+                        material="color: #8B5A2B; src: #bois; metalness: 0; roughness: 0.15"></a-box>
                 </a-entity>
             </a-entity>
             
@@ -1042,8 +1019,6 @@
                     <a-box position="-0.03 -0.03 -0.04" rotation="0 -90 45" width="0.008" height="0.12" depth="0.005" material="color: #FFFFFF; opacity: 0.85"></a-box>
                     <a-box position="-0.03 0.08 -0.02" rotation="0 -90 -40" width="0.006" height="0.1" depth="0.005" material="color: #FFFFFF; opacity: 0.8"></a-box>
                     <a-box position="-0.03 -0.06 0.03" rotation="0 -90 60" width="0.006" height="0.08" depth="0.005" material="color: #FFFFFF; opacity: 0.8"></a-box>
-                    <!-- Point d'impact -->
-                    <a-circle position="-0.025 0 0" rotation="0 -90 0" radius="0.025" material="color: #FFFFFF; opacity: 0.6; transparent: true"></a-circle>
                 </a-entity>
             </a-entity>
             
