@@ -397,11 +397,14 @@
         <!-- LE CUBE (4m × 4m × 4m) - Tout en gris -->
 
         
-        <!-- Sol en marbre luxueux blanc crème -->
+
         
         <!-- Musique d'ambiance -->
         <a-entity id="music-player" sound="src: #background-music; autoplay: false; loop: true; volume: 0.5"></a-entity>
-        <a-plane 
+        
+        <!-- Sol en moquette luxueux  -->
+        <a-plane
+            id="moquette-hotel"
             position="0 0 0" 
             rotation="-90 0 0" 
             width="100" 
@@ -414,6 +417,7 @@
 
         <!-- Plafond -->
         <a-plane 
+            id="plafond-hotel"
             position="0 4 0" 
             rotation="90 0 0" 
             width="20" 
@@ -628,7 +632,8 @@
 
         <!-- plafond pour escalier-->
 
-        <a-plane 
+        <a-plane
+            id="plafond-escalier" 
             position="0 17 4" 
             rotation="90 0 0" 
             width="4" 

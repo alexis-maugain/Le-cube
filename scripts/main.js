@@ -242,13 +242,13 @@ AFRAME.registerComponent('safe-keypad', {
                 '#door-frame', '#door-pivot-A', '#door-pivot-B',
                 '#mur-gauche', '#mur-droite-gauche', '#mur-droite-droite',
                 '#mur-escalier-fond', '#mur-escalier-droite', '#mur-escalier-gauche',
-                '#mur-derriere', '#mur-fond','#escalier-hotel',
+                '#mur-derriere', '#mur-fond','#escalier-hotel','#plafond-hotel','#plafond-escalier',
                 '#lustre-central', '#lustre-gauche', '#lustre-droite',
-                '#table-toupie', '#safe-container', '#cadre-federer-pivot'
+                '#table-toupie', '#safe-container', '#cadre-federer-pivot', '#moquette-hotel'
             ];
             
             // Faire disparaître les éléments de l'hôtel progressivement
-            let delay = 4000;
+            let delay = 3000;
             hotelElements.forEach((selector, index) => {
                 setTimeout(() => {
                     const elements = document.querySelectorAll(selector);
@@ -275,46 +275,6 @@ AFRAME.registerComponent('safe-keypad', {
                 }, delay + (index * 300));
             });
             
-            // Faire disparaître le sol et les plafonds de l'hôtel
-            setTimeout(() => {
-                const sol = document.querySelector('a-plane[position="0 0 0"]');
-                const plafond = document.querySelector('a-plane[position="0 4 0"]');
-                const plafondEscalier = document.querySelector('a-plane[position="0 17 4"]');
-                const escalier = document.querySelector('#escalier-hotel');
-                
-                if (sol) {
-                    sol.setAttribute('animation__scale', {
-                        property: 'scale',
-                        to: '0 0 0',
-                        dur: 2000,
-                        easing: 'easeInQuad'
-                    });
-                }
-                if (plafond) {
-                    plafond.setAttribute('animation__scale', {
-                        property: 'scale',
-                        to: '0 0 0',
-                        dur: 2000,
-                        easing: 'easeInQuad'
-                    });
-                }
-                if (plafondEscalier) {
-                    plafondEscalier.setAttribute('animation__scale', {
-                        property: 'scale',
-                        to: '0 0 0',
-                        dur: 2000,
-                        easing: 'easeInQuad'
-                    });
-                }
-                if (escalier) {
-                    escalier.setAttribute('animation__scale', {
-                        property: 'scale',
-                        to: '0 0 0',
-                        dur: 2000,
-                        easing: 'easeInQuad'
-                    });
-                }
-            }, delay + 4000);
             
             // Faire apparaître l'avion après la disparition de l'hôtel
             setTimeout(() => {
