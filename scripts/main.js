@@ -393,6 +393,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Décommenter la ligne ci-dessous pour afficher directement l'avion
     // activerModeAvion();
     
+    
     function activerModeAvion() {
         console.log('🛩️ MODE DÉVELOPPEMENT AVION ACTIVÉ');
         
