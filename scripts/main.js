@@ -87,8 +87,16 @@ AFRAME.registerComponent('door-interactive', {
             linkedComponent.openDoor();
         }
         
-        // Téléporter le joueur
-        rig.setAttribute('position', data.teleportPos);
+        // Récupérer MODE_DEV_HAUTEUR depuis window ou utiliser la hauteur actuelle du rig
+        const currentHeight = rig.getAttribute('position').y;
+        const teleportPos = data.teleportPos;
+        
+        // Téléporter le joueur en conservant la hauteur actuelle
+        rig.setAttribute('position', {
+            x: teleportPos.x,
+            y: currentHeight,  // Utiliser la hauteur actuelle au lieu de celle codée en dur
+            z: teleportPos.z
+        });
         
         // Rotation du rig de 180° pour regarder vers la porte
         const currentRigRot = rig.getAttribute('rotation');
