@@ -352,7 +352,7 @@ AFRAME.registerComponent('safe-keypad', {
             setTimeout(() => {
                 this.code = '';
                 if (this.display) {
-                    this.display.setAttribute('value', '----');
+                    this.display.setAttribute('value', '------');
                     this.display.setAttribute('color', '#00BFFF');
                 }
             }, 1000);

@@ -29,7 +29,7 @@
 
 
         <!-- Caméra avec collisions -->
-        <a-entity id="rig" position="-2 0.8 0" rotation="0 -90 0" movement-controls="constrainToNavMesh: false; speed: 0.15">
+        <a-entity id="rig" position="-2 0.1 0" rotation="0 -90 0" movement-controls="constrainToNavMesh: false; speed: 0.15">
             <a-entity 
                 camera 
                 position="0 0 0" 
@@ -512,7 +512,7 @@
                 
                 <!-- Écran LCD -->
                 <a-box position="-0.15 0.18 0.06" width="0.4" height="0.1" depth="0.01" material="color: #001a33; emissive: #001a33; emissiveIntensity: 0.3"></a-box>
-                <a-text id="safe-display" value="----" position="-0.15 0.18 0.07" align="center" width="1.5" color="#00BFFF" font="monoid"></a-text>
+                <a-text id="safe-display" value="------" position="-0.15 0.18 0.07" align="center" width="1.5" color="#00BFFF" font="monoid"></a-text>
                 
                 <!-- Clavier numérique - Rangée 1 (1-2-3) -->
                 <a-box class="safe-key clickable" data-key="1" position="-0.28 0.03 0.06" width="0.1" height="0.1" depth="0.02" material="color: #4a4a4a; metalness: 0.5; roughness: 0.3"></a-box>
@@ -954,13 +954,13 @@
                 <a-box position="0 0.68 0" width="2.7" height="0.05" depth="1.2" 
                     material="color: #8B5A2B; src: #bois; metalness: 0.2; roughness: 0.4"></a-box>
                 <!-- Pied central de la table -->
-                <a-cylinder position="0 0.35 0" radius="0.08" height="0.6" 
+                <a-cylinder position="0.4 0.35 0" radius="0.08" height="0.6" 
                     material="color: #8B5A2B; metalness: 0.2; roughness: 0.4"></a-cylinder>
                 <!-- Base du pied -->
-                <a-cylinder position="0 0.05 0" radius="0.25" height="0.08" 
+                <a-cylinder position="0.4 0.05 0" radius="0.25" height="0.08" 
                     material="color: #8B5A2B; metalness: 0.2; roughness: 0.4"></a-cylinder>
                 <!-- Liseré doré base -->
-                <a-torus position="0 0.09 0" radius="0.25" radius-tubular="0.01" rotation="90 0 0" 
+                <a-torus position="0.4 0.09 0" radius="0.25" radius-tubular="0.01" rotation="90 0 0" 
                     material="color: #D4AF37; metalness: 0.8; roughness: 0.2"></a-torus>
             </a-entity>
 
