@@ -337,8 +337,9 @@ AFRAME.registerComponent('safe-keypad', {
                 camera.removeAttribute('animation');
                 camera.setAttribute('rotation', '0 0 0');
                 // Orienter le rig vers les aiguilles (direction X positif = 90°)
+                const hauteurAvion = (typeof MODE_DEV_HAUTEUR !== 'undefined' && MODE_DEV_HAUTEUR) ? 1.6 : 0.1;
                 rig.setAttribute('rotation', '0 -90 0');
-                rig.setAttribute('position', '-1.6 0.8 0');
+                rig.setAttribute('position', `-1.6 ${hauteurAvion} 0`);
                 console.log('Rotation arrêtée - Vous pouvez explorer l\'avion!');
             }, delay + 9000);
             
@@ -388,6 +389,20 @@ AFRAME.registerComponent('boundary-collision', {
 
 // Initialisation au chargement du DOM
 document.addEventListener('DOMContentLoaded', function() {
+    // ========== MODE DÉVELOPPEMENT - HAUTEUR CAMÉRA ==========
+    // true = Mode PC (1.6m de hauteur), false = Mode VR (0.1m de hauteur)
+    const MODE_DEV_HAUTEUR = false;
+    
+    // Appliquer la hauteur selon le mode
+    const rig = document.querySelector('#rig');
+    if (rig && MODE_DEV_HAUTEUR) {
+        const pos = rig.getAttribute('position');
+        rig.setAttribute('position', {x: pos.x, y: 1.6, z: pos.z});
+        console.log('🖥️ MODE DEV: Caméra à 1.6m de hauteur (PC)');
+    } else {
+        console.log('🥽 MODE VR: Caméra à 0.1m de hauteur (VR)');
+    }
+    
     // ========== FONCTION TEMPORAIRE - MODE DÉVELOPPEMENT AVION ==========
     // Décommenter la ligne ci-dessous pour afficher directement l'avion
     // activerModeAvion();
@@ -430,10 +445,11 @@ document.addEventListener('DOMContentLoaded', function() {
             avion.setAttribute('visible', true);
         }
         
-        // Positionner la caméra dans l'avion
+        // Positionner la caméra dans l'avion avec hauteur selon le mode
         const rig = document.querySelector('#rig');
+        const hauteur = MODE_DEV_HAUTEUR ? 1.6 : 0.1;
         if (rig) {
-            rig.setAttribute('position', '-1.6 1.6 0');
+            rig.setAttribute('position', `-1.6 ${hauteur} 0`);
             rig.setAttribute('rotation', '0 -90 0'); 
         }
         
