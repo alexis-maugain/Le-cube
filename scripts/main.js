@@ -228,8 +228,8 @@ AFRAME.registerComponent('safe-keypad', {
             // Rotation continue sur l'axe Z (basculement latéral)
             camera.setAttribute('animation', {
                 property: 'rotation',
-                to: '0 0 360',
-                dur: 20000,
+                to: '0 0 800',
+                dur: 30000,
                 easing: 'linear',
                 loop: true
             });
@@ -242,10 +242,9 @@ AFRAME.registerComponent('safe-keypad', {
                 '#door-frame', '#door-pivot-A', '#door-pivot-B',
                 '#mur-gauche', '#mur-droite-gauche', '#mur-droite-droite',
                 '#mur-escalier-fond', '#mur-escalier-droite', '#mur-escalier-gauche',
-                '#mur-derriere', '#mur-fond',
+                '#mur-derriere', '#mur-fond','#escalier-hotel',
                 '#lustre-central', '#lustre-gauche', '#lustre-droite',
-                '#table-toupie', '#safe-container', '#cadre-federer-pivot',
-                '#escalier-hotel' 
+                '#table-toupie', '#safe-container', '#cadre-federer-pivot'
             ];
             
             // Faire disparaître les éléments de l'hôtel progressivement
