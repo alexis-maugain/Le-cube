@@ -234,12 +234,11 @@ AFRAME.registerComponent('safe-keypad', {
             // ========== TRANSITION VERS L'AVION ==========
             // Éléments de l'hôtel à faire disparaître (sauf les aiguilles)
             const hotelElements = [
-                '#door-frame', '#door-pivot-A', '#door-pivot-B',
-                '#mur-gauche', '#mur-droite-gauche', '#mur-droite-droite',
-                '#mur-escalier-fond', '#mur-escalier-droite', '#mur-escalier-gauche',
+                '#door-frame', '#door-pivot-A', '#door-pivot-B', '#lustre-central', '#lustre-gauche', '#lustre-droite',
+                '#table-toupie', '#safe-container', '#cadre-federer-pivot',
+                '#mur-gauche', '#mur-escalier-fond', '#mur-escalier-droite', '#mur-escalier-gauche',
                 '#mur-derriere', '#mur-fond','#escalier-hotel','#plafond-hotel','#plafond-escalier',
-                '#moquette-hotel', '#lustre-central', '#lustre-gauche', '#lustre-droite',
-                '#table-toupie', '#safe-container', '#cadre-federer-pivot'
+                '#moquette-hotel', '#mur-droite-gauche', '#mur-droite-droite'
             ];
             
             // Faire disparaître les éléments de l'hôtel progressivement
