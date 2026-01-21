@@ -223,16 +223,12 @@ AFRAME.registerComponent('safe-keypad', {
             
             // BASCULEMENT CONTINU STYLE INCEPTION - Rotation infinie
             const rig = document.querySelector('#rig');
-            const camera = rig.querySelector('[camera]');
+            const camera = document.querySelector('#camera-entity');
             
-            // Rotation continue sur l'axe Z (basculement latéral)
-            camera.setAttribute('animation', {
-                property: 'rotation',
-                to: '0 0 800',
-                dur: 30000,
-                easing: 'linear',
-                loop: true
-            });
+            // Démarrer l'animation pré-définie en HTML (compatible VR)
+            if (camera && camera.components['animation__inception']) {
+                camera.components['animation__inception'].beginAnimation();
+            }
             
             console.log('La pièce bascule !');
             
@@ -294,7 +290,10 @@ AFRAME.registerComponent('safe-keypad', {
             
             // Arrêter la rotation et stabiliser la caméra après la transition
             setTimeout(() => {
-                camera.removeAttribute('animation');
+                // Arrêter l'animation Inception
+                if (camera && camera.components['animation__inception']) {
+                    camera.components['animation__inception'].pauseAnimation();
+                }
                 camera.setAttribute('rotation', '0 0 0');
                 // Orienter le rig vers les aiguilles (direction X positif = 90°)
                 const hauteurAvion = MODE_DEV_HAUTEUR ? 1.6 : 0.1;
