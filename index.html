@@ -9,21 +9,25 @@
     <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.0.0/dist/aframe-extras.min.js"></script>
 </head>
 <body>
-    <a-assets>
-        <img id="moquette" src="assets/moquette.jpg">
-        <img id="moquette_avion" src="assets/moquette_avion.jpg">
 
-        <img id="bois" src="assets/bois.jpg">
-        <img id="bois2" src="assets/bois2.jpg">
-
-        <img id="cuir" src="assets/cuir.jpg">
-
-
-
-
-        <audio id="background-music" src="assets/thekick.mp3" preload="auto"></audio>
-    </a-assets>
     <a-scene>
+        <a-assets>
+            <img id="moquette" src="assets/moquette.jpg">
+            <img id="moquette_avion" src="assets/moquette_avion.jpg">
+
+            <img id="bois" src="assets/bois.jpg">
+            <img id="bois2" src="assets/bois2.jpg">
+
+            <img id="cuir" src="assets/cuir.jpg">
+
+
+
+
+            <audio id="background-music" src="assets/thekick.mp3" preload="auto"></audio>
+        </a-assets>
+
+
+
         <!-- Caméra avec collisions -->
         <a-entity id="rig" position="-2 1.3 0" rotation="0 -90 0" movement-controls="constrainToNavMesh: false; speed: 0.15">
             <a-entity 
@@ -287,6 +291,7 @@
 
         <!-- Modèle 3D : escalier -->
         <a-entity 
+            id="escalier-hotel"
             gltf-model="assets/escalier.glb"
             visible="true"
             position="0 0 0.5"
@@ -946,7 +951,7 @@
             <!-- TABLE DE TRAVAIL EN BOIS entre sièges 3A/3B et 4A/4B -->
             <a-entity id="table-travail-avion" position="-0.6 0 2.5">
                 <!-- Plateau principal en bois précieux -->
-                <a-box position="0 0.68 0" width="2.3" height="0.05" depth="1.2" 
+                <a-box position="0 0.68 0" width="2.7" height="0.05" depth="1.2" 
                     material="color: #8B5A2B; src: #bois; metalness: 0.2; roughness: 0.4"></a-box>
                 <!-- Pied central de la table -->
                 <a-cylinder position="0 0.35 0" radius="0.08" height="0.6" 
@@ -962,17 +967,13 @@
             <!-- CONSOLES LATÉRALES EN BOIS - Style jet privé -->
             <!-- Console gauche -->
             <a-entity id="console-gauche" position="-1.9 0 0">
-                <a-box position="0 0.5 -4" width="0.4" height="0.6" depth="2" 
-                    material="color: #8B5A2B; src: #bois; metalness: 0.2; roughness: 0.4"></a-box>
-                <a-box position="0 0.5 2.5" width="0.4" height="0.6" depth="3.5" 
+                <a-box position="-0.4 0.3 0" rotation="0 1 0" width="0.4" height="1" depth="10" 
                     material="color: #8B5A2B;src: #bois; metalness: 0.2; roughness: 0.4"></a-box>
             </a-entity>
             
             <!-- Console droite -->
             <a-entity id="console-droite" position="1.9 0 0">
-                <a-box position="0 0.5 -4" width="0.4" height="0.6" depth="2" 
-                    material="color: #8B5A2B; src: #bois; metalness: 0.2; roughness: 0.4"></a-box>
-                <a-box position="0 0.5 2.5" width="0.4" height="0.6" depth="3.5" 
+                <a-box position="0.3 0.3 0" rotation="0 2.5 0" width="0.4" height="1" depth="10" 
                     material="color: #8B5A2B; src: #bois; metalness: 0.2; roughness: 0.4"></a-box>
             </a-entity>
             
@@ -1026,7 +1027,7 @@
 
             <a-box position="-2 2.8 0" width="0.6" height="0.5" depth="12" material="color: #E8E2DC; metalness: 0.2; roughness: 0.6"></a-box>
             <a-box position="-2 2.55 0" width="0.58" height="0.02" depth="12" material="color: #D4AF37;src: #bois; metalness: 0; roughness: 0.2"></a-box>
-            <a-box position="2 2.8 0" width="0.6" height="0.5" depth="12" material="color: #E8E2DC;src metalness: 0.2; roughness: 0.6"></a-box>
+            <a-box position="2 2.8 0" width="0.6" height="0.5" depth="12" material="color: #E8E2DC; metalness: 0.2; roughness: 0.6"></a-box>
             <a-box position="2 2.55 0" width="0.58" height="0.02" depth="12" material="color: #D4AF37;src: #bois; metalness: 0; roughness: 0.2"></a-box>
             
             

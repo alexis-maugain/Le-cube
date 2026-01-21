@@ -234,7 +234,7 @@ AFRAME.registerComponent('safe-keypad', {
                 loop: true
             });
             
-            console.log('INCEPTION - La pièce bascule en continu!');
+            console.log('La pièce bascule !');
             
             // ========== TRANSITION VERS L'AVION ==========
             // Éléments de l'hôtel à faire disparaître (sauf les aiguilles)
@@ -245,7 +245,7 @@ AFRAME.registerComponent('safe-keypad', {
                 '#mur-derriere', '#mur-fond',
                 '#lustre-central', '#lustre-gauche', '#lustre-droite',
                 '#table-toupie', '#safe-container', '#cadre-federer-pivot',
-                '[gltf-model]' // L'escalier 3D
+                '#escalier-hotel' 
             ];
             
             // Faire disparaître les éléments de l'hôtel progressivement
@@ -281,7 +281,7 @@ AFRAME.registerComponent('safe-keypad', {
                 const sol = document.querySelector('a-plane[position="0 0 0"]');
                 const plafond = document.querySelector('a-plane[position="0 4 0"]');
                 const plafondEscalier = document.querySelector('a-plane[position="0 17 4"]');
-                const escalier = document.querySelector('[gltf-model]');
+                const escalier = document.querySelector('#escalier-hotel');
                 
                 if (sol) {
                     sol.setAttribute('animation__scale', {
@@ -389,7 +389,58 @@ AFRAME.registerComponent('boundary-collision', {
 
 // Initialisation au chargement du DOM
 document.addEventListener('DOMContentLoaded', function() {
+    // ========== FONCTION TEMPORAIRE - MODE DÉVELOPPEMENT AVION ==========
+    // Décommenter la ligne ci-dessous pour afficher directement l'avion
+    // activerModeAvion();
     
+    
+    function activerModeAvion() {
+        console.log('🛩️ MODE DÉVELOPPEMENT AVION ACTIVÉ');
+        
+        // Cacher immédiatement tous les éléments de l'hôtel
+        const hotelElements = [
+            '#door-frame', '#door-pivot-A', '#door-pivot-B',
+            '#mur-gauche', '#mur-droite-gauche', '#mur-droite-droite',
+            '#mur-escalier-fond', '#mur-escalier-droite', '#mur-escalier-gauche',
+            '#mur-derriere', '#mur-fond',
+            '#lustre-central', '#lustre-gauche', '#lustre-droite',
+            '#table-toupie', '#safe-container', '#cadre-federer-pivot',
+            '#escalier-hotel'
+        ];
+        
+        hotelElements.forEach(selector => {
+            const elements = document.querySelectorAll(selector);
+            elements.forEach(el => {
+                if (el) el.setAttribute('visible', false);
+            });
+        });
+        
+        // Cacher les sols et plafonds de l'hôtel
+        const sol = document.querySelector('a-plane[position="0 0 0"]');
+        const plafond = document.querySelector('a-plane[position="0 4 0"]');
+        const plafondEscalier = document.querySelector('a-plane[position="0 17 4"]');
+        const escalier = document.querySelector('#escalier-hotel');
+        if (sol) sol.setAttribute('visible', false);
+        if (plafond) plafond.setAttribute('visible', false);
+        if (plafondEscalier) plafondEscalier.setAttribute('visible', false);
+        if (escalier) escalier.setAttribute('visible', false);
+        
+        // Afficher l'avion immédiatement
+        const avion = document.querySelector('#avion-container');
+        if (avion) {
+            avion.setAttribute('visible', true);
+        }
+        
+        // Positionner la caméra dans l'avion
+        const rig = document.querySelector('#rig');
+        if (rig) {
+            rig.setAttribute('position', '-1.6 1.6 0');
+            rig.setAttribute('rotation', '0 -90 0'); 
+        }
+        
+        console.log('✅ Vous êtes maintenant dans l\'avion');
+    }
+    // ========== FIN MODE DÉVELOPPEMENT ==========
     
     // Appliquer le composant de collision au rig
     document.querySelector('#rig').setAttribute('boundary-collision', '');
