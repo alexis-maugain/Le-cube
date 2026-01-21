@@ -330,7 +330,8 @@
             </a-cylinder>
 
             <!-- Pivot aiguille des heures -->
-            <a-entity id="pivot-heures" position="9.93 2 0" rotation="0 0 0">
+            <a-entity id="pivot-heures" position="9.93 2 0" rotation="0 0 0"
+                animation="property: rotation; to: -360 0 0; dur: 36000; easing: linear; loop: true">
                 <!-- Aiguille des heures (courte et épaisse) -->
                 <a-box
                     id="aiguille-heures-fond"
@@ -343,7 +344,8 @@
             </a-entity>
 
             <!-- Pivot aiguille des minutes -->
-            <a-entity id="pivot-minutes" position="9.93 2 0" rotation="0 0 0">
+            <a-entity id="pivot-minutes" position="9.93 2 0" rotation="0 0 0"
+                animation="property: rotation; to: -360 0 0; dur: 3000; easing: linear; loop: true">
                 <!-- Aiguille des minutes (longue et fine) -->
                 <a-box
                     id="aiguille-minutes-fond"

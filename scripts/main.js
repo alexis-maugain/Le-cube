@@ -482,7 +482,9 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('Utilisez WASD ou les flèches pour vous déplacer');
     console.log('Les collisions empêchent de sortir du cube');
 
-    // Animation des aiguilles de l'horloge
+    // Animation des aiguilles de l'horloge - Désormais gérée en HTML via animations A-Frame
+    // (Commenté car les animations sont maintenant dans index.html pour compatibilité VR)
+    /*
     (function() {
         const pivotMinutes = document.querySelector('#pivot-minutes');
         const pivotHeures = document.querySelector('#pivot-heures');
@@ -520,6 +522,8 @@ document.addEventListener('DOMContentLoaded', function() {
         animerAiguilles();
         console.log('Horloge démarrée - Grande aiguille: 1 tour/3s, Petite aiguille: 1 tour/36s');
     })();
+    */
+    console.log('⏰ Horloge animée en HTML - Grande aiguille: 1 tour/3s, Petite aiguille: 1 tour/36s');
 
     // Initialiser le clavier du coffre-fort
     (function() {
