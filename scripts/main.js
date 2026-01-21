@@ -374,7 +374,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // ========== MODE DÉVELOPPEMENT - HAUTEUR CAMÉRA ==========
     // true = Mode PC (1.6m de hauteur), false = Mode VR (0.1m de hauteur)
     const MODE_DEV_HAUTEUR = false;
-    
+
     // Appliquer la hauteur selon le mode
     const rig = document.querySelector('#rig');
     if (rig && MODE_DEV_HAUTEUR) {
