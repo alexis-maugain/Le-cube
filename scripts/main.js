@@ -255,7 +255,7 @@ AFRAME.registerComponent('safe-keypad', {
             // Éléments de l'hôtel à faire disparaître (sauf les aiguilles)
             const hotelElements = [
                 '#door-frame', '#door-pivot-A', '#door-pivot-B', '#lustre-central', '#lustre-gauche', '#lustre-droite',
-                '#table-toupie', '#safe-container', '#cadre-federer-pivot', '#escalier-hotel',
+                '#table-toupie', '#magazine-secret', '#safe-container', '#cadre-federer-pivot', '#escalier-hotel',
                 '#moquette-hotel', '#mur-escalier-fond', '#mur-escalier-droite', '#mur-droite-droite', '#mur-gauche', '#mur-escalier-gauche',
                 '#mur-derriere', '#mur-fond','#plafond-hotel','#plafond-escalier', '#mur-droite-gauche', 
             ];
@@ -376,6 +376,8 @@ AFRAME.registerComponent('boundary-collision', {
     }
 });
 
+
+
 // Initialisation au chargement du DOM
 document.addEventListener('DOMContentLoaded', function() {
     // ========== MODE DÉVELOPPEMENT - HAUTEUR CAMÉRA ==========
@@ -420,23 +422,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Décommenter la ligne ci-dessous pour afficher directement l'avion
     // activerModeAvion(); 
     
-    // ========== POPUP D'INSTRUCTION ==========
-    // Faire disparaître le popup après 8 secondes
-    setTimeout(() => {
-        const popup = document.querySelector('#popup-instruction');
-        if (popup) {
-            popup.setAttribute('animation', {
-                property: 'scale',
-                to: '0 0 0',
-                dur: 300,
-                easing: 'easeInQuad'
-            });
-            setTimeout(() => {
-                popup.setAttribute('visible', false);
-            }, 300);
-        }
-    }, 8000);
-    
     
     function activerModeAvion() {
         console.log('🛩️ MODE DÉVELOPPEMENT AVION ACTIVÉ');
@@ -448,7 +433,7 @@ document.addEventListener('DOMContentLoaded', function() {
             '#mur-escalier-fond', '#mur-escalier-droite', '#mur-escalier-gauche',
             '#mur-derriere', '#mur-fond',
             '#lustre-central', '#lustre-gauche', '#lustre-droite',
-            '#table-toupie', '#safe-container', '#cadre-federer-pivot',
+            '#table-toupie', '#magazine-secret', '#safe-container', '#cadre-federer-pivot',
             '#escalier-hotel'
         ];
         

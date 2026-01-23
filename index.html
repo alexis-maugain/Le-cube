@@ -20,6 +20,8 @@
 
             <img id="cuir" src="assets/cuir.jpg">
 
+            <img id="papier" src="assets/papier.jpg">
+
             <img id="verre-brisé" src="assets/verre-brisé.png">
 
 
@@ -46,22 +48,7 @@
                     fuse="false"
                     raycaster="objects: .clickable">
                 </a-cursor>
-                
-                <!-- Popup d'instruction - Style luxe en haut à gauche -->
-                <a-entity id="popup-instruction" position="-1 0.5 -1.2" visible="true">
-                    <!-- Fond noir élégant -->
-                    <a-plane position="0 0 0" width="1.8" height="0.7" color="#1a1a1a" opacity="0.95"></a-plane>
-                    <!-- Bordure dorée -->
-                    <a-plane position="0 0 -0.001" width="1.86" height="0.76" rotation="0 0 0" color="#D4AF37" opacity="1"></a-plane>
-                    <!-- Titre élégant -->
-                    <a-text value="MISSION" position="0 0.25 0.01" align="center" width="1.5" color="#D4AF37" font="monoid"></a-text>
-                    <!-- Ligne de séparation -->
-                    <a-plane position="0 0.17 0.01" width="1.5" height="0.002" color="#D4AF37"></a-plane>
-                    <!-- Instruction principale -->
-                    <a-text value="They're trying to open his safe. They thought I'd know the combination, but I don’t know it.”" 
-                            position="0 -0.05 0.01" align="center" width="1.5" color="#FFFFFF" font="monoid" 
-                            line-height="50"></a-text>
-                </a-entity>
+            
             </a-entity>
         </a-entity>
 
@@ -322,6 +309,72 @@
             <a-entity material="src: #moquette; repeat: 40 40; metalness: 0; roughness: 0.85"></a-entity>
         </a-entity>
 
+        <!-- MAGAZINE SECRET sous l'escalier -->
+        <a-entity id="magazine-secret" position="1 0.5 2" scale="2 2 2" rotation="-85 25 0"
+            animation__float="property: position; from: 1 0.5 2; to: 1 0.6 2; dur: 3000; easing: easeInOutSine; loop: true; dir: alternate"
+            animation__sway="property: rotation; from: -85 25 0; to: -85 28 0; dur: 4000; easing: easeInOutQuad; loop: true; dir: alternate"
+            animation__tilt="property: rotation; from: -85 25 0; to: -87 25 0; dur: 5000; easing: easeInOutSine; loop: true; dir: alternate; delay: 500">
+            <!-- Page gauche - Papier jauni et vieilli -->
+            <a-box position="-0.09 0 -0.005" rotation="0 7 0" width="0.18" height="0.25" depth="0.001" material="src: #papier; color: #E8DCC0; roughness: 0.95"></a-box>
+            
+            <!-- Page droite - Papier jauni et vieilli -->
+            <a-box position="0.09 0 -0.005" rotation="0 -7 0" width="0.18" height="0.25" depth="0.001" material="src: #papier; color: #E8DCC0; roughness: 0.95"></a-box>
+            
+            <!-- Tranche centrale du magazine (reliure usée) -->
+            <a-box position="0 0 -0.017" width="0.006" height="0.25" depth="0.001" material=" src: #bois; color: #5D4037; roughness: 0.95"></a-box>
+            
+            
+            <!-- TEXTE PAGE GAUCHE - Texte de remplissage (encre fanée) -->
+            <a-text value="In the world of espionage,\nsecrets are currency.\n\nEvery operative knows\nthe value of information.\n\nBut some secrets are\nmore valuable than others." 
+                    position="-0.09 0 0.007" 
+                    rotation="0 7 0"
+                    align="center" 
+                    width="0.15" 
+                    color="#000000" 
+                    wrap-count="18"
+                    line-height="35"
+                    font="monoid"
+                    opacity="0.3">
+            </a-text>
+            
+            <!-- TEXTE PAGE DROITE - Phrase principale mise en avant (encre fanée) -->
+            <a-text value="CLASSIFIED INTEL\n_______________" 
+                    position="0.09 0.1 0.007" 
+                    rotation="0 -7 0"
+                    align="center" 
+                    width="0.16" 
+                    color="#8B4513" 
+                    wrap-count="20"
+                    font="monoid">
+            </a-text>
+            
+            <!-- Phrase principale en gras et plus grande (encre plus foncée) -->
+            <a-text value='"They re trying to open\nhis safe. They thought\nI d know the combination,\nbut I don t know it."' 
+                    position="0.09 0.02 0.008" 
+                    rotation="0 -7 0"
+                    align="center" 
+                    width="0.14" 
+                    color="#2C2C2C" 
+                    wrap-count="22"
+                    line-height="50"
+                    font="monoid">
+                </a-text>
+            
+            <!-- Texte de remplissage après la phrase (encre fanée) -->
+            <a-text value="_______________\n\nThe operation continues.\nTime is running out." 
+                    position="0.09 -0.07 0.007" 
+                    rotation="0 -7 0"
+                    align="center" 
+                    width="0.15" 
+                    color="#000000" 
+                    wrap-count="18"
+                    line-height="35"
+                    font="monoid"
+                    opacity="0.3">
+
+            </a-text>
+        </a-entity>
+
 
 
         <!-- HORLOGE sur le mur du fond (DOIT PERSISTER PENDANT LA TRANSITION) -->
@@ -386,7 +439,7 @@
                 <a-cone position="0 -0.06 0" radius-bottom="0.01" radius-top="0.02" height="0.04" material="color: #1a1a1a; metalness: 0.3; roughness: 0.5"></a-cone>
             </a-entity>
             
-            <!-- MAGAZINE posé sur la table -->
+            <!-- MAGAZINE OUVERT posé sur la table -->
             <a-entity id="magazine" position="-0.3 1.06 0.1" rotation="-90 15 0">
                 <!-- Couverture du magazine -->
                 <a-box width="0.18" height="0.25" depth="0.008" material="color: #F5F5F5; roughness: 0.8"></a-box>
