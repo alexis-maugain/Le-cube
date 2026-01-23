@@ -57,7 +57,8 @@
                 oculus-touch-controls="hand: left"
                 vive-controls="hand: left"
                 windows-motion-controls="hand: left"
-                hand-controls="hand: left; handModelStyle: lowPoly; color: #ffccaa">
+                hand-controls="hand: left; handModelStyle: lowPoly; color: #ffccaa"
+                raycaster="objects: .clickable; far: 20; lineColor: red; lineOpacity: 0.8">
             </a-entity>
             
             <!-- CONTRÔLEUR VR MAIN DROITE avec raycaster -->
@@ -67,16 +68,8 @@
                 vive-controls="hand: right"
                 windows-motion-controls="hand: right"
                 hand-controls="hand: right; handModelStyle: lowPoly; color: #ffccaa"
-                raycaster="objects: .clickable; showLine: true; lineColor: #00BFFF; lineOpacity: 0.8"
+                raycaster="objects: .clickable; far: 20; lineColor: red; lineOpacity: 0.8"
                 laser-controls>
-                <!-- Curseur au bout du raycaster -->
-                <a-entity 
-                    id="cursor-vr"
-                    position="0 0 -1"
-                    geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.02"
-                    material="color: #00BFFF; shader: flat; opacity: 0.9"
-                    raycaster="objects: .clickable">
-                </a-entity>
             </a-entity>
         </a-entity>
 

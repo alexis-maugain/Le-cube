@@ -405,12 +405,14 @@ document.addEventListener('DOMContentLoaded', function() {
     if (scene) {
         scene.addEventListener('enter-vr', function() {
             MODE_DEV_HAUTEUR = false;
+            window.MODE_DEV_HAUTEUR = false; // Mettre à jour aussi la variable globale
             ajusterHauteur(false);
         });
         
         // Écouter la sortie du mode VR
         scene.addEventListener('exit-vr', function() {
             MODE_DEV_HAUTEUR = true;
+            window.MODE_DEV_HAUTEUR = true; // Mettre à jour aussi la variable globale
             ajusterHauteur(true);
         });
     }
