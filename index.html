@@ -10,7 +10,7 @@
 </head>
 <body>
 
-    <a-scene>
+    <a-scene vr-mode-ui="arEnabled: false">
         <a-assets>
             <img id="moquette" src="assets/moquette.jpg">
             <img id="moquette_avion" src="assets/moquette_avion.jpg">
@@ -42,13 +42,6 @@
                 camera 
                 position="0 0 0" 
                 look-controls="pointerLockEnabled: true">
-                <!-- Curseur pour interagir -->
-                <a-cursor 
-                    color="#FFFFFF" 
-                    fuse="false"
-                    raycaster="objects: .clickable">
-                </a-cursor>
-            
             </a-entity>
             
             <!-- CONTRÔLEUR VR MAIN GAUCHE -->
