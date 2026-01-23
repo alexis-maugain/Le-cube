@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Cube</title>
+    <title>Inception</title>
     <link rel="icon" href="assets/favicon.svg" type="image/x-icon">
     <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/c-frame/aframe-extras@7.0.0/dist/aframe-extras.min.js"></script>
 </head>
 <body>
 
-    <a-scene vr-mode-ui="arEnabled: false">
+    <a-scene>
         <a-assets>
             <img id="moquette" src="assets/moquette.jpg">
             <img id="moquette_avion" src="assets/moquette_avion.jpg">
@@ -21,6 +21,9 @@
             <img id="cuir" src="assets/cuir.jpg">
 
             <img id="papier" src="assets/papier.jpg">
+
+            <img id="papier2" src="assets/papier2.jpg">
+
 
             <img id="verre-brisé" src="assets/verre-brisé.png">
 
@@ -42,6 +45,13 @@
                 camera 
                 position="0 0 0" 
                 look-controls="pointerLockEnabled: true">
+                <!-- Curseur pour interagir (visible uniquement hors VR) -->
+                <a-cursor 
+                    id="desktop-cursor"
+                    color="#FFFFFF" 
+                    fuse="false"
+                    raycaster="objects: .clickable">
+                </a-cursor>
             </a-entity>
             
             <!-- CONTRÔLEUR VR MAIN GAUCHE -->
@@ -324,15 +334,15 @@
         </a-entity>
 
         <!-- MAGAZINE SECRET sous l'escalier -->
-        <a-entity id="magazine-secret" position="1 0.5 2" scale="2 2 2" rotation="-85 25 0"
-            animation__float="property: position; from: 1 0.5 2; to: 1 0.6 2; dur: 3000; easing: easeInOutSine; loop: true; dir: alternate"
+        <a-entity id="magazine-secret" position="1 0.7 2" scale="2 2 2" rotation="-85 25 0"
+            animation__float="property: position; from: 1 0.7 2; to: 1 0.8 2; dur: 3000; easing: easeInOutSine; loop: true; dir: alternate"
             animation__sway="property: rotation; from: -85 25 0; to: -85 28 0; dur: 4000; easing: easeInOutQuad; loop: true; dir: alternate"
             animation__tilt="property: rotation; from: -85 25 0; to: -87 25 0; dur: 5000; easing: easeInOutSine; loop: true; dir: alternate; delay: 500">
             <!-- Page gauche - Papier jauni et vieilli -->
-            <a-box position="-0.09 0 -0.005" rotation="0 7 0" width="0.18" height="0.25" depth="0.001" material="src: #papier; color: #E8DCC0; roughness: 0.95"></a-box>
+            <a-box position="-0.089 0 -0.005" rotation="0 7 0" width="0.18" height="0.25" depth="0.001" material="src: #papier2; color: #E8DCC0; roughness: 0.95"></a-box>
             
             <!-- Page droite - Papier jauni et vieilli -->
-            <a-box position="0.09 0 -0.005" rotation="0 -7 0" width="0.18" height="0.25" depth="0.001" material="src: #papier; color: #E8DCC0; roughness: 0.95"></a-box>
+            <a-box position="0.089 0 -0.005" rotation="0 -7 0" width="0.18" height="0.25" depth="0.001" material="src: #papier2; color: #E8DCC0; roughness: 0.95"></a-box>
             
             <!-- Tranche centrale du magazine (reliure usée) -->
             <a-box position="0 0 -0.017" width="0.006" height="0.25" depth="0.001" material=" src: #bois; color: #5D4037; roughness: 0.95"></a-box>
@@ -340,7 +350,7 @@
             
             <!-- TEXTE PAGE GAUCHE - Texte de remplissage (encre fanée) -->
             <a-text value="In the world of espionage,\nsecrets are currency.\n\nEvery operative knows\nthe value of information.\n\nBut some secrets are\nmore valuable than others." 
-                    position="-0.09 0 0.007" 
+                    position="-0.08 0 0.007" 
                     rotation="0 7 0"
                     align="center" 
                     width="0.15" 

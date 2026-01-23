@@ -401,12 +401,19 @@ document.addEventListener('DOMContentLoaded', function() {
     // Appliquer la hauteur initiale (mode PC par défaut)
     ajusterHauteur(MODE_DEV_HAUTEUR);
     
+    // Gérer la visibilité du curseur desktop
+    const desktopCursor = document.querySelector('#desktop-cursor');
+    
     // Écouter l'entrée en mode VR
     if (scene) {
         scene.addEventListener('enter-vr', function() {
             MODE_DEV_HAUTEUR = false;
             window.MODE_DEV_HAUTEUR = false; // Mettre à jour aussi la variable globale
             ajusterHauteur(false);
+            // Cacher le curseur desktop en VR
+            if (desktopCursor) {
+                desktopCursor.setAttribute('visible', false);
+            }
         });
         
         // Écouter la sortie du mode VR
@@ -414,6 +421,10 @@ document.addEventListener('DOMContentLoaded', function() {
             MODE_DEV_HAUTEUR = true;
             window.MODE_DEV_HAUTEUR = true; // Mettre à jour aussi la variable globale
             ajusterHauteur(true);
+            // Réafficher le curseur desktop hors VR
+            if (desktopCursor) {
+                desktopCursor.setAttribute('visible', true);
+            }
         });
     }
     
