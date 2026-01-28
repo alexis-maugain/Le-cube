@@ -1,3 +1,23 @@
+// Composant pour désactiver le curseur desktop en mode VR
+AFRAME.registerComponent('desktop-only-cursor', {
+    init: function() {
+        const el = this.el;
+        const sceneEl = this.el.sceneEl;
+        
+        // Désactiver le curseur quand on entre en VR
+        sceneEl.addEventListener('enter-vr', () => {
+            el.setAttribute('visible', false);
+            el.setAttribute('raycaster', 'enabled', false);
+        });
+        
+        // Réactiver le curseur quand on sort de VR
+        sceneEl.addEventListener('exit-vr', () => {
+            el.setAttribute('visible', true);
+            el.setAttribute('raycaster', 'enabled', true);
+        });
+    }
+});
+
 // Composant pour porte interactive avec téléportation
 AFRAME.registerComponent('door-interactive', {
     schema: {
