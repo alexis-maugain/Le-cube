@@ -29,6 +29,10 @@
 
 
             <audio id="background-music" src="assets/thekick.mp3" preload="auto"></audio>
+            <audio id="hotesse-audio" src="assets/hotesse.mp3" preload="auto"></audio>
+            <audio id="horloge-audio" src="assets/horloge.wav" preload="auto"></audio>
+            <audio id="porte-open" src="assets/porteopen.mp3" preload="auto"></audio>
+            <audio id="porte-close" src="assets/porteclose.mp3" preload="auto"></audio>
         </a-assets>
 
         <!-- SON DE LA RADIO -->
@@ -403,7 +407,9 @@
 
 
         <!-- HORLOGE sur le mur du fond (DOIT PERSISTER PENDANT LA TRANSITION) -->
-        <a-entity id="horloge-hotel" position="0 1 0" rotation="0 0 0" visible="true">
+        <a-entity id="horloge-hotel" position="0 1 0" rotation="0 0 0" visible="true"
+            sound="src: #horloge-audio; loop: true; autoplay: false; volume: 0.08"
+            clock-sound>
                 <!-- Centre de l'horloge -->
             <a-cylinder
                 position="9.9 2 0"
@@ -778,7 +784,7 @@
             </a-cylinder>
             
             <!-- Sol de l'avion - Moquette luxueuse -->
-            <a-plane id="avion-sol" position="-0.3 0.05 0" rotation="-90 0 0" width="6.5" height="25" 
+            <a-plane id="avion-sol" position="-0.2 0.05 0" rotation="-90 0 0" width="6" height="25" 
                 material="color: #2C3E50; src: #moquette_avion; metalness: 0.1; roughness: 0.9">
             </a-plane>
             

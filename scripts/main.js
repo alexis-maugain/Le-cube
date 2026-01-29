@@ -18,6 +18,34 @@ AFRAME.registerComponent('desktop-only-cursor', {
     }
 });
 
+// Composant pour démarrer le son de l'horloge automatiquement
+AFRAME.registerComponent('clock-sound', {
+    init: function() {
+        const el = this.el;
+        const sceneEl = el.sceneEl;
+        
+        // Attendre que la scène soit complètement chargée
+        if (sceneEl.hasLoaded) {
+            this.startSound();
+        } else {
+            sceneEl.addEventListener('loaded', () => {
+                this.startSound();
+            });
+        }
+    },
+    
+    startSound: function() {
+        const soundComponent = this.el.components.sound;
+        if (soundComponent) {
+            // Démarrer le son après un petit délai
+            setTimeout(() => {
+                soundComponent.playSound();
+                console.log('Son de l\'horloge démarré');
+            }, 500);
+        }
+    }
+});
+
 // Composant pour porte interactive avec téléportation
 AFRAME.registerComponent('door-interactive', {
     schema: {
@@ -64,6 +92,28 @@ AFRAME.registerComponent('door-interactive', {
     toggleDoor: function() {
         this.isAnimating = true;
         const targetRotation = this.isOpen ? '0 0 0' : '0 -100 0';
+        
+        // Jouer le son approprié
+        const soundEntity = document.createElement('a-entity');
+        if (this.isOpen) {
+            // Fermeture de la porte
+            soundEntity.setAttribute('sound', {
+                src: '#porte-close',
+                autoplay: true,
+                volume: 0.6
+            });
+        } else {
+            // Ouverture de la porte
+            soundEntity.setAttribute('sound', {
+                src: '#porte-open',
+                autoplay: true,
+                volume: 0.6
+            });
+        }
+        this.el.sceneEl.appendChild(soundEntity);
+        setTimeout(() => {
+            this.el.sceneEl.removeChild(soundEntity);
+        }, 2000);
         
         this.el.setAttribute('animation', {
             property: 'rotation',
@@ -123,6 +173,29 @@ AFRAME.registerComponent('door-interactive', {
         rig.setAttribute('rotation', {x: currentRigRot.x, y: currentRigRot.y + 180, z: currentRigRot.z});
         
         console.log('Téléportation vers l\'autre porte!');
+        
+        // Détecter si on arrive dans l'avion en vérifiant si l'avion est visible
+        setTimeout(() => {
+            const avionContainer = document.querySelector('#avion-container');
+            if (avionContainer && avionContainer.getAttribute('visible') === true) {
+                console.log('Arrivée dans l\'avion - l\'hôtesse parlera dans 5 secondes...');
+                setTimeout(() => {
+                    const hotesseSound = document.createElement('a-entity');
+                    hotesseSound.setAttribute('sound', {
+                        src: '#hotesse-audio',
+                        autoplay: true,
+                        volume: 1
+                    });
+                    this.el.sceneEl.appendChild(hotesseSound);
+                    setTimeout(() => {
+                        try {
+                            this.el.sceneEl.removeChild(hotesseSound);
+                        } catch(e) {}
+                    }, 15000);
+                    console.log('Hôtesse: Annonce de l\'atterrissage');
+                }, 5000);
+            }
+        }, 100);
         
         // Réactiver la téléportation de cette porte rapidement
         setTimeout(() => {
@@ -322,6 +395,24 @@ AFRAME.registerComponent('safe-keypad', {
                         easing: 'easeOutQuad'
                     });
                     console.log('Bienvenue dans l\'avion!');
+                    
+                    // Déclencher le son de l'hôtesse 5 secondes après l'apparition de l'avion
+                    setTimeout(() => {
+                        console.log('Arrivée dans l\'avion - l\'hôtesse va parler...');
+                        const hotesseSound = document.createElement('a-entity');
+                        hotesseSound.setAttribute('sound', {
+                            src: '#hotesse-audio',
+                            autoplay: true,
+                            volume: 0.8
+                        });
+                        document.querySelector('a-scene').appendChild(hotesseSound);
+                        setTimeout(() => {
+                            try {
+                                document.querySelector('a-scene').removeChild(hotesseSound);
+                            } catch(e) {}
+                        }, 15000);
+                        console.log('Hôtesse: Annonce de l\'atterrissage');
+                    }, 5000);
                 }
             }, delay + 6000);
             
