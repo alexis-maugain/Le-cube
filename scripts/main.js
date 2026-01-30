@@ -191,7 +191,7 @@ AFRAME.registerComponent('door-interactive', {
                         try {
                             this.el.sceneEl.removeChild(hotesseSound);
                         } catch(e) {}
-                    }, 15000);
+                    }, 30000);
                     console.log('Hôtesse: Annonce de l\'atterrissage');
                 }, 5000);
             }
@@ -454,7 +454,7 @@ AFRAME.registerComponent('safe-keypad', {
                             try {
                                 document.querySelector('a-scene').removeChild(hotesseSound);
                             } catch(e) {}
-                        }, 15000);
+                        }, 30000);
                         console.log('Hôtesse: Annonce de l\'atterrissage');
                     }, 5000);
                 }
