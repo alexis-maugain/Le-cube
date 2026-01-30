@@ -184,7 +184,7 @@ AFRAME.registerComponent('door-interactive', {
                     hotesseSound.setAttribute('sound', {
                         src: '#hotesse-audio',
                         autoplay: true,
-                        volume: 4
+                        volume: 40
                     });
                     this.el.sceneEl.appendChild(hotesseSound);
                     setTimeout(() => {
