@@ -30,6 +30,7 @@
 
             <audio id="background-music" src="assets/thekick.mp3" preload="auto"></audio>
             <audio id="hotesse-audio" src="assets/hotesse.mp3" preload="auto"></audio>
+            <audio id="zuukou" src="assets/zuukou.mp3" preload="auto"></audio>
             <audio id="horloge-audio" src="assets/horloge.wav" preload="auto"></audio>
             <audio id="porte-open" src="assets/porteopen.mp3" preload="auto"></audio>
             <audio id="porte-close" src="assets/porteclose.mp3" preload="auto"></audio>
@@ -39,11 +40,7 @@
             <audio id="cadre-audio" src="assets/cadre.mp3" preload="auto"></audio>
         </a-assets>
 
-        <!-- SON DE LA RADIO -->
-        <a-entity id="radio-sound" 
-            sound="src: url(assets/zuukou.mp3); loop: true; autoplay: false; volume: 0.7"
-            position="0 0 0">
-        </a-entity>
+
 
         <!-- Caméra avec collisions -->
         <a-entity id="rig" position="-2 0.1 0" rotation="0 -90 0" movement-controls="constrainToNavMesh: false; speed: 0.15"
@@ -1105,6 +1102,12 @@
                 scale="0.4 0.4 0.4"
                 rotation="0 90 0">
             </a-entity>
+
+                    <!-- SON DE LA RADIO -->
+        <a-entity id="radio-sound" 
+            sound="src: #zuukou; loop: true; autoplay: false; volume: 0.2; positional: true; distanceModel: inverse; refDistance: 1; maxDistance: 10"
+            position="-1.5 0.7 2.4">
+        </a-entity>
 
             <!-- CONSOLES LATÉRALES EN BOIS - Style jet privé -->
             <!-- Console gauche -->

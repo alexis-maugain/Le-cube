@@ -513,7 +513,7 @@ AFRAME.registerComponent('safe-keypad', {
         soundEntity.setAttribute('sound', {
             src: '#' + soundId,
             autoplay: true,
-            volume: 0.8
+            volume: 0.2
         });
         this.el.sceneEl.appendChild(soundEntity);
         setTimeout(() => {
