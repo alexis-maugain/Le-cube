@@ -235,7 +235,7 @@ AFRAME.registerComponent('swing-frame', {
         soundEntity.setAttribute('sound', {
             src: '#cadre-audio',
             autoplay: true,
-            volume: 0.3
+            volume: 0.2
         });
         document.querySelector('a-scene').appendChild(soundEntity);
         setTimeout(() => {
@@ -380,7 +380,7 @@ AFRAME.registerComponent('safe-keypad', {
                 '#door-frame', '#door-pivot-A', '#door-pivot-B', '#lustre-central', '#lustre-gauche', '#lustre-droite',
                 '#table-toupie', '#magazine-secret', '#safe-container', '#cadre-federer-pivot', '#escalier-hotel',
                 '#moquette-hotel', '#mur-escalier-fond', '#mur-escalier-droite', '#mur-droite-droite', '#mur-gauche', '#mur-escalier-gauche',
-                '#mur-derriere', '#mur-fond','#plafond-hotel','#plafond-escalier', '#mur-droite-gauche', 
+                '#mur-derriere','#plafond-hotel','#plafond-escalier','#mur-fond', '#mur-droite-gauche', 
             ];
             
             // Faire disparaître les éléments de l'hôtel progressivement
