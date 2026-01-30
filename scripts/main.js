@@ -608,6 +608,39 @@ document.addEventListener('DOMContentLoaded', function() {
     // Rendre MODE_DEV_HAUTEUR accessible globalement
     window.MODE_DEV_HAUTEUR = MODE_DEV_HAUTEUR;
     
+    // ========== SYSTÈME AUDIO HORLOGE ROBUSTE ==========
+    let audioStarted = false;
+    
+    const startClockAudio = () => {
+        if (audioStarted) return;
+        audioStarted = true;
+        
+        console.log('🎵 Démarrage de l\'audio horloge...');
+        const horlogeSound = document.querySelector('#horloge-hotel');
+        if (horlogeSound && horlogeSound.components.sound) {
+            horlogeSound.components.sound.playSound();
+            console.log('✅ Audio horloge démarré');
+        }
+        
+        // Retirer les event listeners une fois l'audio démarré
+        document.removeEventListener('click', startClockAudio);
+        document.removeEventListener('keydown', startClockAudio);
+    };
+    
+    // Démarrer l'audio sur interaction utilisateur
+    document.addEventListener('click', startClockAudio);
+    document.addEventListener('keydown', startClockAudio);
+    
+    // Démarrer automatiquement en VR
+    if (scene) {
+        scene.addEventListener('enter-vr', () => {
+            console.log('🥽 Entrée en mode VR détectée - Démarrage audio horloge');
+            setTimeout(() => {
+                startClockAudio();
+            }, 500);
+        });
+    }
+    
     // ========== FONCTION TEMPORAIRE - MODE DÉVELOPPEMENT AVION ==========
     // Décommenter la ligne ci-dessous pour afficher directement l'avion
     // activerModeAvion(); 
