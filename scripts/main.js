@@ -270,6 +270,9 @@ AFRAME.registerComponent('safe-keypad', {
     handleKeyPress: function(key, keyEl) {
         if (this.isUnlocked) return;
         
+        // Jouer le son bip
+        this.playSound('safe-bip');
+        
         // Animation de la touche
         const originalColor = keyEl.getAttribute('material').color;
         keyEl.setAttribute('material', 'color', '#666666');
@@ -309,6 +312,10 @@ AFRAME.registerComponent('safe-keypad', {
     checkCode: function() {
         if (this.code === this.correctCode) {
             this.isUnlocked = true;
+            
+            // Jouer le son de succès
+            this.playSound('safe-success');
+            
             if (this.display) {
                 this.display.setAttribute('value', 'OPEN');
                 this.display.setAttribute('color', '#00FF00');
@@ -444,6 +451,10 @@ AFRAME.registerComponent('safe-keypad', {
             }, delay + 9000);
             
         } else {
+            // Code incorrect
+            // Jouer le son d'erreur
+            this.playSound('safe-error');
+            
             if (this.display) {
                 this.display.setAttribute('value', 'ERR!');
                 this.display.setAttribute('color', '#FF0000');
@@ -458,6 +469,22 @@ AFRAME.registerComponent('safe-keypad', {
                 }
             }, 1000);
         }
+    },
+    
+    playSound: function(soundId) {
+        const soundEntity = document.createElement('a-entity');
+        console.log('aaa');
+        soundEntity.setAttribute('sound', {
+            src: '#' + soundId,
+            autoplay: true,
+            volume: 0.8
+        });
+        this.el.sceneEl.appendChild(soundEntity);
+        setTimeout(() => {
+            try {
+                this.el.sceneEl.removeChild(soundEntity);
+            } catch(e) {}
+        }, 2000);
     }
 });
 
