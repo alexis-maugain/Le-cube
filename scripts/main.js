@@ -428,8 +428,15 @@ AFRAME.registerComponent('safe-keypad', {
                     
                     // ARRÊTER LE SON DE L'HORLOGE
                     const horlogeSound = document.querySelector('#horloge-hotel');
-                    if (horlogeSound && horlogeSound.components.sound) {
-                        horlogeSound.components.sound.stopSound();
+                    if (horlogeSound) {
+                        // Méthode 1: Arrêter via le composant sound
+                        if (horlogeSound.components.sound) {
+                            horlogeSound.components.sound.stopSound();
+                        }
+                        // Méthode 2: Supprimer complètement l'attribut sound
+                        horlogeSound.removeAttribute('sound');
+                        // Méthode 3: Mettre le volume à 0 en backup
+                        horlogeSound.setAttribute('sound', 'volume', 0);
                         console.log('Son de l\'horloge arrêté dans l\'avion');
                     }
                     
