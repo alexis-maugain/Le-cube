@@ -340,10 +340,9 @@
         </a-entity>
 
         <!-- MAGAZINE SECRET sous l'escalier -->
-        <a-entity id="magazine-secret" position="1 0.7 2" scale="2 2 2" rotation="-85 25 0"
-            animation__float="property: position; from: 1 0.7 2; to: 1 0.8 2; dur: 3000; easing: easeInOutSine; loop: true; dir: alternate"
-            animation__sway="property: rotation; from: -85 25 0; to: -85 28 0; dur: 4000; easing: easeInOutQuad; loop: true; dir: alternate"
-            animation__tilt="property: rotation; from: -85 25 0; to: -87 25 0; dur: 5000; easing: easeInOutSine; loop: true; dir: alternate; delay: 500">
+        <a-entity id="magazine-secret" position="1 0.7 2" scale="2 2 2" rotation="-75 180 0"
+            animation__float="property: position; from: 1 0.7 2; to: 1 0.8 2; dur: 3000; easing: easeInOutSine; loop: true; dir: alternate">
+            
             <!-- Page gauche - Papier jauni et vieilli -->
             <a-box position="-0.089 0 -0.005" rotation="0 7 0" width="0.18" height="0.25" depth="0.001" material="src: #papier2; color: #E8DCC0; roughness: 0.95"></a-box>
             
@@ -356,7 +355,7 @@
             
             <!-- TEXTE PAGE GAUCHE - Texte de remplissage (encre fanée) -->
             <a-text value="In the world of espionage,\nsecrets are currency.\n\nEvery operative knows\nthe value of information.\n\nBut some secrets are\nmore valuable than others." 
-                    position="-0.08 0 0.007" 
+                    position="-0.08 0 0" 
                     rotation="0 7 0"
                     align="center" 
                     width="0.15" 
@@ -369,7 +368,7 @@
             
             <!-- TEXTE PAGE DROITE - Phrase principale mise en avant (encre fanée) -->
             <a-text value="CLASSIFIED INTEL\n_______________" 
-                    position="0.09 0.1 0.007" 
+                    position="0.09 0.1 0" 
                     rotation="0 -7 0"
                     align="center" 
                     width="0.16" 
@@ -380,7 +379,7 @@
             
             <!-- Phrase principale en gras et plus grande (encre plus foncée) -->
             <a-text value='"They re trying to open\nhis safe. They thought\nI d know the combination,\nbut I don t know it."' 
-                    position="0.09 0.02 0.008" 
+                    position="0.09 0.02 0" 
                     rotation="0 -7 0"
                     align="center" 
                     width="0.14" 
@@ -392,7 +391,7 @@
             
             <!-- Texte de remplissage après la phrase (encre fanée) -->
             <a-text value="_______________\n\nThe operation continues.\nTime is running out." 
-                    position="0.09 -0.07 0.007" 
+                    position="0.09 -0.07 0" 
                     rotation="0 -7 0"
                     align="center" 
                     width="0.15" 
