@@ -107,7 +107,7 @@ AFRAME.registerComponent('door-interactive', {
             soundEntity.setAttribute('sound', {
                 src: '#porte-open',
                 autoplay: true,
-                volume: 0.6
+                volume: 0.8
             });
         }
         this.el.sceneEl.appendChild(soundEntity);
@@ -235,7 +235,7 @@ AFRAME.registerComponent('swing-frame', {
         soundEntity.setAttribute('sound', {
             src: '#cadre-audio',
             autoplay: true,
-            volume: 0.6
+            volume: 0.3
         });
         document.querySelector('a-scene').appendChild(soundEntity);
         setTimeout(() => {
@@ -513,7 +513,7 @@ AFRAME.registerComponent('safe-keypad', {
         soundEntity.setAttribute('sound', {
             src: '#' + soundId,
             autoplay: true,
-            volume: 0.2
+            volume: 0.3
         });
         this.el.sceneEl.appendChild(soundEntity);
         setTimeout(() => {
