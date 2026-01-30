@@ -522,8 +522,11 @@ AFRAME.registerComponent('boundary-collision', {
     tick: function() {
         const position = this.el.getAttribute('position');
         
+        // Marges adaptées selon le mode (VR nécessite plus d'espace pour éviter de voir à travers les murs)
+        const isVRMode = !window.MODE_DEV_HAUTEUR; // VR = false, PC = true
+        const margin = isVRMode ? 0.5 : 0.3; // Marge plus importante en VR
+        
         // Limites du cube 4m × 4m × 4m avec marge
-        const margin = 0.3;
         const minX = -2 + margin;
         const maxX = 2 - margin;
         const minY = 0.1;
