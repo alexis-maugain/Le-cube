@@ -41,7 +41,7 @@ AFRAME.registerComponent('clock-sound', {
             setTimeout(() => {
                 soundComponent.playSound();
                 console.log('Son de l\'horloge démarré');
-            }, 500);
+            }, 0);
         }
     }
 });
@@ -229,6 +229,21 @@ AFRAME.registerComponent('swing-frame', {
     
     toggleFrame: function() {
         this.isAnimating = true;
+        
+        // Jouer le son du cadre
+        const soundEntity = document.createElement('a-entity');
+        soundEntity.setAttribute('sound', {
+            src: '#cadre-audio',
+            autoplay: true,
+            volume: 0.6
+        });
+        document.querySelector('a-scene').appendChild(soundEntity);
+        setTimeout(() => {
+            try {
+                document.querySelector('a-scene').removeChild(soundEntity);
+            } catch(e) {}
+        }, 2000);
+        
         // Pivoter sur le côté gauche (comme une porte)
         const targetRotation = this.isOpen ? '0 0 0' : '0 0 -110';
         
@@ -349,6 +364,14 @@ AFRAME.registerComponent('safe-keypad', {
                 console.log('Aiguille des minutes accélérée (10x)');
             }
             
+            // ACCÉLÉRER LE SON DE L'HORLOGE
+            const horlogeSound = document.querySelector('#horloge-hotel');
+            if (horlogeSound && horlogeSound.components.sound) {
+                horlogeSound.setAttribute('sound', 'volume', 0.6);
+                horlogeSound.setAttribute('sound', 'playbackRate', 40);
+                console.log('Son de l\'horloge accéléré (10x)');
+            }
+            
             console.log('La pièce bascule !');
             
             // ========== TRANSITION VERS L'AVION ==========
@@ -402,6 +425,13 @@ AFRAME.registerComponent('safe-keypad', {
                         easing: 'easeOutQuad'
                     });
                     console.log('Bienvenue dans l\'avion!');
+                    
+                    // ARRÊTER LE SON DE L'HORLOGE
+                    const horlogeSound = document.querySelector('#horloge-hotel');
+                    if (horlogeSound && horlogeSound.components.sound) {
+                        horlogeSound.components.sound.stopSound();
+                        console.log('Son de l\'horloge arrêté dans l\'avion');
+                    }
                     
                     // Déclencher le son de l'hôtesse 5 secondes après l'apparition de l'avion
                     setTimeout(() => {
@@ -473,7 +503,6 @@ AFRAME.registerComponent('safe-keypad', {
     
     playSound: function(soundId) {
         const soundEntity = document.createElement('a-entity');
-        console.log('aaa');
         soundEntity.setAttribute('sound', {
             src: '#' + soundId,
             autoplay: true,
